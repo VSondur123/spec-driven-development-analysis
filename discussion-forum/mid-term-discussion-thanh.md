@@ -36,7 +36,7 @@ How do SDD tools support the transition from requirements to implementation, and
 
 A **comparative multi-case study** using one shared case project.
 
-1. **Tool selection:** choose 3 tools by explicit criteria (maturity, active use, different workflows). Candidates: GitHub Spec Kit, Kiro Specs, and one of OpenSpec or BMAD.
+1. **Tool selection:** choose 2 tools by explicit criteria (maturity, active use, different workflows). Candidates: GitHub Spec Kit and BMAD.
 2. **Common case:** one small, realistic system with about 8-10 functional and 3-4 non-functional requirements. Every tool receives the same input requirements and, where possible, the same underlying LLM, so differences come from the tool.
 3. **Comparison framework (defined before running the tools):**
    - Spec structure
