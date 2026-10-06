@@ -90,9 +90,9 @@ A **comparative multi-case study** using one shared case project.
 
 | Member | Main responsibility | Other tasks | Est. time |
 |--------|--------------------|-------------|-----------|
-| **Varun** | Literature review, background section, project management | Final editing | ~28 h |
-| **Admin** | Tool 1 (e.g. Spec Kit): setup, running, documentation | Comparison framework | ~28 h |
-| **Thanh** | Tool 2 (e.g. Kiro): setup, running, documentation | Change scenario design | ~28 h |
+| **Admin** | Literature review, background section, project management | Final editing | ~28 h |
+| **Varun** | Tool 1 (BMAD): setup, running, documentation | Comparison framework | ~28 h |
+| **Thanh** | Tool 2 (GitHub Spec Kit): setup, running, documentation | Change scenario design | ~28 h |
 | **George** | Tool 3 and case project requirements | Coverage matrix and evaluation | ~28 h |
 | **All** | Discussion, conclusion, peer review of sections | Final presentation | shared |
 
