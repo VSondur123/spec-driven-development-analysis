@@ -34,10 +34,13 @@ How do SDD tools support the transition from requirements to implementation, and
 
 ## 3. Methodology
 
-A **comparative multi-case study** using one shared case project.
+A **comparative multi-case study** in which two tools are compared directly with each other on one shared case project.
 
-1. **Tool selection:** choose 2 tools by explicit criteria (maturity, active use, different workflows). Candidates: GitHub Spec Kit and BMAD.
-2. **Common case:** one small, realistic system with about 8-10 functional and 3-4 non-functional requirements. Every tool receives the same input requirements and, where possible, the same underlying LLM, so differences come from the tool.
+1. **Tool selection:** two tools, **GitHub Spec Kit** and **BMAD**, chosen by explicit criteria:
+   - Both are actively used and well documented.
+   - They follow different workflows (Spec Kit: a command-driven chain of constitution, specify, plan, tasks and implement; BMAD: an agent-role-based method), which makes the comparison informative.
+   - Both can run with the same AI coding agent and LLM.
+2. **Common case:** one small, realistic system with about 8-10 functional and 3-4 non-functional requirements. Both tools receive the same input requirements and, where possible, the same underlying LLM, so differences come from the tool and not from the model.
 3. **Comparison framework (defined before running the tools):**
    - Spec structure
    - Requirement-to-task traceability
@@ -46,10 +49,10 @@ A **comparative multi-case study** using one shared case project.
    - Support for non-functional requirements
    - Change handling
    - Human control and review points
-4. **Change scenario:** after the first implementation, apply the same requirement change (one added, one modified) in each tool and observe the effect on spec, plan, tasks and code.
-5. **Evaluation of results:** a requirements coverage matrix (requirement -> spec -> task -> code/test), counting requirements fully, partly or not implemented, plus spec-code drift after the change.
-6. **Data collection and synthesis:** structured notes and screenshots per tool, the artifacts each tool produces, a comparison table, and a short narrative per RQ.
-7. **Threats to validity:** a single case, LLM non-determinism, and fast-changing tools. Mitigation: log tool versions, prompts and model settings.
+4. **Change scenario:** after the first implementation, apply the same requirement change (one added, one modified) in both tools and compare the effect on spec, plan, tasks and code.
+5. **Evaluation of results:** a requirements coverage matrix (requirement -> spec -> task -> code/test) for each tool, counting requirements fully, partly or not implemented, plus spec-code drift after the change.
+6. **Data collection and synthesis:** structured notes and screenshots per tool, the artifacts each tool produces, a side-by-side comparison table, and a short narrative per RQ.
+7. **Threats to validity:** a single case, only two tools, LLM non-determinism, and fast-changing tools. Mitigation: log tool versions, prompts and model settings.
 
 ## 4. Relevant articles
 
@@ -59,16 +62,16 @@ A **comparative multi-case study** using one shared case project.
 |---|---------|-----------|
 | 1 | Piskala, *Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants* (arXiv:2602.00180, 2026) | Defines spec-first, spec-anchored and spec-as-source, and analyses tools from BDD frameworks to toolkits such as GitHub Spec Kit. Conceptual basis for our comparison framework. |
 | 2 | *SpecMine: A Large-Scale Corpus of Spec-Driven Development Artifacts* (arXiv:2608.25202) | Covers artifacts from 18 SDD tools. Helps with tool selection and shows how spec structures differ. |
-| 3 | *The Impact of GenAI on the Future of Requirements Engineering* (arXiv:2609.05667), Section 4.3 | Places SDD within RE research and lists current tools; each workflow defines its own spec format, level of detail and project integration. |
+| 3 | *The Impact of GenAI on the Future of Requirements Engineering* (arXiv:2609.05667), Section 4.3 | Places SDD within RE research and lists current tools (including Spec Kit and BMAD); each workflow defines its own spec format, level of detail and project integration. |
 | 4 | *Practical Implementation Report on Introducing Spec-Driven Development Using AI Agents in Software Development PBL* (arXiv:2608.30572) | Describes a workflow where requirements.md, design.md and tasks.md are generated and verified by developers at each step. Practical example of the requirements -> design -> tasks chain. |
 | 5 | *One Developer Is All You Need: A Case Study of an AI-Augmented One-Person Squad in a Brownfield Enterprise* (arXiv:2605.18461) | Treats natural-language specifications as the primary artifact and shows a spec prompt template. Industrial perspective. |
 
-**Grey literature:** GitHub Spec Kit documentation and Kiro Specs documentation (named in the course topic description).
+**Grey literature:** GitHub Spec Kit documentation and BMAD documentation (the two tools under comparison).
 
 ## 5. Tools, datasets, frameworks and AI platforms
 
-- **SDD tools:** GitHub Spec Kit, Kiro, plus one of OpenSpec or BMAD
-- **AI platforms:** an AI coding agent (e.g. Claude Code, Copilot or Cursor, depending on tool support), with the same LLM across tools where possible
+- **SDD tools:** GitHub Spec Kit, BMAD
+- **AI platforms:** an AI coding agent (e.g. Claude Code, Copilot or Cursor, depending on tool support), with the same LLM for both tools where possible
 - **Case project:** a small self-defined system with requirements written by the group
 - **Supporting tools:** GitHub repository for artifacts and version logs; spreadsheet for the coverage matrix and comparison table; Scopus, Google Scholar and arXiv for literature
 - **Dataset:** none required. The SpecMine corpus can optionally be used to look at real-world spec examples.
@@ -78,7 +81,7 @@ A **comparative multi-case study** using one shared case project.
 1. **Introduction:** motivation, problem statement, research questions
 2. **Background:** SDD concepts, the spec-first to spec-as-source spectrum, related work
 3. **Method:** tool selection, case project, comparison framework, evaluation procedure
-4. **Tool descriptions:** workflow and artifacts of each selected tool
+4. **Tool descriptions:** workflow and artifacts of Spec Kit and BMAD
 5. **Results:** findings per RQ, comparison table, coverage matrix
 6. **Discussion:** implications for RE (requirements quality, traceability, human role), threats to validity
 7. **Conclusion:** answers to the RQs and future work
@@ -86,14 +89,12 @@ A **comparative multi-case study** using one shared case project.
 
 ## 7. Tasks, roles and estimated time
 
-*Placeholder names and hours; adjust to your real division of work and course workload.*
-
 | Member | Main responsibility | Other tasks | Est. time |
 |--------|--------------------|-------------|-----------|
-| **Admin** | Literature review, background section, project management | Final editing | ~28 h |
-| **Varun** | Tool 1 (BMAD): setup, running, documentation | Comparison framework | ~28 h |
-| **Thanh** | Tool 2 (GitHub Spec Kit): setup, running, documentation | Change scenario design | ~28 h |
-| **George** | Tool 3 and case project requirements | Coverage matrix and evaluation | ~28 h |
+| **Mohammadamin Lotfiourimi** | Literature review, background section, project management | Final editing of the report | ~28 h |
+| **Varun Ganesh Sondur** | Tool 1 (BMAD): setup, running, documentation | Comparison framework | ~28 h |
+| **Pham Thanh** | Tool 2 (GitHub Spec Kit): setup, running, documentation | Change scenario design | ~28 h |
+| **Georgios Malezoglou** | Case project requirements (writing the shared requirements) | Coverage matrix and evaluation of results | ~28 h |
 | **All** | Discussion, conclusion, peer review of sections | Final presentation | shared |
 
 ## 8. Team confirmation
