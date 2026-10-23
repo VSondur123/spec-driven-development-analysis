@@ -61,3 +61,7 @@ Tell the agent: *"Read `bmad-calculator/evidence/00-STATUS.md` and continue from
 | ~17:10 | Varun instructed: do not commit anything until told (intervention 3) |
 | ~17:25 | Varun chose option (a) for no-operation error (intervention 4) |
 | ~17:35 | PRD, architecture, epics, sprint planning completed; stopped for approval |
+| ~18:10 | Varun approved plan and `bmad-build`; chose commit of shared/planning files on `main` (05a2c8d), CLAUDE.md on `main` (da24512), branch `bmad-baseline` with evidence + BMAD install (1c48975) (interventions 5-7) |
+| ~18:15 | Varun approved Story 1.1 spec ("approve and continue") (intervention 8) |
+| ~18:40 | Varun gave standing approval: run 3 review subagents for every story, commit each story on `bmad-baseline`, and continue through stories 1.2-3.3. Agent will still HALT for an Open Question / intent gap in a spec, or an unresolved review loopback. Per-story spec checkpoints are treated as pre-approved (intervention 9). Deviation: standing approval replaces the per-story "Approve and continue" choice. |
+| 18:40 | Story 1.1 built (mvn test: 2 run, 0 fail; headless: 1 skipped). Review subagents launched for 1.1. |
