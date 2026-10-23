@@ -1,0 +1,15 @@
+Story 1.2 verification log, 2026-10-23 18:19 EEST
+JAVA_HOME=/Users/varunsondur/Library/Java/JavaVirtualMachines/corretto-22.0.2/Contents/Home
+baseline_commit=f5ae2f03eb03fcf8e7e8253425b21840acca8337 (after review patches)
+
+## mvn test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.371 s -- in calculator.ui.CalculatorFrameSmokeTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in calculator.core.OperationTest
+[INFO] Tests run: 52, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.286 s -- in calculator.core.CalculatorTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in calculator.core.ResultFormatterTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in calculator.RuntimeEnvironmentTest
+[INFO] Tests run: 62, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+
+## forbidden tokens in core (double|float|java.awt|javax.swing)
+no matches
