@@ -3,7 +3,7 @@
 **Last updated:** 2026-10-23 (EEST), Epic 3 built; baseline implementation complete
 **Current phase:** All 9 stories built (sprint-status: all `review`). Story 3.1 had the 3 review layers; **3.2 and 3.3 skipped them at Varun's request (minimal version)**. Acceptance results and traceability: `evidence/04-acceptance-results-and-traceability.md`.
 **Tests:** display 172 run, 0 failed, 0 skipped; headless 57 skipped (window tests). Log: `evidence/story-3-3-final-test-log.txt`.
-**Git:** branch `bmad-baseline`. The single Epic 3 commit covers everything since `0ace55c`; its hash must be added to file 04 after commit. Nothing pushed.
+**Git:** branch `bmad-baseline`. The single Epic 3 commit covers everything since `0ace55c`; commit `ebac834` (hash recorded in file 04). Nothing pushed.
 **Still needed from Varun:** repeat BASE-AC-01 (Wi-Fi off, `mvn -q compile exec:java`, screenshot of the final window) and save it in `evidence/`; George's answers to LOG-01..LOG-11. Then freeze/tag only when Varun says; stop and wait for CR-01 release.
 **Hard stop rules:** (1) No code until plan approved. (2) Baseline only: do NOT read or implement `shared/change-request-CR-01.md`. (3) Do not edit `shared/*` or look at George's track.
 
@@ -45,7 +45,7 @@ Tell the agent: *"Read `bmad-calculator/evidence/00-STATUS.md` and continue from
 ## Next step (resume here)
 
 1. Varun repeats the AC-01 manual check on the final GUI and saves the screenshot; update file 04 AC-01 row.
-2. Add the commit hash to file 04. Optionally mark stories `done` in `sprint-status.yaml` after Varun's review.
+2. Optionally mark stories `done` in `sprint-status.yaml` after Varun's review.
 3. Wait for the team (LOG-01..11, F-09) and for the CR-01 release. Do not read `shared/change-request-CR-01.md` before then.
 
 ## Build conventions

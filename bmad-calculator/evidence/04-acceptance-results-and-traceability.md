@@ -1,6 +1,6 @@
 # Baseline acceptance results and traceability (Varun / BMAD track)
 
-Recorded 2026-10-23 (EEST). Track: Varun/BMAD. Phase: Baseline. **Commit hash:** none yet. Results are for the working tree on top of `0ace55c` (stories 1.1 to 1.3 committed). The single end-of-Epic-3 commit hash is to be added here after it is made.
+Recorded 2026-10-23 (EEST). Track: Varun/BMAD. Phase: Baseline. **Commit hash:** `ebac834` (branch `bmad-baseline`; results were produced on the identical working tree just before this commit). Results are for the working tree on top of `0ace55c` (stories 1.1 to 1.3 committed). The single end-of-Epic-3 commit hash is to be added here after it is made.
 Environment: macOS 15.7.1, Amazon Corretto 22.0.2 (`JAVA_HOME=$(/usr/libexec/java_home -v 22)`), Maven 3.9.16, Swing, JUnit Jupiter 6.1.3. Command: `cd bmad-calculator && mvn test`.
 Raw logs: `evidence/story-3-3-final-test-log.txt` (display and headless runs), per-story logs `story-*-test-log.txt`, `story-3-2-clean-build-log.txt`, `ac-01-manual-check.md`.
 
