@@ -1,8 +1,10 @@
 # STATUS / RESUME POINT — Varun / BMAD Track (Baseline only)
 
-**Last updated:** 2026-10-23 17:05 (EEST)
-**Current phase:** BMAD planning COMPLETE. **STOPPED — awaiting Varun's approval of the plan before any code (D-06).**
-**Git:** nothing committed (user instruction: do not commit until told).
+**Last updated:** 2026-10-23 (EEST), Epic 3 built; baseline implementation complete
+**Current phase:** All 9 stories built (sprint-status: all `review`). Story 3.1 had the 3 review layers; **3.2 and 3.3 skipped them at Varun's request (minimal version)**. Acceptance results and traceability: `evidence/04-acceptance-results-and-traceability.md`.
+**Tests:** display 172 run, 0 failed, 0 skipped; headless 57 skipped (window tests). Log: `evidence/story-3-3-final-test-log.txt`.
+**Git:** branch `bmad-baseline`. The single Epic 3 commit covers everything since `0ace55c`; its hash must be added to file 04 after commit. Nothing pushed.
+**Still needed from Varun:** repeat BASE-AC-01 (Wi-Fi off, `mvn -q compile exec:java`, screenshot of the final window) and save it in `evidence/`; George's answers to LOG-01..LOG-11. Then freeze/tag only when Varun says; stop and wait for CR-01 release.
 **Hard stop rules:** (1) No code until plan approved. (2) Baseline only: do NOT read or implement `shared/change-request-CR-01.md`. (3) Do not edit `shared/*` or look at George's track.
 
 ## How to resume in a new session
@@ -29,6 +31,7 @@ Tell the agent: *"Read `bmad-calculator/evidence/00-STATUS.md` and continue from
 - PRD and architecture used **fast path**, not coaching (Varun delegated to recommendations).
 - PRD reviewer gate / input-reconciliation subagents and architecture reviewer-gate subagents **not run** (hobby/study stakes). Architecture linter was run; technology versions were checked manually on Maven Central.
 - UX skill skipped.
+- Story 3.3 was executed without a separate `spec-3-3-*.md`, and 3.2/3.3 without the 3 review subagents, at Varun's request for a minimal path; results are in `evidence/04-acceptance-results-and-traceability.md`.
 - D-05 amended: JUnit Jupiter **6.1.3** (current) instead of "JUnit 5".
 - Agent self-judged the sprint readiness gate (no independent reviewer).
 
@@ -39,12 +42,11 @@ Tell the agent: *"Read `bmad-calculator/evidence/00-STATUS.md` and continue from
 - Story 1.1's "documented run command" (exec:java vs jar) is deferred to the build story.
 - Prompts/responses are not yet saved verbatim to `evidence/` (README asks for this); effort/intervention log below is approximate.
 
-## Next step
+## Next step (resume here)
 
-1. **Varun reviews/approves the plan** (PRD, architecture spine, epics.md, sprint-status.yaml).
-2. On approval: `bmad-build` for stories 1.1 → 3.3 in order (epic 1, then 2, then 3), updating `sprint-status.yaml`; then optional `bmad-code-review`.
-3. Run BASE-AC-01…16, save results using the template in `shared/acceptance-criteria.md` §4 to `evidence/`.
-4. Freeze: (only when Varun says) commit, record hash, tag, record effort; stop and wait for CR-01 release.
+1. Varun repeats the AC-01 manual check on the final GUI and saves the screenshot; update file 04 AC-01 row.
+2. Add the commit hash to file 04. Optionally mark stories `done` in `sprint-status.yaml` after Varun's review.
+3. Wait for the team (LOG-01..11, F-09) and for the CR-01 release. Do not read `shared/change-request-CR-01.md` before then.
 
 ## Build conventions
 
@@ -65,3 +67,10 @@ Tell the agent: *"Read `bmad-calculator/evidence/00-STATUS.md` and continue from
 | ~18:15 | Varun approved Story 1.1 spec ("approve and continue") (intervention 8) |
 | ~18:40 | Varun gave standing approval: run 3 review subagents for every story, commit each story on `bmad-baseline`, and continue through stories 1.2-3.3. Agent will still HALT for an Open Question / intent gap in a spec, or an unresolved review loopback. Per-story spec checkpoints are treated as pre-approved (intervention 9). Deviation: standing approval replaces the per-story "Approve and continue" choice. |
 | 18:40 | Story 1.1 built (mvn test: 2 run, 0 fail; headless: 1 skipped). Review subagents launched for 1.1. |
+
+## Findings noticed during build (carry into the report; see memory `report-material-to-include`)
+
+- F-06 Planning slicing overlap: architecture rule AD-2 (total core API) forced error handling into Story 1.2, and the presenter in Story 1.3 had to surface errors, so Epic 2 stories (2.1 to 2.3) became mostly end-to-end verification rather than new code. A different story split (by behaviour, not layer) would avoid this. Observed 2026-10-23.
+- F-07 Review layers: Verification Gap found 0 to 1 gaps per story, Blind Hunter and Edge Case Hunter each returned 8 to 15 items, of which about half were verified false or rejected as low. Triage was needed on every finding.
+- F-08 Review recurring themes: reviewers repeatedly flagged (a) unbounded input length / "never throws" overstatement, (b) skipped GUI tests reading as green, (c) accessibility. (a) and (c) were rejected as out of baseline scope; (b) was mitigated by recording display and headless runs separately.
+- F-09 Open requirement question from review (for the team via `shared/experiment-log.md` if wanted): should a shown result or error clear when the user edits an operand or picks another operation? Current behaviour and spec: output stays until the next Calculate.

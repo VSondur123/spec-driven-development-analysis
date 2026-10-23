@@ -29,6 +29,12 @@ public final class CalculatorPresenter {
         return state;
     }
 
+    /** Resets to the initial state: empty fields, no selected operation, no result, no error. */
+    public ViewState onClear() {
+        state = ViewState.initial();
+        return state;
+    }
+
     /** Calculates with the current texts and the selected operation; exactly one of result or error is set. */
     public ViewState onCalculate(String operandA, String operandB) {
         Outcome outcome = calculator.evaluate(operandA, state.selected(), operandB);

@@ -1,0 +1,6 @@
+# Clean-copy build 2026-10-23 21:58:26 (only pom.xml, BUILD.md, src, tests copied; no target/)
+javac 22.0.2
+mvn -q test exit: 0
+[INFO] Tests run: 172, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+compile ok

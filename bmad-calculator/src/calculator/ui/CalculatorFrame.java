@@ -35,6 +35,7 @@ public class CalculatorFrame extends JFrame {
     private final Map<Operation, JToggleButton> operationButtons = new EnumMap<>(Operation.class);
     private final ButtonGroup operationGroup = new ButtonGroup();
     private final JButton calculateButton = new JButton("Calculate");
+    private final JButton clearButton = new JButton("Clear");
     private final JLabel resultLabel = new JLabel(" ");
     private final JLabel errorLabel = new JLabel(" ");
 
@@ -57,6 +58,7 @@ public class CalculatorFrame extends JFrame {
         operandA.setName("operandA");
         operandB.setName("operandB");
         calculateButton.setName("calculate");
+        clearButton.setName("clear");
         resultLabel.setName("result");
         errorLabel.setName("error");
         errorLabel.setForeground(new Color(0xB00020));
@@ -80,6 +82,7 @@ public class CalculatorFrame extends JFrame {
         }
 
         calculateButton.addActionListener(e -> calculate());
+        clearButton.addActionListener(e -> clear());
         operandA.addActionListener(e -> calculate());
         operandB.addActionListener(e -> calculate());
 
@@ -95,7 +98,10 @@ public class CalculatorFrame extends JFrame {
         addRow(content, c, 0, labelA, operandA);
         addRow(content, c, 1, new JLabel("Operation"), operations);
         addRow(content, c, 2, labelB, operandB);
-        addRow(content, c, 3, new JLabel(), calculateButton);
+        JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 0));
+        actions.add(calculateButton);
+        actions.add(clearButton);
+        addRow(content, c, 3, new JLabel(), actions);
         addRow(content, c, 4, resultCaption, resultLabel);
         addRow(content, c, 5, new JLabel(), errorLabel);
         setContentPane(content);
@@ -114,6 +120,14 @@ public class CalculatorFrame extends JFrame {
 
     private void calculate() {
         render(presenter.onCalculate(operandA.getText(), operandB.getText()));
+    }
+
+    /** Clear is the only event that writes the operand fields from the state. */
+    private void clear() {
+        ViewState state = presenter.onClear();
+        operandA.setText(state.operandA());
+        operandB.setText(state.operandB());
+        render(state);
     }
 
     private void render(ViewState state) {

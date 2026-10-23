@@ -20,6 +20,12 @@ mvn -q compile exec:java          # launch the calculator window (needs a displa
 
 Evaluation machine used by the BMAD track: `JAVA_HOME=/Users/varunsondur/Library/Java/JavaVirtualMachines/corretto-22.0.2/Contents/Home`.
 
+## Layout
+
+- `src/calculator/` application code (`core`, `presenter`, `ui`); `tests/calculator/` tests. Both are declared as Maven source directories in `pom.xml`.
+- `ArchitectureRulesTest` fails the build if `core` or `presenter` import `java.awt`/`javax.swing`, or if a lower layer imports a higher one.
+- Run all commands from `bmad-calculator/` (some tests read `src/` by relative path).
+
 ## Notes
 
 - GUI tests are skipped automatically when no display is available (headless). A skipped test is **not** a pass: the GUI behaviour (BASE-AC-02 to 09, 16, 19) is only verified when the test run reports 0 skipped, so record the run on a machine with a display in `evidence/` (see the per-story test logs).

@@ -1,0 +1,7 @@
+# Final baseline test run 2026-10-23 21:59:43 on working tree over 0ace55c
+## display
+[INFO] Tests run: 172, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+## headless
+[INFO] Tests run: 172, Failures: 0, Errors: 0, Skipped: 57
+[INFO] BUILD SUCCESS
