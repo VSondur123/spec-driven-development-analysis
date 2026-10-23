@@ -93,3 +93,5 @@ Story 1.3 chose that every presenter event carries the field texts so the view n
 **Commands:**
 - `export JAVA_HOME=$(/usr/libexec/java_home -v 22) && cd bmad-calculator && mvn test` -- expected: BUILD SUCCESS, 0 skipped with a display
 - `grep -rnE "java\.awt|javax\.swing" bmad-calculator/src/calculator/presenter bmad-calculator/src/calculator/core` -- expected: no matches
+
+- 2026-10-23 (after Epic 3): Varun asked to remove both `package-info.java` files as redundant now that `ArchitectureRulesTest` enforces the layering. Removed; 172 tests still pass.
