@@ -22,7 +22,7 @@ Evaluation machine used by the BMAD track: `JAVA_HOME=/Users/varunsondur/Library
 
 ## Notes
 
-- GUI tests are skipped automatically when no display is available (headless).
+- GUI tests are skipped automatically when no display is available (headless). A skipped test is **not** a pass: the GUI behaviour (BASE-AC-02 to 09, 16, 19) is only verified when the test run reports 0 skipped, so record the run on a machine with a display in `evidence/` (see the per-story test logs).
 - The application itself needs a display; launching it on a headless host (for example over SSH) ends with a `HeadlessException`.
 - Closing the window ends the application, and with `exec:java` that also ends the Maven process.
 - BASE-AC-01 (GUI opens without network access) is a manual check: disable networking, run the launch command, and record a screenshot or short note in `evidence/`.
