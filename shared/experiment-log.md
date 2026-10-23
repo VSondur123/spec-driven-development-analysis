@@ -27,13 +27,13 @@ Raised by: Varun (BMAD track), 2026-10-23, while planning the baseline. Status: 
 
 ### Where the proposals have been applied
 
-The proposals are written into the shared documents themselves, tagged `[PROPOSED LOG-nn]` (uncommitted until the team agrees; use `git diff shared/`):
+The proposals are written into the shared documents themselves, tagged `[PROPOSED LOG-nn]` until the baseline freeze on 2026-10-23, when the tags were removed (see Section D):
 
 - `shared/baseline-requirements.md`: BASE-FR-04 (LOG-02), BASE-FR-05 and BASE-FR-06 (LOG-05), §4 items 8–10 (LOG-03, LOG-05, LOG-06), §5 interaction pattern (LOG-01, LOG-04), §9 status note.
 - `shared/acceptance-criteria.md`: reworded BASE-AC-01 (LOG-08), AC-07, AC-09, AC-11, AC-12, AC-13; new checks `BASE-AC-17` (no operation selected, LOG-05), `BASE-AC-18` (`0 / 5` and `1 / 3`, LOG-03), `BASE-AC-19` (Enter key, LOG-02).
 - LOG-07 (Java/build environment) is not written into the documents; it stays here as a recommendation.
 
-To reject a proposal, revert the tagged text and mark the LOG entry *Rejected*. To accept, delete the tag and mark it *Agreed*.
+To reject a proposal, revert the tagged text and mark the LOG entry *Rejected*. To accept, delete the tag and mark it *Agreed*. Section D records what happened to each one.
 
 ---
 
@@ -60,3 +60,22 @@ To reject a proposal, revert the tagged text and mark the LOG entry *Rejected*. 
 1. Read Section A and B before planning, and treat Section A items as **proposals, not requirements** until they are marked Agreed.
 2. If your track hits the same gaps, record your own response in the Responses column rather than silently choosing differently, so that both tracks end up with identical observable behaviour.
 3. Do not read the other track's `evidence/` or generated artefacts; this log is the only intended channel.
+
+---
+
+## Section D — Baseline freeze and implementation record (2026-10-23, Varun)
+
+The owner froze `baseline-requirements.md`, `acceptance-criteria.md` (baseline checks) and this log together with the BMAD baseline implementation, and removed the `[PROPOSED LOG-nn]` tags. The "George" column in Section A was still empty at that time; the agreement recorded below is the owner's decision. George and the team can still respond in Section A.
+
+| ID | Before (shared docs, original draft) | Proposed and now frozen | Implemented in BMAD track (decision, story, evidence) |
+|---|---|---|---|
+| LOG-01 | GUI pattern left open | Two operand fields, four operation buttons, Calculate, Clear, result area, inline error area | D-01, Story 1.3; AC-02/03 Pass; screenshots `bmad-calculator/evidence/screenshot/` |
+| LOG-02 | Calculate trigger left open | Calculate button and Enter key | D-02, Story 1.3; AC-19 Pass |
+| LOG-03 | Precision and rounding left open | Exact decimals, division half-up to 10 places, plain text, no trailing zeros | D-03, Story 1.2; AC-07, 09, 18 Pass |
+| LOG-04 | Error wording and place left open | Inline errors, suggested messages | D-04, Stories 1.2, 1.3, 2.x; AC-11, 12, 13 Pass |
+| LOG-05 | No operation selected: undefined (gap) | Inline "Select an operation"; error priority; new BASE-AC-17 | D-07, Story 1.2; AC-17 Pass |
+| LOG-06 | Input grammar left open | Optional `-`, digits, one `.`; reject `+1`, `1e3`, `1,5`, `.`, `1.2.3` | Story 1.2; AC-12 Pass |
+| LOG-07 | Toolchain per track | Recommendation only, not written into shared docs | Corretto 22, Maven 3.9.16, `JAVA_HOME` pinned (D-05) |
+| LOG-08 | AC-01 evidence method open | Manual check, screenshot or note, networking off | `ac-01-manual-check.md`; screenshots add/substract/error, owner-reported Wi-Fi off, commit `943c73f` |
+
+LOG-09 to LOG-11 stay open (roles, empty protocol and rubric files, pre-freeze planning). F-09 (whether a shown result or error should clear on edit) is not part of the freeze and stays open for the team.

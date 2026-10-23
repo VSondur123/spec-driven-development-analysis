@@ -1,6 +1,6 @@
 # Our Baseline Requirements — Java GUI Calculator
 
-**Status:** Draft for our team review; we will freeze it before either implementation begins.
+**Status:** Baseline frozen on 2026-10-23 (owner decision, see `shared/experiment-log.md`, Section D). We will not change it for only one track.
 **Applies to:** Both our BMAD and GitHub Spec Kit tracks.
 **Source of truth:** This document defines our baseline product scope. We will implement the same externally observable behaviour in both tracks.
 
@@ -33,9 +33,9 @@ We will build a small Java desktop GUI calculator that performs basic arithmetic
 | `BASE-FR-01` | Our application shall launch as a Java desktop GUI without requiring a network connection. |
 | `BASE-FR-02` | We shall be able to enter numeric values using the GUI. |
 | `BASE-FR-03` | We shall be able to select addition, subtraction, multiplication, or division. |
-| `BASE-FR-04` | We shall be able to request a calculation and see the resulting value in the GUI. **[PROPOSED LOG-02]** We shall be able to request it with a Calculate button and with the Enter key pressed in an operand field. |
-| `BASE-FR-05` | We shall provide a clear/reset action that returns the calculator to a usable initial state. **[PROPOSED LOG-05]** The initial state has both operands empty, no operation selected, and no result or error shown. |
-| `BASE-FR-06` | Our application shall not crash or silently display a misleading numeric result when input is invalid. It shall provide understandable feedback. **[PROPOSED LOG-05]** This includes requesting a calculation when no operation has been selected. |
+| `BASE-FR-04` | We shall be able to request a calculation and see the resulting value in the GUI. We shall be able to request it with a Calculate button and with the Enter key pressed in an operand field. |
+| `BASE-FR-05` | We shall provide a clear/reset action that returns the calculator to a usable initial state. The initial state has both operands empty, no operation selected, and no result or error shown. |
+| `BASE-FR-06` | Our application shall not crash or silently display a misleading numeric result when input is invalid. It shall provide understandable feedback. This includes requesting a calculation when no operation has been selected. |
 | `BASE-FR-07` | Our application shall handle division by zero safely and visibly; it shall not crash or present infinity/NaN as an ordinary successful result. |
 | `BASE-FR-08` | After an error, we shall be able to correct the input or clear the calculator and continue using it. |
 
@@ -48,9 +48,9 @@ We will build a small Java desktop GUI calculator that performs basic arithmetic
 5. Unless our acceptance criteria specify otherwise, we will use a suitable numeric representation and avoid avoidable floating-point display artefacts.
 6. We will not treat empty, malformed, or incomplete input as a successful calculation.
 7. We will cover negative values and decimal values in our acceptance criteria.
-8. **[PROPOSED LOG-03]** We will use exact decimal arithmetic. We will round division half-up to 10 decimal places. We will display results as plain decimal text with no trailing zeros, no exponent notation, and zero shown as `0`.
-9. **[PROPOSED LOG-06]** We will accept an optional leading `-`, digits, and optionally one `.` followed by digits; we ignore surrounding spaces. We will reject everything else (for example `+1`, `1e3`, `1,5`, `.`, `1.2.3`) as invalid input.
-10. **[PROPOSED LOG-05]** When several faults exist, we report them in this priority: empty operand, then no operation selected, then invalid number, then arithmetic error such as division by zero.
+8. We will use exact decimal arithmetic. We will round division half-up to 10 decimal places. We will display results as plain decimal text with no trailing zeros, no exponent notation, and zero shown as `0`.
+9. We will accept an optional leading `-`, digits, and optionally one `.` followed by digits; we ignore surrounding spaces. We will reject everything else (for example `+1`, `1e3`, `1,5`, `.`, `1.2.3`) as invalid input.
+10. When several faults exist, we report them in this priority: empty operand, then no operation selected, then invalid number, then arithmetic error such as division by zero.
 
 ## 5. Our user interface requirements
 
@@ -60,7 +60,7 @@ We will build a small Java desktop GUI calculator that performs basic arithmetic
 - We will provide an obvious clear/reset action.
 - We will keep the baseline interface simple; visual polish will not be a comparison objective unless it affects usability or our acceptance criteria.
 - We will use the same required interaction behaviour in both tracks while allowing implementation-level design choices that do not change our requirements.
-- **[PROPOSED LOG-01, LOG-04]** Interaction pattern: two labelled operand text fields; four operation buttons (+, −, ×, ÷) with the selected one visibly indicated; a Calculate button; a Clear button; a result area; an inline error area. We show errors inline and never in dialogs. Suggested messages: "Enter both numbers", "Select an operation", "Invalid number", "Cannot divide by zero".
+- Interaction pattern: two labelled operand text fields; four operation buttons (+, −, ×, ÷) with the selected one visibly indicated; a Calculate button; a Clear button; a result area; an inline error area. We show errors inline and never in dialogs. Suggested messages: "Enter both numbers", "Select an operation", "Invalid number", "Cannot divide by zero".
 
 ## 6. Our non-functional requirements
 
@@ -100,6 +100,6 @@ We will not force identical artefact names across BMAD and Spec Kit. We will pre
 - Our exact invalid/incomplete input messages and whether they appear inline or in a dialog.
 - Our agreed Java version, build commands, and evaluation environment.
 
-**Status (2026-10-23):** Varun has proposed answers to all five points; they are tagged `[PROPOSED LOG-nn]` in this file and in `shared/acceptance-criteria.md`, and tracked in `shared/experiment-log.md`. Remove a tag once the team agrees; revert the tagged text if the team rejects it. Java version/build (LOG-07) stays per-track plus a suggested common evaluation environment recorded in the log.
+**Status (2026-10-23):** The proposed answers to all five points (LOG-01 to LOG-06, LOG-08) were agreed by the owner and the tags were removed when the baseline was frozen; see `shared/experiment-log.md`, Section D. Java version/build (LOG-07) stays per-track plus a suggested common evaluation environment recorded in the log.
 
 We will record our decisions in the experiment log and reflect testable behaviour in `shared/acceptance-criteria.md`. Once we freeze this document, we will not change it for only one track.

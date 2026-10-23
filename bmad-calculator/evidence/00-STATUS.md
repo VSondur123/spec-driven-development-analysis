@@ -1,10 +1,11 @@
 # STATUS / RESUME POINT — Varun / BMAD Track (Baseline only)
 
-**Last updated:** 2026-10-23 (EEST), Epic 3 built; baseline implementation complete
-**Current phase:** All 9 stories built (sprint-status: all `review`). Story 3.1 had the 3 review layers; **3.2 and 3.3 skipped them at Varun's request (minimal version)**. Acceptance results and traceability: `evidence/04-acceptance-results-and-traceability.md`.
+**Last updated:** 2026-10-23 (EEST), baseline frozen; BMAD baseline implementation complete
+**Current phase:** Baseline implemented (all 9 stories). Shared baseline documents frozen by Varun on 2026-10-23: `[PROPOSED LOG-nn]` tags removed and Section D added to `shared/experiment-log.md` (before / proposed / implemented per LOG). Acceptance results: `evidence/04-acceptance-results-and-traceability.md`.
 **Tests:** display 172 run, 0 failed, 0 skipped; headless 57 skipped (window tests). Log: `evidence/story-3-3-final-test-log.txt`.
-**Git:** branch `bmad-baseline`. The single Epic 3 commit covers everything since `0ace55c`; commit `ebac834` (hash recorded in file 04). Nothing pushed.
-**Still needed from Varun:** repeat BASE-AC-01 (Wi-Fi off, `mvn -q compile exec:java`, screenshot of the final window) and save it in `evidence/`; George's answers to LOG-01..LOG-11. Then freeze/tag only when Varun says; stop and wait for CR-01 release.
+**AC-01:** final-GUI manual check done by Varun (Wi-Fi off as reported, commit `943c73f`); screenshots in `evidence/screenshot/`.
+**Git:** branch `bmad-baseline`; freeze commit pushed to `origin/bmad-baseline`, tag `baseline-frozen`. Varun will open the PR into `main`.
+**Waiting on:** George's part (answers to LOG-01..LOG-11, rubric, protocol), and release of CR-01 (Varun is finalising and freezing it; we do not work on it yet).
 **Hard stop rules:** (1) No code until plan approved. (2) Baseline only: do NOT read or implement `shared/change-request-CR-01.md`. (3) Do not edit `shared/*` or look at George's track.
 
 ## How to resume in a new session
@@ -44,7 +45,7 @@ Tell the agent: *"Read `bmad-calculator/evidence/00-STATUS.md` and continue from
 
 ## Next step (resume here)
 
-1. Varun repeats the AC-01 manual check on the final GUI and saves the screenshot; update file 04 AC-01 row.
+1. Done 2026-10-23: AC-01 repeated on the final GUI (screenshots saved, file 04 updated).
 2. Optionally mark stories `done` in `sprint-status.yaml` after Varun's review.
 3. Wait for the team (LOG-01..11, F-09) and for the CR-01 release. Do not read `shared/change-request-CR-01.md` before then.
 

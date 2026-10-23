@@ -8,11 +8,11 @@ Display run: 172 run, 0 failed, 0 skipped. Headless run: 172 run, 0 failed, **57
 
 ## 1. BASE-AC results
 
-All proposed behaviours (LOG-01..LOG-11, D-07) are still unagreed with George; results are against the proposed shared text.
+The proposed behaviours (LOG-01..LOG-08, D-07) were frozen by the owner on 2026-10-23 without George's response (see `shared/experiment-log.md`, Section D); LOG-09..LOG-11 and F-09 remain open.
 
 | Test ID | Status | Evidence (automated test, class) | Notes |
 |---|---|---|---|
-| BASE-AC-01 | **Pass (owner-observed on Story 1.1 build); final-GUI re-check Not run** | `ac-01-manual-check.md`, screenshot `result of mvn -q compile exec:java.png`; automated: `CalculatorFrameSmokeTest` (baseAc01_*) | Manual, Wi-Fi off, done by Varun on the Story 1.1 window (empty). Must be repeated on the final GUI by Varun; the agent cannot disable networking or observe the window. |
+| BASE-AC-01 | **Pass (owner-observed, final GUI, commit `943c73f`)** | `ac-01-manual-check.md`, `screenshot/add.png`, `screenshot/substract.png`, `screenshot/error.png`; automated: `CalculatorFrameSmokeTest` (baseAc01_*) | Manual, Wi-Fi off as reported by Varun; the screenshots do not show the network indicator. Earlier Story 1.1 check also Pass. |
 | BASE-AC-02 | Pass | `CalculatorFrameInteractionTest.baseAc02_and_03_...` | integer operand |
 | BASE-AC-03 | Pass | same test | decimal operand |
 | BASE-AC-04 | Pass | `CalculatorTest.baseAc04_7_plus_5_is_12`; `CalculatorPresenterTest.baseAc04to09_...`; `CalculatorFrameInteractionTest.baseAc04_clicking_calculate_shows_the_result` | |
@@ -57,7 +57,7 @@ Requirement text per the PRD numbering; shared IDs in brackets. Method names are
 ## 3. Unresolved defects and untested or partly tested items
 
 - No test failed in the final display run. No defect IDs were raised.
-- **BASE-AC-01** final-GUI manual re-check not done (needs Varun, Wi-Fi off, screenshot of the final window with the network indicator visible).
+- **BASE-AC-01** final-GUI re-check done by Varun on 2026-10-23 (see `ac-01-manual-check.md`); the screenshots do not show the network state.
 - **BASE-AC-15** not verified from a real git clone; launch from a clean copy not run.
 - **NFR-2** responsiveness not measured.
 - **Headless:** 57 window tests are skipped without a display; window behaviour was verified only in the display run on this machine (one OS, one Look and Feel).
