@@ -1,0 +1,21 @@
+Story 2.1 verification log, 2026-10-23 20:32 EEST
+JAVA_HOME=/Users/varunsondur/Library/Java/JavaVirtualMachines/corretto-22.0.2/Contents/Home
+baseline: commit 0ace55c plus uncommitted work (owner: commit once after Epic 3)
+
+## mvn test (display present: GUI tests ran)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in calculator.ui.NoDialogsTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.550 s -- in calculator.ui.CalculatorFrameSmokeTest
+[INFO] Tests run: 31, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.07 s -- in calculator.ui.CalculatorFrameInteractionTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in calculator.core.OperationTest
+[INFO] Tests run: 52, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.233 s -- in calculator.core.CalculatorTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in calculator.core.ResultFormatterTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in calculator.RuntimeEnvironmentTest
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in calculator.presenter.CalculatorPresenterTest
+[INFO] Tests run: 114, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+
+## mvn test headless (GUI tests SKIPPED, not passed)
+[WARNING] Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.011 s -- in calculator.ui.CalculatorFrameSmokeTest
+[WARNING] Tests run: 31, Failures: 0, Errors: 0, Skipped: 31, Time elapsed: 0.035 s -- in calculator.ui.CalculatorFrameInteractionTest
+[INFO] Tests run: 114, Failures: 0, Errors: 0, Skipped: 34
+[INFO] BUILD SUCCESS

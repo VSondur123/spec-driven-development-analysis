@@ -1,0 +1,15 @@
+Story 1.1 verification log, 2026-10-23 18:15 EEST
+JAVA_HOME=/Users/varunsondur/Library/Java/JavaVirtualMachines/corretto-22.0.2/Contents/Home
+baseline_commit=1c4897553b0b4496da61bbe8fe50ea28af0e513e (after review patches)
+
+## mvn test (display present)
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.495 s -- in calculator.ui.CalculatorFrameSmokeTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in calculator.RuntimeEnvironmentTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+
+## mvn test -DargLine=-Djava.awt.headless=true
+[WARNING] Tests run: 3, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.032 s -- in calculator.ui.CalculatorFrameSmokeTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in calculator.RuntimeEnvironmentTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 3
+[INFO] BUILD SUCCESS
