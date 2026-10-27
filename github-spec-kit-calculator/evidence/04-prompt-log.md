@@ -123,3 +123,17 @@ Result: `BASE-AC-01`, `BASE-AC-13`, `BASE-AC-19` and `BASE-NFR-02` updated; T028
 Owner: Varun agreed LOG-12 to LOG-15 (commit c897a42 in local main). Record it in the decisions log and status file with today's date, settle the LOG-14 note for `BASE-NFR-02`, do not edit `shared/*`; remove the Sync Impact Report comment; list the files to commit and wait for a yes; commit with no Co-Authored-By line and without pushing, tagging or freezing; then run the clean-checkout test (`BASE-AC-15`). Later in the same turn: change "(proposed)" markers in comments and text only, no code; leave `target/` and any jar out of the commit.
 
 Result so far: DL-30 to DL-32 added; wording changed; constitution comment removed. See `00-STATUS.md`.
+
+
+## P22 — Go ahead with the interim commit (option A) and the clean-checkout test
+
+Owner: "yes, A" (force-add `evidence/logs/`). Agent staged the 85 listed files, committed as 9b35cc0 without a Co-Authored-By line, then cloned to `C:\Tempc15-clean`, ran `mvn -B clean verify` and `java -jar` as in `quickstart.md`, and recorded the result.
+
+Result: `BASE-AC-15` Pass; 19 Pass, 0 Blocked. See DL-33 and `00-STATUS.md`.
+
+
+## P23 — Record the human checklist edit, fix quickstart line 3, list files for a second commit
+
+Owner: record the manual edit of `checklists/requirements.md` (line 16 and the tick on line 28) as a human edit in the decisions log; correct `quickstart.md` line 3 to say the commands were run on 2026-10-27; list the uncommitted files and wait for a yes; second commit with `git add -f` for the two new logs, no Co-Authored-By line, no push, tag or freeze.
+
+Result so far: DL-34 and DL-35 added; quickstart line 3 corrected; file list shown to the owner, waiting for the yes.

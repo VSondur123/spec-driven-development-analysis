@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [x] No [NEEDS CLARIFICATION] markers remain (FR-012, FR-016, NFR-002 resolved by the owner on 2026-10-27; proposed as LOG-12 to LOG-14, awaiting team agreement)
+- [x] No [NEEDS CLARIFICATION] markers remain (FR-012, FR-016, NFR-002 resolved by the owner on 2026-10-27; agreed by the team as LOG-12 to LOG-14 on 2026-10-27)
 - [x] Requirements are testable and unambiguous (NFR-002 and SC-006 are judged by observation, with no numeric limit, by owner decision)
 - [x] Success criteria are measurable (SC-006 is observational, by owner decision)
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -25,7 +25,7 @@
 ## Feature Readiness
 
 - [x] All functional requirements have clear acceptance criteria - [x] User scenarios cover primary flows
-- [ ] Feature meets measurable outcomes defined in Success Criteria (not assessable before implementation)
+- [x] Feature meets measurable outcomes defined in Success Criteria (assessed 2026-10-27: 19 of 19 baseline checks Pass; see evidence/06-test-results.md)
 - [x] No implementation details leak into specification
 
 ## Notes

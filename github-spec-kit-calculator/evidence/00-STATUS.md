@@ -56,18 +56,27 @@ Update after every major step. Last updated: 2026-10-27.
   - Sync Impact Report comment removed from `.specify/memory/constitution.md` (DL-32); version stays 1.0.0.
   - `.claude/` holds only `skills/`; there is no `settings.local.json`.
 
+- Interim commit and clean checkout (2026-10-27): the owner approved the file list and option A (force-add `evidence/logs/`, because the root `.gitignore` ignores `logs/`). Commit **9b35cc0** (85 files, all inside `github-spec-kit-calculator/`, no `Co-Authored-By` line, no `target/`, jar or `settings.local.json`) on `main`. Not pushed, not tagged, not the freeze (DL-33).
+  - `BASE-AC-15` ran against 9b35cc0: clone to `C:\Temp\ac15-clean`, `JAVA_HOME` pinned, `mvn -B clean verify` unchanged: BUILD SUCCESS, 81 tests, 0 failures, jar built; `java -jar` stayed up 5 s and the OS reported the window title "Calculator", stdout and stderr empty. **Pass.** Logs: `evidence/logs/t029-clean-checkout-build.txt`, `t029-clean-checkout-launch.txt`. Window not seen in a screenshot for this launch. `BASE-NFR-05` now Pass in the traceability table. T029 ticked (34 of 34).
+  - Deviation: the first clone went to the long scratchpad path and failed (Windows path length, not a project defect); it was redone at the short path `C:\Temp\ac15-clean`.
+  - Finding: `quickstart.md` line 3 still says the commands "have not been run yet". That is out of date (it is committed as written). Not edited; owner to decide.
+  - **Current counts: 19 Pass, 0 Blocked, 0 Fail, 0 Not run.**
+  - The result edits after the commit (06-test-results, tasks, status and logs, 2 new log files in `evidence/logs/`) are **uncommitted**; they need a second commit that the owner asks for (new logs need `git add -f`).
+
+- Post-commit edits (2026-10-27): the owner edited `checklists/requirements.md` by hand (line 16: LOG-12 to LOG-14 agreed; line 28 ticked after the 19 results were recorded). Recorded as a human edit in DL-34. `quickstart.md` line 3 corrected to say the commands were run on 2026-10-27 (DL-35). The second interim commit waits for the owner's yes.
+
 ## Pending
 
+- Owner: second interim commit of the post-commit evidence edits, the human checklist edit (DL-34) and the `quickstart.md` line 3 fix (DL-35); the two new logs need `git add -f`. The owner asks for it and approves the file list first.
+- Owner: review all 19 results, then decide on the baseline freeze (commit, tag, hash). Nothing is frozen or tagged by this track.
+- Optional: real-window check of `BASE-AC-14`, `BASE-AC-16` and the malformed inputs of `BASE-AC-12`; stronger offline proof for `BASE-AC-01`.
 - Open Claude Code with `github-spec-kit-calculator/` as the workspace so the `/speckit-*` skills are available (they live in this folder's `.claude/skills`).
-- Consider adding `.claude/` to `.gitignore` (Spec Kit warns it may hold credentials). Decide with the owner before committing.
-- Owner action: ask for an interim, non-freeze commit (AP-02) so T029 (`BASE-AC-15`, clean checkout) can run. Say exactly which files to commit.
-- Then: finish the effort log, review the 19 results, and freeze the baseline (commit, tag, hash) only when the owner asks.
 - LOG-12 to LOG-15 are agreed (2026-10-27). They change only if the team reopens them; the tests marked `// LOG-nn (agreed)` would then change.
 - Do not read `shared/change-request-CR-01.md` until it is released to both tracks.
 
 ## Next step
 
-Owner decides on the interim commit for `BASE-AC-15` (and which files it contains). After the agent runs T029 and records the result, the owner reviews all 19 results and decides whether to freeze the baseline (commit, tag, hash).
+All 19 baseline results are recorded (19 Pass). The owner reviews them, decides on the second interim commit, and decides whether and when to freeze the baseline. The agent does not commit, tag or freeze unless asked.
 
 ## Blockers
 
