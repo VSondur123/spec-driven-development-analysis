@@ -1,0 +1,83 @@
+﻿== mvn -B test with US3 tests, before Clear exists (2026-10-27T13:33:42)
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< study.speckit:baseline-calculator >------------------
+[INFO] Building Baseline Calculator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ baseline-calculator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ baseline-calculator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.6.1:test (default-test) @ baseline-calculator ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running calculator.core.CalculatorTest
+[INFO] Tests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.090 s -- in calculator.core.CalculatorTest
+[INFO] Running calculator.core.OperandParserTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s -- in calculator.core.OperandParserTest
+[INFO] Running calculator.core.ResultFormatterTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in calculator.core.ResultFormatterTest
+[INFO] Running calculator.ui.CalculatorPanelTest
+[ERROR] Tests run: 32, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 6.727 s <<< FAILURE! -- in calculator.ui.CalculatorPanelTest
+[ERROR] calculator.ui.CalculatorPanelTest.clearAfterAResultReturnsToTheInitialState -- Time elapsed: 0.240 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: component not found: clearButton ==> expected: not <null>
+	at org.junit.jupiter.api.Assertions.assertNotNull(Assertions.java:345)
+	at calculator.ui.CalculatorPanelTest.find(CalculatorPanelTest.java:34)
+	at calculator.ui.CalculatorPanelTest.button(CalculatorPanelTest.java:62)
+	at calculator.ui.CalculatorPanelTest.clearAfterAResultReturnsToTheInitialState(CalculatorPanelTest.java:327)
+
+[ERROR] calculator.ui.CalculatorPanelTest.clearAfterAnErrorReturnsToTheInitialState -- Time elapsed: 0.138 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: component not found: clearButton ==> expected: not <null>
+	at org.junit.jupiter.api.Assertions.assertNotNull(Assertions.java:345)
+	at calculator.ui.CalculatorPanelTest.find(CalculatorPanelTest.java:34)
+	at calculator.ui.CalculatorPanelTest.button(CalculatorPanelTest.java:62)
+	at calculator.ui.CalculatorPanelTest.clearAfterAnErrorReturnsToTheInitialState(CalculatorPanelTest.java:336)
+
+[ERROR] calculator.ui.CalculatorPanelTest.calculatorIsUsableAfterClear -- Time elapsed: 0.139 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: component not found: clearButton ==> expected: not <null>
+	at org.junit.jupiter.api.Assertions.assertNotNull(Assertions.java:345)
+	at calculator.ui.CalculatorPanelTest.find(CalculatorPanelTest.java:34)
+	at calculator.ui.CalculatorPanelTest.button(CalculatorPanelTest.java:62)
+	at calculator.ui.CalculatorPanelTest.calculatorIsUsableAfterClear(CalculatorPanelTest.java:344)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   CalculatorPanelTest.calculatorIsUsableAfterClear:344->button:62->find:34 component not found: clearButton ==> expected: not <null>
+[ERROR]   CalculatorPanelTest.clearAfterAResultReturnsToTheInitialState:327->button:62->find:34 component not found: clearButton ==> expected: not <null>
+[ERROR]   CalculatorPanelTest.clearAfterAnErrorReturnsToTheInitialState:336->button:62->find:34 component not found: clearButton ==> expected: not <null>
+[INFO] 
+[ERROR] Tests run: 81, Failures: 3, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.279 s
+[INFO] Finished at: 2026-10-27T13:33:52+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.6.1:test (default-test) on project baseline-calculator: There are test failures.
+[ERROR] 
+[ERROR] See C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+exit=1

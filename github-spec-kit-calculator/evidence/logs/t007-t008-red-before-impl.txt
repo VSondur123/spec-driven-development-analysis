@@ -1,0 +1,161 @@
+﻿== mvn -B test before OperandParser/ResultFormatter exist (2026-10-27T13:26:30)
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< study.speckit:baseline-calculator >------------------
+[INFO] Building Baseline Calculator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ baseline-calculator ---
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 3 source files with javac [debug release 22] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ baseline-calculator ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug release 22] to target\test-classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[17,22] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[17,39] cannot find symbol
+  symbol:   variable OperandParser
+  location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[18,35] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[25,35] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[25,48] cannot find symbol
+  symbol:   variable OperandParser
+  location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[30,43] cannot find symbol
+  symbol:   variable OperandParser
+  location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[31,44] cannot find symbol
+  symbol:   variable OperandParser
+  location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[32,45] cannot find symbol
+  symbol:   variable OperandParser
+  location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[33,46] cannot find symbol
+  symbol:   variable OperandParser
+  location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[34,43] cannot find symbol
+  symbol:   variable OperandParser
+  location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[40,22] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[40,39] cannot find symbol
+  symbol:   variable OperandParser
+  location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[41,35] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[48,35] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[48,50] cannot find symbol
+  symbol:   variable OperandParser
+  location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[14,29] cannot find symbol
+  symbol:   variable ResultFormatter
+  location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[19,28] cannot find symbol
+  symbol:   variable ResultFormatter
+  location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[20,28] cannot find symbol
+  symbol:   variable ResultFormatter
+  location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[25,27] cannot find symbol
+  symbol:   variable ResultFormatter
+  location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[26,27] cannot find symbol
+  symbol:   variable ResultFormatter
+  location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[31,30] cannot find symbol
+  symbol:   variable ResultFormatter
+  location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[32,30] cannot find symbol
+  symbol:   variable ResultFormatter
+  location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[33,36] cannot find symbol
+  symbol:   variable ResultFormatter
+  location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[40,27] cannot find symbol
+  symbol:   variable ResultFormatter
+  location: class calculator.core.ResultFormatterTest
+[INFO] 24 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.941 s
+[INFO] Finished at: 2026-10-27T13:26:32+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.16.0:testCompile (default-testCompile) on project baseline-calculator: Compilation failure: Compilation failure: 
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[17,22] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[17,39] cannot find symbol
+[ERROR]   symbol:   variable OperandParser
+[ERROR]   location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[18,35] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[25,35] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[25,48] cannot find symbol
+[ERROR]   symbol:   variable OperandParser
+[ERROR]   location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[30,43] cannot find symbol
+[ERROR]   symbol:   variable OperandParser
+[ERROR]   location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[31,44] cannot find symbol
+[ERROR]   symbol:   variable OperandParser
+[ERROR]   location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[32,45] cannot find symbol
+[ERROR]   symbol:   variable OperandParser
+[ERROR]   location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[33,46] cannot find symbol
+[ERROR]   symbol:   variable OperandParser
+[ERROR]   location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[34,43] cannot find symbol
+[ERROR]   symbol:   variable OperandParser
+[ERROR]   location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[40,22] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[40,39] cannot find symbol
+[ERROR]   symbol:   variable OperandParser
+[ERROR]   location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[41,35] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[48,35] package OperandParser does not exist
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperandParserTest.java:[48,50] cannot find symbol
+[ERROR]   symbol:   variable OperandParser
+[ERROR]   location: class calculator.core.OperandParserTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[14,29] cannot find symbol
+[ERROR]   symbol:   variable ResultFormatter
+[ERROR]   location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[19,28] cannot find symbol
+[ERROR]   symbol:   variable ResultFormatter
+[ERROR]   location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[20,28] cannot find symbol
+[ERROR]   symbol:   variable ResultFormatter
+[ERROR]   location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[25,27] cannot find symbol
+[ERROR]   symbol:   variable ResultFormatter
+[ERROR]   location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[26,27] cannot find symbol
+[ERROR]   symbol:   variable ResultFormatter
+[ERROR]   location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[31,30] cannot find symbol
+[ERROR]   symbol:   variable ResultFormatter
+[ERROR]   location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[32,30] cannot find symbol
+[ERROR]   symbol:   variable ResultFormatter
+[ERROR]   location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[33,36] cannot find symbol
+[ERROR]   symbol:   variable ResultFormatter
+[ERROR]   location: class calculator.core.ResultFormatterTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/ResultFormatterTest.java:[40,27] cannot find symbol
+[ERROR]   symbol:   variable ResultFormatter
+[ERROR]   location: class calculator.core.ResultFormatterTest
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+exit=1
