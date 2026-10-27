@@ -65,3 +65,8 @@ Requirement text per the PRD numbering; shared IDs in brackets. Method names are
 - **Reviewers skipped for 3.2 and 3.3** at Varun's request (deviation).
 - **Open questions for the team:** LOG-01..LOG-11 incl. D-07 unanswered by George; F-09 (should a shown result or error clear when an operand is edited or an operation chosen?); whether Enter while the Clear button has focus should be Calculate (Edge Case Hunter finding in Story 3.1).
 - Over-testing note for the report: 172 tests for 19 acceptance criteria; review layers pushed the count up (see 00-STATUS findings).
+
+## Update 2026-10-27 (LOG-12 to LOG-15)
+
+- LOG-15 negative-tie check: `-1 / 2048` gives `-0.0004882813` and `1 / 2048` gives `0.0004882813`. Two cases added to `CalculatorTest.baseAc18_display_policy`. Display run: 174 run, 0 failed (`log-15-tie-rounding-test-log.txt`); the GUI window tests were not run separately in this session.
+- LOG-12, LOG-13, LOG-14 required no change; existing tests already cover them.

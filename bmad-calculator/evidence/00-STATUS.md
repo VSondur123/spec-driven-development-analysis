@@ -5,6 +5,7 @@
 **Tests:** display 172 run, 0 failed, 0 skipped; headless 57 skipped (window tests). Log: `evidence/story-3-3-final-test-log.txt`.
 **AC-01:** final-GUI manual check done by Varun (Wi-Fi off as reported, commit `943c73f`); screenshots in `evidence/screenshot/`.
 **Git:** branch `bmad-baseline`; freeze commit pushed to `origin/bmad-baseline`, tag `baseline-frozen`. Varun will open the PR into `main`.
+**2026-10-27:** George replied to LOG-01..LOG-11 (all agreed) and proposed LOG-12..LOG-15 (Section E). Varun agreed; BMAD already matched LOG-12/13/14; LOG-15 verified by two new test cases (`evidence/log-15-tie-rounding-test-log.txt`: 174 run, 0 failed). Changes are not committed.
 **Waiting on:** George's part (answers to LOG-01..LOG-11, rubric, protocol), and release of CR-01 (Varun is finalising and freezing it; we do not work on it yet).
 **Hard stop rules:** (1) No code until plan approved. (2) Baseline only: do NOT read or implement `shared/change-request-CR-01.md`. (3) Do not edit `shared/*` or look at George's track.
 
