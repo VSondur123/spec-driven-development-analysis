@@ -1,6 +1,6 @@
 # Quickstart: Baseline Calculator
 
-Validation and run guide. **The build, test and run commands below were run on 2026-10-27**, first in the working tree and then from a clean checkout of commit 9b35cc0 (`BASE-AC-15`). The real output and any correction are recorded in `evidence/` (`evidence/logs/`, `evidence/06-test-results.md`).
+Validation and run guide. **The build, test and run commands below were run on 2026-10-27**, first in the working tree and then from a clean checkout of commit 419f92f (`BASE-AC-15`). The real output and any correction are recorded in `evidence/` (`evidence/logs/`, `evidence/06-test-results.md`).
 
 Details: [plan.md](plan.md), [data-model.md](data-model.md), [contracts/calculation-contract.md](contracts/calculation-contract.md), [contracts/ui-contract.md](contracts/ui-contract.md).
 

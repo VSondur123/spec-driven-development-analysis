@@ -1,6 +1,6 @@
 Clean-checkout launch (BASE-AC-15), 2026-10-27
-clone: C:\Tempc15-clean, HEAD 9b35cc0073c42fc0e7ebfd0aaeda9ed1edb3e0bc
-command: java.exe -jar targetaseline-calculator-1.0.0.jar (JAVA_HOME pinned to Corretto 22.0.2_9)
+clone: C:\Temp\ac15-clean, HEAD 9b35cc0073c42fc0e7ebfd0aaeda9ed1edb3e0bc
+command: java.exe -jar target\baseline-calculator-1.0.0.jar (JAVA_HOME pinned to Corretto 22.0.2_9)
 process alive after 5 s: True
 OS-reported main window title: Calculator
 stdout bytes: 0, stderr bytes: 0

@@ -127,7 +127,7 @@ Result so far: DL-30 to DL-32 added; wording changed; constitution comment remov
 
 ## P22 — Go ahead with the interim commit (option A) and the clean-checkout test
 
-Owner: "yes, A" (force-add `evidence/logs/`). Agent staged the 85 listed files, committed as 9b35cc0 without a Co-Authored-By line, then cloned to `C:\Tempc15-clean`, ran `mvn -B clean verify` and `java -jar` as in `quickstart.md`, and recorded the result.
+Owner: "yes, A" (force-add `evidence/logs/`). Agent staged the 85 listed files, committed as 419f92f without a Co-Authored-By line, then cloned to `C:\Temp\ac15-clean`, ran `mvn -B clean verify` and `java -jar` as in `quickstart.md`, and recorded the result.
 
 Result: `BASE-AC-15` Pass; 19 Pass, 0 Blocked. See DL-33 and `00-STATUS.md`.
 
@@ -137,3 +137,9 @@ Result: `BASE-AC-15` Pass; 19 Pass, 0 Blocked. See DL-33 and `00-STATUS.md`.
 Owner: record the manual edit of `checklists/requirements.md` (line 16 and the tick on line 28) as a human edit in the decisions log; correct `quickstart.md` line 3 to say the commands were run on 2026-10-27; list the uncommitted files and wait for a yes; second commit with `git add -f` for the two new logs, no Co-Authored-By line, no push, tag or freeze.
 
 Result so far: DL-34 and DL-35 added; quickstart line 3 corrected; file list shown to the owner, waiting for the yes.
+
+## P24 — Rewrite the two commits to the noreply email; record the owner's hand tests
+
+Owner: set the repository-local email to the GitHub noreply address, rewrite 9b35cc0 and 84fb470 (same messages, no Co-Authored-By, c897a42 untouched), prove the tree is unchanged, replace the old ids in the evidence files and `quickstart.md`, and add a dated decision entry; then record the owner's hand tests for `BASE-AC-16`, `14` and `12` as the owner's report. Follow-up: do not purge the reflog; delete `C:\Temp\ac15-clean` at the very end; do not change the old full hash in the raw launch log (give old → new in DL-36).
+
+Result: new ids 419f92f and 6bdf927, `git diff` between the old and the new tip empty; DL-36 to DL-38 added; results recorded. A third commit waits for the owner's yes. See `00-STATUS.md`.
