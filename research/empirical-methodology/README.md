@@ -63,3 +63,35 @@ I will save my work under `research/empirical-methodology/` or the location we a
 ## My expected methodological position
 
 I will treat our comparison as small and exploratory. I will recommend identical shared inputs and objective tests wherever possible, retention of raw evidence, scoring anchors defined before evaluation, and explicit reporting of uncertainty and limitations. If we cannot randomise or balance operators and agents, I will recommend framing our conclusions as observations about the two complete workflows rather than proof that one tool is inherently superior.
+
+## My evaluation preparation — 2026-10-25
+
+**Status: Draft for team review.** These documents propose a procedure; they are not an agreed shared protocol or results. No implementation artefacts were inspected to prepare them. The shared requirements and acceptance criteria remain authoritative.
+
+| Document | Purpose |
+|---|---|
+| [Methodology review](methodology-review.md) | Study design, source selection, and methodological rationale |
+| [Protocol recommendations](protocol-recommendations.md) | Preparation, evaluation gates, collection, review, and reporting |
+| [Rubric proposal](evaluation-rubric-proposal.md) | Measurement definitions and criterion-specific scoring anchors |
+| [Evidence checklist](evidence-checklist.md) | Records operators should preserve now and at each freeze |
+| [Evaluation templates](evaluation-templates.md) | Unpopulated coverage, acceptance, comparison, and review tables |
+| [Validity threats](validity-threats.md) | Threats, feasible mitigations, and remaining limitations |
+| [References](references.md) | Verified sources, reading scope, and limitations |
+| [Evaluation skill](skills/evaluate-sdd-workflows/SKILL.md) | Reusable agent instructions for preparation and later evaluation |
+
+The skill is kept here with my research contribution for review. It has not been installed into an agent's skill directory. An evaluator can be given its `SKILL.md` path explicitly together with the evaluation request. Keep the skill and these companion documents together.
+
+My proposed division of work follows `project.md`: Amin leads procedure, evidence rules, and validity; Thanh reviews metric definitions, scoring, and presentation. The role mismatch with the top-level README needs team confirmation; this draft does not resolve it on the team's behalf.
+
+Before using this package to score either track, the team should agree on the protocol/rubric revision, phase readiness, exact snapshots, and reviewers. The shared requirements and acceptance criteria on `main` are still drafts, and the experiment log is empty at preparation time. Record the actual adoption date and which activities it precedes; do not describe this proposal as an already agreed protocol.
+
+The protocol, rubric, and instruments are at **draft-3**, prepared for team review against `main` at `cb1a051`. The templates cover its 13 requirement IDs and 16 draft acceptance criteria. Counts and clauses must be reconciled with the eventual frozen inputs before evaluation. No unmerged implementation-track requirements or decisions are adopted by this proposal.
+
+### Team review decisions
+
+- [ ] Amin and Thanh reconcile the proposed metric definitions, anchors, and presentation with the comparison-framework work.
+- [ ] The team records the adopted protocol/rubric revision, actual adoption date, effective phase, and any deviations from the original study plan.
+- [ ] Both operators identify frozen phase snapshots and provide the evidence checklist records, including known gaps.
+- [ ] The team identifies reviewers, confirms existing evaluation access, and agrees on the common execution sheet before scoring.
+
+After agreement, the team can incorporate the adopted procedure into `shared/experiment-protocol.md` and `shared/evaluation-rubric.md` through its normal decision process. This research PR does not amend those shared files.
