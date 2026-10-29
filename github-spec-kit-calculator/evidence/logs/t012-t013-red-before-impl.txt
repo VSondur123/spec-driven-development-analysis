@@ -1,0 +1,58 @@
+﻿== mvn -B test before Calculator/CalculatorPanel exist (2026-10-27T13:28:21)
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< study.speckit:baseline-calculator >------------------
+[INFO] Building Baseline Calculator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ baseline-calculator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ baseline-calculator ---
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 4 source files with javac [debug release 22] to target\test-classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java:[23,13] cannot find symbol
+  symbol:   class CalculatorPanel
+  location: class calculator.ui.CalculatorPanelTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/CalculatorTest.java:[12,45] cannot find symbol
+  symbol:   variable Calculator
+  location: class calculator.core.CalculatorTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java:[27,21] cannot find symbol
+  symbol:   class CalculatorPanel
+  location: class calculator.ui.CalculatorPanelTest
+[INFO] 3 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.874 s
+[INFO] Finished at: 2026-10-27T13:28:23+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.16.0:testCompile (default-testCompile) on project baseline-calculator: Compilation failure: Compilation failure: 
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java:[23,13] cannot find symbol
+[ERROR]   symbol:   class CalculatorPanel
+[ERROR]   location: class calculator.ui.CalculatorPanelTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/CalculatorTest.java:[12,45] cannot find symbol
+[ERROR]   symbol:   variable Calculator
+[ERROR]   location: class calculator.core.CalculatorTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java:[27,21] cannot find symbol
+[ERROR]   symbol:   class CalculatorPanel
+[ERROR]   location: class calculator.ui.CalculatorPanelTest
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+exit=1

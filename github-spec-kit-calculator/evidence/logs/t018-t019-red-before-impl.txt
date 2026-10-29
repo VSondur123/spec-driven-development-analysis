@@ -1,0 +1,282 @@
+﻿== mvn -B test with US2 tests, before US2 code (2026-10-27T13:32:05)
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< study.speckit:baseline-calculator >------------------
+[INFO] Building Baseline Calculator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ baseline-calculator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ baseline-calculator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.6.1:test (default-test) @ baseline-calculator ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running calculator.core.CalculatorTest
+[ERROR] Tests run: 23, Failures: 1, Errors: 7, Skipped: 0, Time elapsed: 0.096 s <<< FAILURE! -- in calculator.core.CalculatorTest
+[ERROR] calculator.core.CalculatorTest.malformedOperandsAreInvalidInEitherPosition -- Time elapsed: 0.006 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.core.CalculatorTest.assertError(CalculatorTest.java:94)
+	at calculator.core.CalculatorTest.malformedOperandsAreInvalidInEitherPosition(CalculatorTest.java:119)
+
+[ERROR] calculator.core.CalculatorTest.emptyOperandIsReportedWhicheverOperandIsEmpty -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.core.CalculatorTest.assertError(CalculatorTest.java:94)
+	at calculator.core.CalculatorTest.emptyOperandIsReportedWhicheverOperandIsEmpty(CalculatorTest.java:100)
+
+[ERROR] calculator.core.CalculatorTest.incompleteDecimalFormsAreInvalid -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.core.CalculatorTest.assertError(CalculatorTest.java:94)
+	at calculator.core.CalculatorTest.incompleteDecimalFormsAreInvalid(CalculatorTest.java:127)
+
+[ERROR] calculator.core.CalculatorTest.neverThrowsForAnyCombination -- Time elapsed: 0.006 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: '' null '' ==> Unexpected exception thrown: java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at org.junit.jupiter.api.Assertions.assertDoesNotThrow(Assertions.java:3388)
+	at calculator.core.CalculatorTest.neverThrowsForAnyCombination(CalculatorTest.java:162)
+Caused by: java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.core.CalculatorTest.lambda$0(CalculatorTest.java:162)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:76)
+	at org.junit.jupiter.api.AssertDoesNotThrow.assertDoesNotThrow(AssertDoesNotThrow.java:65)
+	... 2 more
+
+[ERROR] calculator.core.CalculatorTest.noOperationSelected -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.core.CalculatorTest.assertError(CalculatorTest.java:94)
+	at calculator.core.CalculatorTest.noOperationSelected(CalculatorTest.java:113)
+
+[ERROR] calculator.core.CalculatorTest.spacesOnlyOperandCountsAsEmpty -- Time elapsed: 0 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.core.CalculatorTest.assertError(CalculatorTest.java:94)
+	at calculator.core.CalculatorTest.spacesOnlyOperandCountsAsEmpty(CalculatorTest.java:107)
+
+[ERROR] calculator.core.CalculatorTest.errorPriorityEmptyThenNoOperationThenInvalidThenArithmetic -- Time elapsed: 0 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.core.CalculatorTest.assertError(CalculatorTest.java:94)
+	at calculator.core.CalculatorTest.errorPriorityEmptyThenNoOperationThenInvalidThenArithmetic(CalculatorTest.java:146)
+
+[ERROR] calculator.core.CalculatorTest.divisionByZero -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.ArithmeticException: / by zero
+	at java.base/java.math.BigDecimal.divideAndRound(BigDecimal.java:4976)
+	at java.base/java.math.BigDecimal.divide(BigDecimal.java:6049)
+	at java.base/java.math.BigDecimal.divide(BigDecimal.java:1674)
+	at java.base/java.math.BigDecimal.divide(BigDecimal.java:1704)
+	at calculator.core.Calculator.compute(Calculator.java:40)
+	at calculator.core.Calculator.calculate(Calculator.java:31)
+	at calculator.core.CalculatorTest.assertError(CalculatorTest.java:94)
+	at calculator.core.CalculatorTest.divisionByZero(CalculatorTest.java:134)
+
+[INFO] Running calculator.core.OperandParserTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s -- in calculator.core.OperandParserTest
+[INFO] Running calculator.core.ResultFormatterTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in calculator.core.ResultFormatterTest
+[INFO] Running calculator.ui.CalculatorPanelTest
+[ERROR] Tests run: 24, Failures: 0, Errors: 10, Skipped: 0, Time elapsed: 3.650 s <<< FAILURE! -- in calculator.ui.CalculatorPanelTest
+[ERROR] calculator.ui.CalculatorPanelTest.malformedOperandsShowInvalidNumber -- Time elapsed: 0.141 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.ui.CalculatorPanel.calculate(CalculatorPanel.java:114)
+	at calculator.ui.CalculatorPanel.lambda$new$0(CalculatorPanel.java:49)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:374)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:354)
+	at calculator.ui.CalculatorPanelTest.calculate(CalculatorPanelTest.java:85)
+	at calculator.ui.CalculatorPanelTest.assertErrorShown(CalculatorPanelTest.java:214)
+	at calculator.ui.CalculatorPanelTest.malformedOperandsShowInvalidNumber(CalculatorPanelTest.java:239)
+
+[ERROR] calculator.ui.CalculatorPanelTest.noOperationShowsSelectAnOperation -- Time elapsed: 0.071 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.ui.CalculatorPanel.calculate(CalculatorPanel.java:114)
+	at calculator.ui.CalculatorPanel.lambda$new$0(CalculatorPanel.java:49)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:374)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:354)
+	at calculator.ui.CalculatorPanelTest.calculate(CalculatorPanelTest.java:85)
+	at calculator.ui.CalculatorPanelTest.assertErrorShown(CalculatorPanelTest.java:214)
+	at calculator.ui.CalculatorPanelTest.noOperationShowsSelectAnOperation(CalculatorPanelTest.java:263)
+
+[ERROR] calculator.ui.CalculatorPanelTest.theFourMessagesAreDistinguishable -- Time elapsed: 0.140 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.ui.CalculatorPanel.calculate(CalculatorPanel.java:114)
+	at calculator.ui.CalculatorPanel.lambda$new$0(CalculatorPanel.java:49)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:374)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:354)
+	at calculator.ui.CalculatorPanelTest.calculate(CalculatorPanelTest.java:85)
+	at calculator.ui.CalculatorPanelTest.theFourMessagesAreDistinguishable(CalculatorPanelTest.java:270)
+
+[ERROR] calculator.ui.CalculatorPanelTest.incompleteDecimalFormsShowInvalidNumber -- Time elapsed: 0.140 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.ui.CalculatorPanel.calculate(CalculatorPanel.java:114)
+	at calculator.ui.CalculatorPanel.lambda$new$0(CalculatorPanel.java:49)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:374)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:354)
+	at calculator.ui.CalculatorPanelTest.calculate(CalculatorPanelTest.java:85)
+	at calculator.ui.CalculatorPanelTest.assertErrorShown(CalculatorPanelTest.java:214)
+	at calculator.ui.CalculatorPanelTest.incompleteDecimalFormsShowInvalidNumber(CalculatorPanelTest.java:247)
+
+[ERROR] calculator.ui.CalculatorPanelTest.aNewCalculationClearsThePreviousError -- Time elapsed: 0.139 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.ui.CalculatorPanel.calculate(CalculatorPanel.java:114)
+	at calculator.ui.CalculatorPanel.lambda$new$0(CalculatorPanel.java:49)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:374)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:354)
+	at calculator.ui.CalculatorPanelTest.calculate(CalculatorPanelTest.java:85)
+	at calculator.ui.CalculatorPanelTest.aNewCalculationClearsThePreviousError(CalculatorPanelTest.java:292)
+
+[ERROR] calculator.ui.CalculatorPanelTest.enterInAFieldShowsTheSameErrorAsTheButton -- Time elapsed: 0.070 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.ui.CalculatorPanel.calculate(CalculatorPanel.java:114)
+	at calculator.ui.CalculatorPanel.lambda$new$1(CalculatorPanel.java:50)
+	at java.desktop/javax.swing.JTextField.fireActionPerformed(JTextField.java:525)
+	at java.desktop/javax.swing.JTextField.postActionEvent(JTextField.java:740)
+	at calculator.ui.CalculatorPanelTest.enterInAFieldShowsTheSameErrorAsTheButton(CalculatorPanelTest.java:316)
+
+[ERROR] calculator.ui.CalculatorPanelTest.divisionByZeroShowsCannotDivideByZero -- Time elapsed: 0.140 s <<< ERROR!
+java.lang.ArithmeticException: / by zero
+	at java.base/java.math.BigDecimal.divideAndRound(BigDecimal.java:4976)
+	at java.base/java.math.BigDecimal.divide(BigDecimal.java:6049)
+	at java.base/java.math.BigDecimal.divide(BigDecimal.java:1674)
+	at java.base/java.math.BigDecimal.divide(BigDecimal.java:1704)
+	at calculator.core.Calculator.compute(Calculator.java:40)
+	at calculator.core.Calculator.calculate(Calculator.java:31)
+	at calculator.ui.CalculatorPanel.calculate(CalculatorPanel.java:114)
+	at calculator.ui.CalculatorPanel.lambda$new$0(CalculatorPanel.java:49)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:374)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:354)
+	at calculator.ui.CalculatorPanelTest.calculate(CalculatorPanelTest.java:85)
+	at calculator.ui.CalculatorPanelTest.assertErrorShown(CalculatorPanelTest.java:214)
+	at calculator.ui.CalculatorPanelTest.divisionByZeroShowsCannotDivideByZero(CalculatorPanelTest.java:254)
+
+[ERROR] calculator.ui.CalculatorPanelTest.aNewErrorClearsThePreviousResult -- Time elapsed: 0.206 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.ui.CalculatorPanel.calculate(CalculatorPanel.java:114)
+	at calculator.ui.CalculatorPanel.lambda$new$0(CalculatorPanel.java:49)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:374)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:354)
+	at calculator.ui.CalculatorPanelTest.calculate(CalculatorPanelTest.java:85)
+	at calculator.ui.CalculatorPanelTest.aNewErrorClearsThePreviousResult(CalculatorPanelTest.java:306)
+
+[ERROR] calculator.ui.CalculatorPanelTest.spacesOnlyOperandShowsEnterBothNumbers -- Time elapsed: 0.141 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.ui.CalculatorPanel.calculate(CalculatorPanel.java:114)
+	at calculator.ui.CalculatorPanel.lambda$new$0(CalculatorPanel.java:49)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:374)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:354)
+	at calculator.ui.CalculatorPanelTest.calculate(CalculatorPanelTest.java:85)
+	at calculator.ui.CalculatorPanelTest.assertErrorShown(CalculatorPanelTest.java:214)
+	at calculator.ui.CalculatorPanelTest.spacesOnlyOperandShowsEnterBothNumbers(CalculatorPanelTest.java:232)
+
+[ERROR] calculator.ui.CalculatorPanelTest.emptyOperandShowsEnterBothNumbers -- Time elapsed: 0.139 s <<< ERROR!
+java.lang.IllegalArgumentException: error cases are not handled until task T021
+	at calculator.core.Calculator.calculate(Calculator.java:29)
+	at calculator.ui.CalculatorPanel.calculate(CalculatorPanel.java:114)
+	at calculator.ui.CalculatorPanel.lambda$new$0(CalculatorPanel.java:49)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:374)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:354)
+	at calculator.ui.CalculatorPanelTest.calculate(CalculatorPanelTest.java:85)
+	at calculator.ui.CalculatorPanelTest.assertErrorShown(CalculatorPanelTest.java:214)
+	at calculator.ui.CalculatorPanelTest.emptyOperandShowsEnterBothNumbers(CalculatorPanelTest.java:222)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   CalculatorTest.neverThrowsForAnyCombination:162 '' null '' ==> Unexpected exception thrown: java.lang.IllegalArgumentException: error cases are not handled until task T021
+[ERROR] Errors: 
+[ERROR]   CalculatorTest.divisionByZero:134->assertError:94 � Arithmetic / by zero
+[ERROR]   CalculatorTest.emptyOperandIsReportedWhicheverOperandIsEmpty:100->assertError:94 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorTest.errorPriorityEmptyThenNoOperationThenInvalidThenArithmetic:146->assertError:94 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorTest.incompleteDecimalFormsAreInvalid:127->assertError:94 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorTest.malformedOperandsAreInvalidInEitherPosition:119->assertError:94 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorTest.noOperationSelected:113->assertError:94 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorTest.spacesOnlyOperandCountsAsEmpty:107->assertError:94 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorPanelTest.aNewCalculationClearsThePreviousError:292->calculate:85 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorPanelTest.aNewErrorClearsThePreviousResult:306->calculate:85 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorPanelTest.divisionByZeroShowsCannotDivideByZero:254->assertErrorShown:214->calculate:85 � Arithmetic / by zero
+[ERROR]   CalculatorPanelTest.emptyOperandShowsEnterBothNumbers:222->assertErrorShown:214->calculate:85 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorPanelTest.enterInAFieldShowsTheSameErrorAsTheButton:316 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorPanelTest.incompleteDecimalFormsShowInvalidNumber:247->assertErrorShown:214->calculate:85 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorPanelTest.malformedOperandsShowInvalidNumber:239->assertErrorShown:214->calculate:85 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorPanelTest.noOperationShowsSelectAnOperation:263->assertErrorShown:214->calculate:85 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorPanelTest.spacesOnlyOperandShowsEnterBothNumbers:232->assertErrorShown:214->calculate:85 � IllegalArgument error cases are not handled until task T021
+[ERROR]   CalculatorPanelTest.theFourMessagesAreDistinguishable:270->calculate:85 � IllegalArgument error cases are not handled until task T021
+[INFO] 
+[ERROR] Tests run: 73, Failures: 1, Errors: 17, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.250 s
+[INFO] Finished at: 2026-10-27T13:32:12+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.6.1:test (default-test) on project baseline-calculator: There are test failures.
+[ERROR] 
+[ERROR] See C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\target\surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+exit=1

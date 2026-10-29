@@ -1,0 +1,38 @@
+﻿T030 scope and structure review, 2026-10-27T13:35:40. Searches use Select-String over src\ (main and test).
+
+== dialog classes in all source
+Command: Select-String -Path 'src' -Pattern 'JOptionPane|JDialog|java\.awt\.Dialog|JPopupMenu|JWindow|showMessageDialog|showConfirmDialog|showInputDialog' -Recurse
+(no matches)
+
+== network, file or persistence classes in all source
+Command: Select-String -Path 'src' -Pattern 'java\.net|java\.io\.File|java\.nio\.file|FileWriter|FileReader|ObjectOutputStream|java\.sql|Socket|HttpClient|Preferences' -Recurse
+(no matches)
+
+== GUI imports in calculator.core (main and test)
+Command: Select-String -Path 'src\main\java\calculator\core' -Pattern 'javax\.swing|java\.awt|calculator\.ui' -Recurse
+(no matches)
+
+== GUI imports in core tests
+Command: Select-String -Path 'src\test\java\calculator\core' -Pattern 'javax\.swing|java\.awt|calculator\.ui' -Recurse
+(no matches)
+
+== Operation enum members
+ADD("+"),
+SUBTRACT("−"), // U+2212 MINUS SIGN
+MULTIPLY("×"), // U+00D7 MULTIPLICATION SIGN
+DIVIDE("÷");   // U+00F7 DIVISION SIGN
+Operation(String symbol) {
+
+== list of main source files
+src\main\java\calculator\core\CalculationError.java
+src\main\java\calculator\core\CalculationOutcome.java
+src\main\java\calculator\core\Calculator.java
+src\main\java\calculator\core\OperandParser.java
+src\main\java\calculator\core\Operation.java
+src\main\java\calculator\core\ResultFormatter.java
+src\main\java\calculator\ui\CalculatorApp.java
+src\main\java\calculator\ui\CalculatorPanel.java
+src\main\java\calculator\ui\ErrorMessages.java
+
+== any other operation words (sqrt, pow, sin, cos, log, exp, percent) in main source
+(no matches)

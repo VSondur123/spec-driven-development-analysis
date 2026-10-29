@@ -1,0 +1,97 @@
+﻿== mvn -B test (2026-10-27T13:29:25)
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< study.speckit:baseline-calculator >------------------
+[INFO] Building Baseline Calculator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ baseline-calculator ---
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 8 source files with javac [debug release 22] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ baseline-calculator ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug release 22] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.6.1:test (default-test) @ baseline-calculator ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running calculator.core.CalculatorTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in calculator.core.CalculatorTest
+[INFO] Running calculator.core.OperandParserTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s -- in calculator.core.OperandParserTest
+[INFO] Running calculator.core.ResultFormatterTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in calculator.core.ResultFormatterTest
+[INFO] Running calculator.ui.CalculatorPanelTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.331 s -- in calculator.ui.CalculatorPanelTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 54, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.505 s
+[INFO] Finished at: 2026-10-27T13:29:31+02:00
+[INFO] ------------------------------------------------------------------------
+exit=0
+== mvn -B package (2026-10-27T13:29:31)
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< study.speckit:baseline-calculator >------------------
+[INFO] Building Baseline Calculator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ baseline-calculator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ baseline-calculator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.6.1:test (default-test) @ baseline-calculator ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running calculator.core.CalculatorTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s -- in calculator.core.CalculatorTest
+[INFO] Running calculator.core.OperandParserTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.060 s -- in calculator.core.OperandParserTest
+[INFO] Running calculator.core.ResultFormatterTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in calculator.core.ResultFormatterTest
+[INFO] Running calculator.ui.CalculatorPanelTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.326 s -- in calculator.ui.CalculatorPanelTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 54, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ baseline-calculator ---
+[INFO] Building jar: C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\target\baseline-calculator-1.0.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.999 s
+[INFO] Finished at: 2026-10-27T13:29:36+02:00
+[INFO] ------------------------------------------------------------------------
+exit=0
