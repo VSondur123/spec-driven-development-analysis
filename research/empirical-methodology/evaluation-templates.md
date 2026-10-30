@@ -1,10 +1,14 @@
 # Evaluation Templates — Unpopulated
 
-**Date:** 2026-10-25. **Revision:** draft-3. **Status:** Draft instruments for team review; no evaluation performed.
+**Created:** 2026-10-25. **Updated:** 2026-10-30. **Revision:** draft-4. **Status:** Draft instruments for team review; no evaluation performed.
 
-The inventory reflects `main` at `cb1a051`: 13 requirement IDs and 16 draft acceptance criteria. Reconcile it with the eventual frozen shared inputs before scoring; do not treat counts or unresolved behaviours as already agreed.
+The inventory reflects the [baseline requirements](../../shared/baseline-requirements.md) and [acceptance criteria](../../shared/acceptance-criteria.md) at repository commit `200ce28`: 13 requirement IDs (eight functional and five non-functional) and 19 baseline acceptance criteria. Both shared documents declare a baseline freeze on 2026-10-23; the CR-01 criteria are not part of that freeze. This reference identifies the shared inputs, not either track's evaluation snapshot or an adopted evaluation procedure.
+
+This revision replaces the earlier 16-criterion inventory, adds BASE-AC-17–19, and updates the numeric/UI scope and execution guidance. Later clarifications in [experiment-log.md §E](../../shared/experiment-log.md#section-e--gaps-found-by-the-spec-kit-track-while-writing-the-specification-2026-10-27-george) are recorded separately below; they do not silently amend the frozen acceptance checks.
 
 Use with the [protocol](protocol-recommendations.md) and [rubric](evaluation-rubric-proposal.md). Copy the relevant tables into an authorised research output for each track/phase; do not fill this master with results. Keep the other track's evidence away from operators still implementing. `Pending`, `Unassessed`, and `NR` below are template markers, not findings.
+
+The companion protocol and rubric proposals remain at draft-3 and describe the earlier draft inputs. Reconcile those references before team adoption. Updating this template does not adopt the proposals or establish that both track snapshots are frozen. Record the actual adoption date and effective phase; if implementation predates adoption, disclose it as a deviation rather than backdating the procedure.
 
 ## 1. Evaluation manifest
 
@@ -13,9 +17,11 @@ Use with the [protocol](protocol-recommendations.md) and [rubric](evaluation-rub
 | Evaluation ID / date / timezone / evaluator | Pending |
 | Phase | Pending |
 | Protocol and rubric revision / actual adoption date | Pending |
+| Effective phase / work completed before adoption / deviation reference | Pending |
 | Test-plan revision / primary-run selection rule | Pending |
 | Team readiness/access decision reference | Pending |
 | Shared requirements / acceptance snapshot | Pending |
+| Later clarification revisions / agreed evaluation treatment | Pending |
 | Released CR revision and release record, if applicable | Not applicable until change release |
 | BMAD root / frozen commit / clean state | Pending |
 | Spec Kit root / frozen commit / clean state | Pending |
@@ -36,9 +42,9 @@ Create one copy per track and frozen phase. The baseline inventory below is take
 | BASE-FR-01 | Offline GUI launch | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed |
 | BASE-FR-02 | Numeric entry | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed |
 | BASE-FR-03 | Four operation selections | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed |
-| BASE-FR-04 | Request calculation and see result | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed |
+| BASE-FR-04 | Calculate button / Enter and visible result | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed |
 | BASE-FR-05 | Clear/reset | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed |
-| BASE-FR-06 | Invalid/missing-input feedback | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed |
+| BASE-FR-06 | Invalid/missing input and no-operation feedback | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed |
 | BASE-FR-07 | Safe division by zero | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed |
 | BASE-FR-08 | Error recovery | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed |
 | BASE-NFR-01 | Local agreed runtime/OS | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed | Unassessed |
@@ -52,9 +58,12 @@ Shared numeric/UI clauses do not all have requirement IDs. Audit them too, witho
 | Authoritative clause reference | Existing scope to check | Evidence / related ACs | Observation / unresolved verification |
 |---|---|---|---|
 | baseline-requirements.md §4, items 1–7 | Finite decimals, identifiable operands/operation, consistent display, invalid input, negatives | Unassessed | Unassessed |
-| baseline-requirements.md §5 | Clear controls/labels, identifiable input/operation/result/error state, simple interface | Unassessed | Unassessed |
+| baseline-requirements.md §4, item 8 | Exact decimals; division half-up to 10 decimal places; plain decimal output, no trailing zeros or exponent notation, zero as `0` | Unassessed | Unassessed |
+| baseline-requirements.md §4, item 9 | Optional leading `-`, digits, optional decimal point followed by digits; surrounding spaces ignored; other input rejected | Unassessed | Unassessed |
+| baseline-requirements.md §4, item 10 | Error priority: empty operand, no operation, invalid number, arithmetic error | Unassessed | Unassessed |
+| baseline-requirements.md §5 | Two labelled operand fields; four operation buttons with visible selection; Calculate, Clear, result and inline-error areas; clear state and labels | Unassessed | Unassessed |
 
-The exact GUI pattern, numeric display precision/rounding, calculation trigger, and error presentation remain open in baseline-requirements.md §9. Populate observations only against the agreed revision; the §5 audit concerns the general usability expectations already stated, not a particular set of controls or inline-error policy.
+The freeze status note in baseline-requirements.md §9 records the GUI pattern, numeric/display policy, calculation trigger and error presentation as resolved. Audit the frozen clauses above. Error-message strings are suggested wording, not exact-string pass conditions. Java/build versions and the evaluation OS remain per-track records plus the LOG-07 recommendation; do not assume both operators used the same OS.
 
 Copy the frozen requirement-to-AC associations from the shared acceptance file when evaluating. If associations do not fully verify a requirement, document the gap; do not silently change shared checks. “No defect found on evaluated checks” is narrower than proving a requirement completely satisfied.
 
@@ -80,14 +89,47 @@ Phase: Baseline. Both track snapshot fields: Pending. Execution method, expected
 | BASE-AC-14 | Not run | Pending | Not run | Pending |
 | BASE-AC-15 | Not run | Pending | Not run | Pending |
 | BASE-AC-16 | Not run | Pending | Not run | Pending |
+| BASE-AC-17 | Not run | Pending | Not run | Pending |
+| BASE-AC-18 | Not run | Pending | Not run | Pending |
+| BASE-AC-19 | Not run | Pending | Not run | Pending |
 
 Do not compute zeros or percentages from this unused template. Populate real run records first. For CR-01, generate the change inventory only after release, and keep baseline regression outcomes at the change snapshot separate from original baseline outcomes.
+
+### Execution preparation — frozen cases needing explicit records
+
+The full [shared acceptance table, §2](../../shared/acceptance-criteria.md#2-our-baseline-acceptance-criteria) remains authoritative for all 19 criteria. The reminders below identify manual checks and required subcases that must not disappear into a single native-suite result. Agree on a common execution sheet before evaluating either track.
+
+| Parent criterion | Cases / observations to retain |
+|---|---|
+| BASE-AC-01 | Launch the GUI with networking disabled; record the disabling procedure, environment, observer, date and screenshot or manual note. A screenshot alone does not establish network state. |
+| BASE-AC-11 | Empty first operand, empty second operand, and both empty; retain each validation/no-crash observation. |
+| BASE-AC-12 | At least `abc`, `1.2.3`, `1,5`, `1e3`, `--1`, and `.`; retain a rejection/no-crash record for each input. |
+| BASE-AC-13 | `7 / 0` and `7 / 0.0`; retain each visible-error/no-crash observation, with no successful infinity/NaN result. |
+| BASE-AC-14 / BASE-AC-16 | Preserve state within error-recovery and sequential-calculation scenarios. Agree on identical inputs and steps; record each parent separately. |
+| BASE-AC-15 | Follow documented build/run instructions from a clean checkout; record commands, prerequisites, environment, build and launch observations. |
+| BASE-AC-17 | From the reset state, enter two valid operands and select no operation, then request calculation; expect a clear error, no result and no crash. |
+| BASE-AC-18 | Record both `0 / 5 → 0` and `1 / 3 → 0.3333333333`, using the frozen display policy. |
+| BASE-AC-19 | With valid operands and an operation selected, press Enter in an operand field; compare with Calculate. Record the field used and agree on the same field coverage for both tracks. |
+
+### Later clarifications — keep separate from the frozen inventory
+
+Experiment-log §E records both owners' agreement to LOG-12–15 on 2026-10-27, while explicitly leaving incorporation of the suggested cases and wording into the frozen shared documents undecided. Before evaluation, record whether each clarification is used as an interpretation of existing scope, an adopted amendment, or a supplementary observation. Apply the same documented treatment to both tracks; do not silently expand a parent AC's pass condition or the 19-criterion denominator.
+
+| Log reference | Clarification recorded in the log | Related frozen scope | Evaluation treatment / decision reference |
+|---|---|---|---|
+| LOG-12 | `.5`, `5.` and `-` alone are invalid; spaces-only input counts as empty | §4 input grammar; BASE-AC-11 / BASE-AC-12 | Pending |
+| LOG-13 | A shown result/error stays until Calculate or Clear, including during operand/operation edits | BASE-FR-08; BASE-AC-14 / BASE-AC-16 | Pending |
+| LOG-14 | Judge responsiveness by observation, without a numeric threshold | BASE-NFR-02 | Pending |
+| LOG-15 | Half-up ties round away from zero: `-1 / 2048 → -0.0004882813`, `1 / 2048 → 0.0004882813` | §4 item 8; BASE-AC-18 | Pending |
+
+Retain supplementary observations separately from frozen acceptance totals unless an adopted amendment explicitly changes the common execution plan. Record the amendment's revision, actual date and effect on comparability. Do not invent a latency cutoff for BASE-NFR-02.
 
 ### Detailed execution record — one per subcase/run
 
 | Field | Value |
 |---|---|
 | Run ID / parent criterion / subcase | Pending |
+| Scope: frozen case, adopted clarification/amendment, or supplementary / decision reference | Pending |
 | Track / phase / frozen commit / shared-input revision | Pending |
 | Test-plan revision / identical steps and inputs | Pending |
 | Initial state / reset steps / execution order | Pending |
@@ -99,7 +141,7 @@ Do not compute zeros or percentages from this unused template. Populate real run
 | Blocker / defect ID / repair revision / rerun link | Pending |
 | Primary run or rerun / exclusion reason / conflicting observations | Pending |
 
-Use the adopted criteria to define required subcases and agree on the same execution steps/inputs for both tracks. The current draft does not enumerate malformed-input variants or a keyboard-trigger check; do not silently add them as mandatory criteria. Parent aggregation follows the rubric; it never hides subcase rows. Record whether every required subcase has a Pass/Fail observation: a parent Fail can still be incompletely executed.
+Use the adopted criteria to define required subcases and agree on the same execution steps/inputs for both tracks. The frozen baseline explicitly enumerates malformed-input cases and an Enter-key check; include them. Record the observed layer: an engine-only test cannot establish GUI interaction or Enter-key behaviour. Parent aggregation follows the rubric; it never hides subcase rows. Record whether every required subcase has a Pass/Fail observation: a parent Fail can still be incompletely executed. Required subcases remain under their parent and do not increase the acceptance denominator.
 
 ## 4. Workflow comparison table
 
@@ -117,7 +159,7 @@ Label each populated rating Agent-provisional, Human-reviewed, or Unresolved, an
 
 | Descriptive measure, phase and snapshot required | BMAD | Spec Kit | Definition, denominator, provenance, or caveat |
 |---|---|---|---|
-| Acceptance P / F / B / N, fully executed C, and total D | Unassessed | Unassessed | Current draft has 16 ACs; derive D from the adopted revision and count only populated run records |
+| Acceptance P / F / B / N, fully executed C, and total D | Unassessed | Unassessed | Referenced frozen baseline has D = 19 parent ACs; reconcile with adopted inputs. Retain blocked/unexecuted criteria in D; derive outcomes only from populated run records |
 | Verified pass coverage / execution completion | Unassessed | Unassessed | P/D and C/D; show fractions and percentages |
 | Decisive parent outcomes / pass share of decisive outcomes | Unassessed | Unassessed | (P+F)/D and P/(P+F); not substitutes for completion |
 | Native implementation links / verification links | Unassessed | Unassessed | Baseline denominator 13; report assessment completion |
