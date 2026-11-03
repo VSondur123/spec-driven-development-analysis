@@ -1,8 +1,8 @@
 # Metric Catalogue and Operational Definitions
 
 **Author:** Pham Thanh (Thanh)  
-**Date:** 2026-10-30  
-**Revision:** draft-5 (schema and cross-track compatibility revision)  
+**Date:** 2026-11-02  
+**Revision:** draft-6 (GQM integration, CR-01 status and cross-document alignment)  
 **Status:** Proposal for team review. Nothing in this file is adopted unless agreed and entered into the authoritative shared documents. No track has been scored.
 
 ## 0. Authority and relationship to team work
@@ -11,19 +11,213 @@ This catalogue is supplementary. It must not become a second rubric or protocol.
 
 | Material | Role and authority |
 |---|---|
-| `shared/baseline-requirements.md`, `shared/acceptance-criteria.md` | Frozen shared requirement and AC inventory; source of truth for IDs and wording |
+| `shared/baseline-requirements.md`, `shared/acceptance-criteria.md` | Shared requirement and AC inventory; source of truth for IDs and wording |
 | `shared/evaluation-rubric.md`, `shared/experiment-protocol.md` | Intended authoritative evaluation rules once adopted |
-| Amin's `evaluation-rubric-proposal.md`, `protocol-recommendations.md` | Draft proposals (PR #2 merged them into the repository; merge is not adoption) |
+| Amin's `evaluation-rubric-proposal.md`, `protocol-recommendations.md` | Draft proposals; a GitHub merge does not mean the team has adopted them |
 | Amin's `evaluation-templates.md`, `evidence-checklist.md` | Proposed collection instruments |
-| This catalogue | Supplementary measures, counting units, operational definitions and proposals |
-| `visualisation-proposal.md` | Supplementary CSV schema and figure specifications |
-| `literature-review.md`, `references.md` | Research context; neither sets rules |
+| This catalogue | Supplementary GQM mapping, measures, counting units and operational definitions |
+| `visualisation-proposal.md` | Supplementary CSV schemas and figure specifications |
+| `literature-review.md`, `references.md` | Research context; neither sets evaluation rules |
 
-At the recorded `main` state `200ce28`, the shared rubric and protocol files were empty. The proposed rubric/protocol are therefore not to be described as adopted. If this catalogue conflicts with an adopted rubric or protocol, the adopted document wins. Both tracks should be evaluated using the same adopted shared rules; neither operator is required to imitate the other track's internal workflow.
+If this catalogue conflicts with an adopted rubric or protocol, the adopted document wins. Both tracks should be evaluated using the same adopted shared rules; neither operator is required to imitate the other track's internal workflow.
 
-## 1. Shared input inventory and limits
+The comparison unit is the workflow run under its recorded conditions, not an abstract tool in isolation. The study compares two tool–agent–operator workflows and should not be described as a fully controlled causal experiment.
 
-The inventory below reflects the stated frozen shared inputs at commit `258a6d0`, unchanged at `main` `200ce28`:
+## 1. GQM framework: goals, questions and metrics
+
+### 1.1 Why GQM is used
+
+This study uses the Goal–Question–Metric (GQM) approach as the organising structure for measurement. GQM starts with the goals of the evaluation, derives questions that make each goal answerable, and then selects measures that provide evidence for those questions.
+
+The overall research design is a comparative case study using a mixed-methods evaluation framework. GQM structures the quantitative and qualitative evidence; it is not a separate research design and does not make the comparison a controlled experiment.
+
+The GQM structure is intended to:
+- connect each measure to a clear evaluation purpose;
+- prevent collecting metrics simply because they are easy to count;
+- make the relationship between research questions, evidence and conclusions traceable;
+- distinguish quantitative outcomes from qualitative reviewer judgements;
+- expose questions that cannot be answered because evidence is missing or the shared inputs are incomplete.
+
+The GQM mapping below is based on the five working research questions in `project.md` §3. The wording and numbering must be checked against that file before the final report is submitted. If the team changes the research questions, update this mapping and the visualisation proposal together.
+
+### 1.2 Overall measurement goal
+
+**Overall goal:** Evaluate and compare how BMAD and GitHub Spec Kit support two recorded development workflows that use the same Java desktop GUI calculator requirements and evolve the same application, considering specification and traceability quality, change-impact handling, implementation and verification outcomes, human effort, and evidence reproducibility.
+
+The goal is comparative and descriptive. It does not assume that either tool is superior and does not isolate the causal effect of the tool from operator, agent/model, operating system, configuration or other workflow differences.
+
+### 1.3 GQM goals
+
+| Goal | Goal statement | Main perspective | Related RQ |
+|---|---|---|---|
+| G1 — Specification and traceability | Evaluate how clearly each workflow represents the shared requirements in its native specification and development artefacts, and how well those requirements can be traced through the workflow | Evaluator reviewing artefacts against shared requirements | RQ1 |
+| G2 — Change-impact handling | Evaluate how each workflow identifies and handles the requirements, components and dependencies affected by the planned application change | Evaluator comparing pre-implementation impact analysis with a frozen reference set and final evidence | RQ2 |
+| G3 — Implementation and verification outcomes | Compare the observed implementation and verification outcomes, including acceptance results, defects and regressions | Evaluator observing the application and test evidence | RQ3 |
+| G4 — Human work and effort | Describe the human interventions, interactions, active effort, elapsed duration and rework required in each recorded workflow | Operator records and evaluator-reviewed event/time evidence | RQ4 |
+| G5 — Evidence and reproducibility | Assess whether the records, artefacts, environment details and evaluation evidence are sufficiently complete to support checking and interpretation of the comparison | Evaluator reviewing the evidence package and reproducibility information | RQ5 |
+
+### 1.4 GQM questions and metric mapping
+
+#### G1 — Specification and traceability
+
+**Question 1.1:** To what extent are the shared requirements represented in each workflow's native specification and related artefacts?
+
+- M03 — Native traceability.
+- M13 — Reconstructed traceability, reported separately.
+- M02 — Requirement status view, if adopted.
+- M11 — Relevant rubric criteria J1–J4.
+
+**Question 1.2:** To what extent can requirements be followed through the workflow stages from specification to verification?
+
+- M03a — Native implementation traceability.
+- M03b — Native verification traceability.
+- M03c — Traceability assessment completion.
+- M13 — Reconstructed links, as supplementary evidence.
+
+**Question 1.3:** Are there shared requirements or acceptance checks that cannot be evaluated because the shared input inventory does not define a corresponding check?
+
+- C1 — Shared input limitations.
+- M02 — Requirement status view, if adopted.
+- M01 — Acceptance outcomes, interpreted against the available shared AC inventory.
+
+**Question 1.4:** How do reviewers judge the quality of the specification and related artefacts?
+
+- M11 — J1–J4 ratings using the adopted rubric.
+- M14 — Initial reviewer agreement, if adopted.
+
+#### G2 — Change-impact handling
+
+**Question 2.1:** Which elements from the agreed change-impact reference set were identified in each workflow's original impact analysis?
+
+- M07 — Identified, omitted and unknown reference elements.
+- M07b — Proposed impact precision, if adopted.
+
+**Question 2.2:** Which relevant elements were omitted or discovered only after implementation or independent evaluation?
+
+- M07 — Impact omissions and recall.
+- M04 — Distinct defects.
+- M05 — Late-discovery share, if adopted.
+
+**Question 2.3:** How well do the change-related specifications, plans and implementation artefacts address the intended change?
+
+- M11 — Relevant J5–J6 ratings.
+- M01 — Change acceptance outcomes, only after the change inventory is approved and frozen.
+- M04 — Change-phase defects.
+
+**Question 2.4:** What evidence supports the conclusion that an identified impact was actually addressed?
+
+- M03 — Native implementation and verification traceability.
+- M13 — Reconstructed traceability, reported separately.
+- M01 — Evaluator-observed acceptance results.
+
+#### G3 — Implementation and verification outcomes
+
+**Question 3.1:** How many shared parent acceptance criteria pass, fail, are blocked or are not run in each comparable phase?
+
+- M01 — Acceptance outcomes.
+
+**Question 3.2:** Which baseline acceptance criteria regress after the change, persist as failures, become resolved or show no observed regression?
+
+- M06 — Paired baseline/change outcomes.
+- M01 — Parent AC results used to derive the paired classification.
+
+**Question 3.3:** What distinct defects are observed, and when and by whom are they discovered?
+
+- M04 — Defects.
+- M05 — Late-discovery share, if adopted.
+- M12 — Rework episodes, where linked to defects or inconsistencies.
+
+**Question 3.4:** How do reviewers judge the implementation and verification evidence?
+
+- M11 — Relevant J1–J6 ratings.
+- M14 — Reviewer agreement, if adopted.
+
+#### G4 — Human work and effort
+
+**Question 4.1:** What kinds and numbers of human intervention episodes occur in each workflow?
+
+- M08 — Human interventions and interaction counts.
+
+**Question 4.2:** How much active human effort is recorded for each workflow and phase?
+
+- M09 — Measured active effort.
+
+**Question 4.3:** What is the elapsed duration between the agreed workflow phase boundaries?
+
+- M10 — Elapsed duration.
+
+**Question 4.4:** How many documented rework episodes occur, and what defects or inconsistencies do they address?
+
+- M12 — Rework episodes.
+- M04 — Defects.
+
+#### G5 — Evidence and reproducibility
+
+**Question 5.1:** Is the evidence required to check each workflow's decisions and outcomes available and assessable?
+
+- M15 — Evidence completeness, if adopted.
+- Evidence checklist and evidence index.
+
+**Question 5.2:** Can the evaluated application state and workflow environment be identified and reconstructed from the records?
+
+- Snapshot and environment metadata in the proposed record tables.
+- M15 — Evidence completeness, if adopted.
+- M16 — Descriptive context only.
+
+**Question 5.3:** Are the evaluation judgements supported by preserved source evidence and independent review?
+
+- M11 — Initial and reconciled reviewer ratings.
+- M14 — Exact initial reviewer agreement, if adopted.
+- Evidence references and provenance fields.
+
+**Question 5.4:** Which missing records, deviations or limitations weaken the interpretation of the comparison?
+
+- M15 — Evidence completeness, if adopted.
+- `deviations.csv`.
+- C1 — Shared input limitations.
+- Explicit Not run, Unavailable, Unassessed and Not calculable states.
+
+### 1.5 GQM traceability table
+
+The following table provides a compact mapping from goals and questions to measures. It is a planning map, not evidence that the measures have already been collected.
+
+| Goal | Question | Main measures | Evidence |
+|---|---|---|---|
+| G1 | Q1.1–Q1.2 | M03, M13, optional M02 | Native artefacts, traceability records |
+| G1 | Q1.3 | C1, M01, optional M02 | Shared requirements and AC inventory |
+| G1 | Q1.4 | M11, optional M14 | Reviewer rating records |
+| G2 | Q2.1–Q2.2 | M07, optional M07b and M05 | Frozen impact reference set, original analysis, defect records |
+| G2 | Q2.3–Q2.4 | M11, M01, M03, M13, M04 | Change artefacts, acceptance observations, traceability records |
+| G3 | Q3.1 | M01 | Evaluator-observed AC/subcase results |
+| G3 | Q3.2 | M06 | Comparable baseline and change AC results |
+| G3 | Q3.3 | M04, optional M05, M12 | Defect and event records |
+| G3 | Q3.4 | M11, optional M14 | Reviewer ratings and rationale |
+| G4 | Q4.1 | M08 | Event and session records |
+| G4 | Q4.2 | M09 | Measured active-work intervals |
+| G4 | Q4.3 | M10 | Agreed phase boundary timestamps |
+| G4 | Q4.4 | M12, M04 | Rework events and linked defects |
+| G5 | Q5.1 | Optional M15 | Evidence checklist and index |
+| G5 | Q5.2 | Snapshot/environment metadata, optional M15/M16 | Commit hashes, environment and tool records |
+| G5 | Q5.3 | M11, optional M14 | Reviewer records and source references |
+| G5 | Q5.4 | Optional M15, deviations, C1 | Missing-data and deviation records |
+
+### 1.6 How GQM is applied
+
+1. Confirm the five research questions and their wording in `project.md` §3.
+2. Agree the G1–G5 goal statements and question wording with the team.
+3. Confirm which proposed measures are required, optional or excluded.
+4. Agree operational definitions, data sources, denominators and status rules in the shared protocol.
+5. Freeze the applicable shared requirements, ACs, required subcases and change reference set at the agreed points.
+6. Collect operator-reported records separately from evaluator-observed outcomes.
+7. Validate the records and preserve missing values and deviations.
+8. Analyse each question using its mapped evidence; do not create an overall score from unrelated measures.
+9. State when a question cannot be answered because the evidence or denominator is incomplete.
+
+GQM does not itself prescribe the status precedence, rubric anchors, test plan, reviewer procedure or data-collection schedule. Those must be agreed in the authoritative shared rubric and protocol.
+
+## 2. Shared input inventory and limits
+
+The baseline inventory documented in the shared project files is:
 
 - 13 requirements: 8 functional requirements (FR) and 5 non-functional requirements (NFR).
 - 19 parent acceptance criteria (ACs).
@@ -31,11 +225,32 @@ The inventory below reflects the stated frozen shared inputs at commit `258a6d0`
 - 4 NFR IDs (NFR-01 to NFR-04) have no linked AC.
 - 3 ACs (AC-08, AC-09 and AC-16) have no requirement ID.
 
-These are **input-inventory facts**, not performance results. Report the same shared-input limitation for both tracks. Do not penalise either workflow for an absent shared check unless the team adds and freezes one through the agreed change-control process. Recheck the inventory if the shared-input revision changes.
+These are input-inventory facts, not performance results. Report the same shared-input limitation for both tracks. Do not penalise either workflow for an absent shared check unless the team adds and freezes one through the agreed change-control process. Recheck the inventory if the shared-input revision changes.
 
-CR-01 is not part of the frozen `main` inventory described above unless and until it is approved and added to the shared project inputs. A branch draft is not an adopted change request.
+### CR-01 status and proposed change inventory
 
-## 2. Counting units
+CR-01 was merged into `main` in commit `1e39815` on 2026-11-02. However, the CR-01 document header still describes it as **Proposed — pending team approval**, while its freeze checklist appears checked. The shared acceptance-criteria document also still indicates that the CR-01 criteria are pending incorporation.
+
+Therefore, the merge must not be treated by itself as proof that CR-01 has been formally approved, released or adopted as the evaluation baseline. The team must resolve this status inconsistency and record the authoritative approval/freeze state.
+
+The proposed CR-01 scope describes three scientific operations:
+
+- square;
+- square root;
+- reciprocal.
+
+The proposal contains 11 change requirements (`CR-FR-01` to `CR-FR-11`) and 22 proposed change acceptance criteria (`CR-AC-01` to `CR-AC-22`). `CR-AC-21` requires rerunning the 19 baseline checks against the changed application. Those rerun checks are not 19 additional unique change acceptance criteria.
+
+Until CR-01 is formally approved and the shared acceptance criteria are updated:
+- keep the baseline denominator at 19 parent ACs;
+- label the 22 CR-01 criteria as proposed change ACs;
+- do not combine proposed change ACs with baseline ACs in one unexplained percentage;
+- do not treat CR-AC-21 as 19 additional unique change ACs;
+- do not calculate change-phase regressions as if the CR-01 inventory were already frozen.
+
+If CR-01 is approved, record the approval, release/freeze commit and shared-input revision. Use that frozen revision for both tracks.
+
+## 3. Counting units
 
 Do not use the word “count” without naming its unit.
 
@@ -56,7 +271,7 @@ Do not use the word “count” without naming its unit.
 | Impact element | One item in the frozen change-impact reference set or original analysis |
 | Active-work interval | One measured interval of active human work |
 
-## 3. Keep three status systems separate
+## 4. Keep three status systems separate
 
 | System | Values | What it describes |
 |---|---|---|
@@ -66,7 +281,7 @@ Do not use the word “count” without naming its unit.
 
 A missing evidence file is not automatically a test failure. An unassessed link is not confirmed absent. A rubric NR is not a zero. Do not substitute one status system for another.
 
-## 4. Operational definitions
+## 5. Operational definitions
 
 The following definitions are proposals for consistent collection. Where Amin's adopted protocol defines a term differently, use the adopted definition and update this catalogue.
 
@@ -83,7 +298,7 @@ The following definitions are proposals for consistent collection. Where Amin's 
 - **OD-11 Late discovery:** a distinct defect first identified during independent evaluation, using the agreed `discovered_by` categories. It is not an impact omission.
 - **OD-12 Impact reference element:** one requirement, interface, design dependency or other element included in the reviewer-agreed reference set for CR-01. Freeze granularity and membership before matching against the original impact analysis.
 
-## 5. Measure catalogue and proposed tiers
+## 6. Measure catalogue and proposed tiers
 
 The tiers are proposals for team discussion, not adopted priorities. “Direction” is contextual, not a universal ranking: a lower number is not always better.
 
@@ -120,9 +335,9 @@ The tiers are proposals for team discussion, not adopted priorities. “Directio
 | M16 | Tokens, generated files, LOC, native test count, commits, coverage | Describe size, activity or cost only; never use as a stand-alone quality score |
 | C1 | Shared input limits | Report the four NFRs without linked ACs and three ACs without requirement IDs once for both tracks |
 
-## 6. Detailed counting rules
+## 7. Detailed counting rules
 
-### 6.1 Traceability (M03 and M13)
+### 7.1 Traceability (M03 and M13)
 
 Stages: specification, design/decision, task, implementation and verification. Use the same shared stage vocabulary for both tracks, but preserve each track's native artefact names in the manifest. The stage mapping must be agreed before counting.
 
@@ -137,7 +352,7 @@ Stages: specification, design/decision, task, implementation and verification. U
 - When M03c is below 1, M03a/M03b are verified lower bounds; do not interpret unassessed items as absent.
 - Reconstructed links feed M13 only, never M03.
 
-### 6.2 Parent AC aggregation (M01)
+### 7.2 Parent AC aggregation (M01)
 
 Use only required subcases from the agreed test plan and primary observations. Proposed aggregation:
 
@@ -152,7 +367,7 @@ Let P, F, B and N be parent counts; D = P + F + B + N; C = number of parents wit
 
 Reruns remain in the data but do not replace the primary run. A conflicting valid rerun is reported as non-repeatable evidence. Excluded runs require a reason.
 
-### 6.3 Change outcomes (M06)
+### 7.3 Change outcomes (M06)
 
 For each baseline parent AC with comparable primary observations:
 
@@ -167,9 +382,9 @@ For each baseline parent AC with comparable primary observations:
 
 An AC introduced only for the change is a **change AC outcome**, not a regression. Count by parent AC and show subcase detail.
 
-### 6.4 Change impact (M07, proposed M07b)
+### 7.4 Change impact (M07, proposed M07b)
 
-Build the reference register from the released change request, requirements, design/interface dependencies and reviewed final artefacts. Agree granularity and reviewers, then freeze the register before matching it to the saved pre-coding analysis. Record whether reviewers saw the original analysis before building the reference set.
+Build the reference register from the approved and released change request, requirements, design/interface dependencies and reviewed final artefacts. Agree granularity and reviewers, then freeze the register before matching it to the saved pre-coding analysis. Record whether reviewers saw the original analysis before building the reference set.
 
 For reference-set size R, Identified I, Omitted O and Unknown U:
 
@@ -179,15 +394,17 @@ For reference-set size R, Identified I, Omitted O and Unknown U:
 - Proposed precision = I / (I + X), where X is `Extra` (listed in original analysis but not in reference set). If there are no listed elements, precision is Not calculable, not zero or 100%.
 - M05 counts defects discovered late; M07 counts impact elements. They are different units and must never be merged.
 
-### 6.5 Evidence completeness (M15)
+If CR-01 remains pending approval, do not present its reference set or proposed change ACs as a frozen evaluation denominator.
+
+### 7.5 Evidence completeness (M15)
 
 Agree the applicable checklist items before scoring. Separate operator-preserved evidence, baseline-freeze evidence, change-phase owner/evaluator items and the evaluator's own package. Do not count evaluator-only items against a track. Empty preparation checkboxes are not evidence gaps. Use Available, Confirmed absent, Unavailable and Unassessed consistently.
 
-### 6.6 Ratings and reviewer agreement (M11/M14)
+### 7.6 Ratings and reviewer agreement (M11/M14)
 
 Use Amin's adopted J1–J7 names, anchors and applicability rules unchanged. Preserve each reviewer's independent initial rating, any reconciled rating, unresolved state, rationale and uncertainty. Agent-generated ratings are provisional until human-reviewed. Do not sum or average ordinal ratings. M14 is descriptive exact agreement only; show counts and disagreements.
 
-## 7. Compatibility with BMAD and Spec Kit
+## 8. Compatibility with BMAD and Spec Kit
 
 The comparison unit is the **workflow run under its recorded conditions**, not an abstract tool in isolation. Both tracks are assessed against the same frozen shared requirements, ACs, agreed subcases, rubric anchors and evidence rules.
 
@@ -203,54 +420,15 @@ Do not require Varun and George to use identical internal artefacts, command seq
 
 This is a structured comparison of two tool–agent–operator workflows under recorded conditions. Because operator, agent/model, tool version, operating system, prompts and troubleshooting may differ, do not describe the result as a fully controlled causal experiment or claim that the tool alone caused an outcome.
 
-## 8. Reconciliation with Amin's proposed measures
-
-The following is a discussion map, not an adoption record.
-
-| Amin proposal | Catalogue mapping | Suggested treatment |
-|---|---|---|
-| Acceptance coverage/completion | M01 | Keep concept; confirm 19 parent AC inventory and required subcases |
-| Native implementation traceability | M03a | Clarify shared-ID mapping and distinct-ID counting |
-| Native verification traceability | M03b | Same |
-| Reconstructed traceability | M13 | Keep outside native counts |
-| Traceability assessment completion | M03c | Clarify assessment-complete definition |
-| Human interventions | M08 | Confirm event categories and interaction-count convention |
-| Rework | M12 | Clarify episode and defect/inconsistency linkage |
-| Active effort | M09 | Same measured-time rule for both operators |
-| Elapsed duration | M10 | Agree phase boundary events |
-| Defects | M04 | Agree distinct-defect and discovery-source rules |
-| Regressions | M06 | Agree paired outcome categories |
-| Change-impact omissions | M07 | Agree reference-set procedure and reviewers |
-| Reviewer agreement | M14 | Descriptive exact agreement only |
-| J1–J7 anchors | M11 | Use adopted anchors without modification |
-
-## 9. Questions for team decision
-
-1. Are the proposed Tier 1/Tier 2/Tier 3 groupings useful?
-2. Should CHECKPOINT be a separate event type from interventions?
-3. Should M02, M05 and M07b remain optional until agreed?
-4. Who will update Amin's templates/rubric inventory for all 19 parent ACs?
-5. Who are the two independent reviewers, and what prior exposure must they declare?
-6. Confirm RQ numbering against `project.md` §3.
-7. Report C1 as a shared input limitation?
-8. Who declares and records each freeze?
-9. Which subcases are required for each parent AC, including any proposed additional cases?
-10. Is one traceability record per shared requirement × stage × origin sufficient, with multiple artefacts listed in evidence references?
-11. Will both operators record measured start/end and active minutes for the change phase?
-12. Should raw operator reports be retained alongside evaluator-observed AC/subcase records?
-
-No answer is assumed. Record decisions in the authoritative shared documents or experiment log.
-
-## 10. Validity and reporting cautions
+## 9. Validity and reporting cautions
 
 - One workflow run per track is not statistical replication. Requirements and ACs are nested observations, not independent workflow replications.
 - Confounders include operator experience, agent/model, tool version, OS, prompts, environment and troubleshooting.
-- Preserve chronology: baseline freeze dates, commit snapshots, rubric/protocol adoption date, CR release and evaluator exposure.
+- Preserve chronology: baseline freeze dates, commit snapshots, rubric/protocol adoption date, CR approval/release and evaluator exposure.
 - If BMAD and Spec Kit ran on different operating systems, report this as a confounder; do not imply environment equivalence.
 - Missing data remain explicit: Unassessed, Unavailable, Not run or Not calculable as appropriate.
 - No composite score, overall winner chart, ranking by LOC/test/file/commit counts or significance test on two workflow runs.
 - Do not replace a primary Fail with a later rerun Pass.
-
-## 11. Guidance for the evaluation skill
-
-If the team builds an evaluation skill, it should read the **adopted** rubric and protocol and the agreed shared inventory. It may draft mappings and populate proposed record tables, but humans verify mappings, statuses, evidence and ratings. The skill must preserve source references and raw operator wording. It must not infer missing evidence, convert missing records to Pass, or treat its own ratings as human-reviewed.
+- Do not treat a GitHub merge as proof that a proposal has been approved or adopted.
+- Do not report proposed measures as collected results.
+- Conclusions must be limited to the two observed workflows and the evidence actually available.
