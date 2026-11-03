@@ -1,6 +1,8 @@
 # Proposed Measurement Rules and Evaluation Rubric
 
-**Date:** 2026-10-25. **Revision:** draft-3. **Status:** Amin's proposal for joint review with Thanh; not adopted or scored.
+**Created:** 2026-10-25. **Updated:** 2026-11-03. **Revision:** draft-5. **Status:** Amin's proposal for joint review with Thanh; not adopted or scored.
+
+Prepared against repository commit `1e39815`: the shared baseline declares a 2026-10-23 freeze with 13 requirement IDs and 19 parent ACs. Shared protocol/rubric adoption and both evaluation snapshots remain to be recorded. Metric IDs refer to Thanh's [catalogue](../comparison-frameworks/metric-catalogue.md), draft-5; source IDs M1–M6 in the reference register are a separate namespace. The anchors J1–J7 below are retained from draft-3.
 
 The measures and anchors below are local proposals. [Kitchenham et al., §4.2](https://www.cin.ufpe.br/~in1002/leituras/preliminaryGuidelinesEmpiricalResearchSE.pdf) supports defining measures and checking collection quality; it does not prescribe this scale. Adopt and version the rules before scoring either track.
 
@@ -20,7 +22,7 @@ An unmet environmental prerequisite or unavailable display is Blocked when it ac
 
 ## 2. Counting and aggregation
 
-For each track, snapshot, and phase, let `P`, `F`, `B`, and `N` count Pass, Fail, Blocked, and Not run parent acceptance criteria. Let `D = P + F + B + N`, the total frozen applicable criteria. The current `main` draft contains 16 baseline criteria, but it is not frozen: derive `D` from the adopted input revision before scoring. There are no baseline exclusions in this proposal. Missing or blocked checks stay in `D`.
+For each track, snapshot, and phase, let `P`, `F`, `B`, and `N` count Pass, Fail, Blocked, and Not run parent acceptance criteria. Let `D = P + F + B + N`, the total frozen applicable criteria. The referenced frozen baseline has `D = 19`; recheck the adopted input revision before scoring. There are no baseline exclusions in this proposal. Missing or blocked checks stay in `D`. Multiple required subcases remain within a parent and never increase this denominator.
 
 - **Verified pass coverage:** `P / D`. Report it as a fraction and percentage alongside `F`, `B`, and `N`. It is coverage of the frozen checks, not proof of all requirements.
 - **Execution completion:** `C / D`, where `C` counts parents for which every required subcase has a Pass or Fail observation. A failure with unexecuted sibling subcases is decisive but incomplete.
@@ -44,7 +46,7 @@ Report any approved change-phase exclusions with reasons and the excluded count.
 | Native requirement-to-implementation traceability | Number of frozen requirement IDs with a verified native explicit link to relevant implementation evidence, divided by all frozen phase requirement IDs | Native artefacts and content verification | Baseline denominator is 13; missing/unassessed entries stay visible. Appropriate evidence can be source, configuration, build instructions, or other required documentation; do not require a code target for a documentation-only NFR |
 | Native requirement-to-verification traceability | Number of frozen requirement IDs with a verified native explicit link to an appropriate test/manual check, divided by the same requirement denominator | Native artefacts, actual test/check content | A linked test need not pass; quality and execution are separate. Label manual checks |
 | Reconstructed traceability | Separate counts of evaluator-inferred implementation and verification links | Reviewer-created mapping with rationale | Useful for analysis, but not credited as native links |
-| Traceability assessment completion | Requirement IDs assessed for each link type / all frozen phase requirement IDs | Evidence availability and searched scope | A native-link fraction with incomplete assessment is only a verified lower bound, not established absence |
+| Traceability assessment completion | Distinct requirement IDs assessed per stage / all frozen phase requirement IDs; assessment is complete for Available evidence judged Y/N or absence Confirmed absent within a stated search scope | Evidence availability, verification and searched scope | Unavailable, Unassessed and Available-but-pending remain incomplete. A native-link fraction with incomplete assessment is a verified lower bound, not established absence |
 | Human interventions | Count distinct human clarification, correction, manual edit, retry, or configuration/troubleshooting episodes, by category and phase | Timestamped interaction/event log | One continuous episode for the same purpose counts once; link multiple messages. Routine workflow prompts are separately counted, not automatic interventions. More interventions may mean useful oversight |
 | Rework | Count episodes correcting previously produced artefacts/code/tests because of defects, omissions, or inconsistency | Event log with before/after evidence | Excludes intended CR scope additions and normal first-time task progression; fewer commits does not imply less rework |
 | Active effort | Sum recorded person-minutes in disjoint active work intervals, by operator/reviewer and phase | Session start/end, pauses, activity, provenance | Include prompting, review, editing, and attended testing. Separate setup/training and evaluation from implementation. Overlapping categories cannot double-count one person's time |
@@ -53,6 +55,22 @@ Report any approved change-phase exclusions with reasons and the excluded count.
 | Regressions | Previously passing baseline checks that fail at the change snapshot under comparable conditions | Paired baseline/change observations | Count at parent AC level and list subcases. Unobserved baseline behaviour gives unknown regression status |
 | Change-impact omissions | Reviewer-agreed required affected elements absent from the initial saved pre-coding analysis | Original analysis, released CR, reviewed diffs/specs/tests, affected-element register | Agree on categories and granularity before matching the original analysis; include design/interface elements where relevant. Count within categories, without duplicate elements; do not compare raw file totals across different architectures. If either the reference set or original analysis is unavailable, omission counts are Not calculable |
 | Reviewer agreement | Equal initial numeric ratings / items independently numerically rated by both reviewers | Preserved independent rating sheets | Report numerator/denominator, NR/N/A counts, differences and reconciliation; agreement is not correctness |
+
+Use these definitions with the following catalogue IDs, without changing Thanh's counting units or adopting optional tiers:
+
+| Existing measure / proposed addition | Catalogue mapping and collection rule |
+|---|---|
+| Acceptance coverage/completion; native/reconstructed traceability | M01; M03a/M03b/M03c and supportive M13, respectively |
+| Defects; regressions; intervention/rework episodes; active/elapsed effort | M04; M06; M08/M12; M09/M10, respectively |
+| Change-impact omissions and recall | M07: retain reference size R, Identified I, Omitted O and Unknown U, with R = I + O + U. Recall = I/R; with U > 0 it is a lower bound. R = 0 or unavailable original analysis means Not calculable. An available empty analysis yields 0/R. |
+| J1–J7 ratings; reviewer agreement | M11; supportive M14, respectively |
+| Requirement status view | Supportive M02, derived only from adopted shared requirement-to-AC associations and M01; record Missed, Unverified, Verified on evaluated checks, or Not covered by shared checks under agreed derivation rules (D-01). It cannot establish complete requirement satisfaction. |
+| Late-discovery share | Supportive M05: distinct defects first found by independent evaluation / all distinct phase defects. Record discovery source separately from discovery phase; if the defect set/source history is insufficient, retain counts and report the share Not calculable. No defects gives a zero denominator, not a zero share. |
+| Change-impact precision | Supportive M07b, only if Extra is adopted: I/(I+X), where X is analysis-only Extra elements outside the frozen reference set. If no elements were listed or the analysis/set is unavailable, Not calculable. Extra items need not represent poor judgement. |
+| Evidence completeness | Supportive M15, using the [checklist](evidence-checklist.md#4-missing-evidence-applicability-and-completeness): Available / (Available + Confirmed absent + Unavailable) over agreed applicable obligations; show Unassessed and separate operator/owner/evaluator sets. |
+| Tokens, files, LOC, native tests, commits and coverage | M16, context only with recorded collection scope/method; never a quality score or proxy for effort. |
+
+Metric tiers and optional derivations require the [protocol decisions](protocol-recommendations.md#team-decision-register--recommendations-not-adoption). A metric without applicable, sufficient observations is not calculated from preparation placeholders. The [evidence map](evidence-checklist.md#3-metric-to-record-crosswalk) identifies collection items and recording locations for every metric.
 
 Numeric/UI clauses without requirement IDs are retained in a separate scope audit. They are not silently added to the 13-ID denominator. If later inputs create new requirement IDs or checks, record the new frozen inventories and denominators before evaluating them.
 
@@ -75,6 +93,20 @@ For the anchors, a **material gap** is an evidenced omission, ambiguity, contrad
 | J7 Evidence and reproducibility | Inspected submission lacks an identifiable snapshot or usable build/test procedure | Submission is identifiable, but at least one material evidence/reproduction gap prevents following a result | Required records support the reported findings and reproduction steps, with only minor documentation gaps | Applicable records are complete and a documented independent reproduction attempt confirms the reported build/test outcomes; failures and limitations are retained |
 
 Baseline uses J1–J4 and J7; J5–J6 are N/A because change has not been released/evaluated. This is the phase applicability rule, not a score. Change uses all seven. Do not score a missing chronology as J5=0; use NR unless absence before coding is established. Different filenames or the absence of a separate HLD/LLD are not deficiencies by themselves: assess equivalent native stages. A demonstrably missing capability is still a finding; do not credit a reconstructed link as native merely to avoid a low J2 rating.
+
+### Evidence needed to justify M11 judgements
+
+| Criterion | Minimum review scope and evidence | GQM question |
+|---|---|---|
+| J1 | Native specifications and shared-input/clarification references; cite concrete clarity or consistency findings | RQ1 |
+| J2 | Verified native shared-ID/stage links and search scope, with reconstructed links excluded from native credit | RQ1 |
+| J3 | Shared AC/subcase-to-verification mapping and content at suitable engine/GUI/build/document layers; test counts alone are insufficient | RQ1 |
+| J4 | Decisions and suitable evidence for all five NFRs; identify the four NFRs without explicit shared AC links and qualitative verification limits | RQ1 |
+| J5 | Saved original impact analysis, chronology and frozen affected-element reference set; missing chronology is NR rather than proof of no analysis | RQ2 |
+| J6 | Released change revision, baseline/change native artefacts, diffs and verification evidence, including still-missing required work | RQ2 |
+| J7 | Identifiable snapshots, environment, commands, retained outcomes and evidence index; score 3 additionally requires independent reproduction confirming reported outcomes | RQ5 |
+
+Each rating record includes snapshot/phase, evaluated scope, evidence IDs, criterion-specific anchor, rationale, uncertainty, reviewer and date. Missing access gives NR, while a documented inspected deficiency can support 0. Do not substitute document volume, commit counts, acceptance passes or M15 completeness for the relevant anchor. Workflow transparency and maintainability may inform the existing J1/J4/J7 evidence where relevant to shared scope; the example dimensions in the task brief do not add new criteria.
 
 For J2–J4 and J7, record the concrete evaluated scope and gaps beside the rating. J3 measures verification representation, not successful execution, and does not require new tests outside the agreed scope. J7=3 requires a documented independent reproduction attempt confirming reported outcomes, including any reported failures; successful functionality is measured separately. Without such an attempt, J7 is at most 2 if the record otherwise supports that anchor. A setup blockage or conflicting reproduction is recorded as a limitation and assessed against the material-gap rule. Preserve all Pass/Fail results even where a high documentation rating is justified.
 
