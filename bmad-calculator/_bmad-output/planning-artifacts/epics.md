@@ -13,7 +13,7 @@ inputDocuments:
 
 ## Overview
 
-Decomposes the PRD (FR-1…FR-10, NFR-1…NFR-5) and Architecture spine (AD-1…AD-10) of the baseline desktop calculator into epics and stories. Each story cites the shared `BASE-FR/NFR/AC` IDs it satisfies. No scientific features are included; CR-01 has not been consulted.
+Decomposes the PRD (FR-1…FR-10, NFR-1…NFR-5) and Architecture spine (AD-1…AD-10) of the baseline desktop calculator into epics and stories. Each story cites the shared `BASE-FR/NFR/AC` IDs it satisfies. Epic 4 (added 2026-11-03) covers CR-01 scientific operations; Epics 1 to 3 are the baseline.
 
 ## Requirements Inventory
 
@@ -65,6 +65,11 @@ No UX document (step skipped; layout fixed by PRD D-01 and AD-9).
 | NFR-3 | 2.1, 2.2 |
 | NFR-4 | 3.2 |
 | NFR-5 | 3.2 |
+| FR-11 Square (CR-01) | 4.1 |
+| FR-12 Reciprocal (CR-01) | 4.2 |
+| FR-13 Square root (CR-01) | 4.3 |
+| FR-14 Unary input policy (CR-01) | 4.1 |
+| FR-15 Recovery and regression (CR-01) | 4.2, 4.3, 4.4 |
 
 ## Epic List
 
@@ -254,3 +259,97 @@ So that the baseline can be frozen with evidence.
 
 **And** a requirement-to-story-to-test traceability table (FR/NFR → story → test method) is saved in `evidence/` (SM-2)
 **And** unresolved defects and untested criteria (e.g. BASE-AC-01 offline, if only manual) are listed explicitly.
+
+## Epic 4: Scientific operations (CR-01)
+
+*Added 2026-11-03 by the correct-course proposal; split by behaviour (owner approved 2026-11-03). Source: `shared/change-request-CR-01.md` v0.2, `shared/acceptance-criteria.md` §3, LOG-17..21.*
+
+A user can square, take the square root of, or take the reciprocal of the First number, with the same error handling and recovery as the baseline.
+
+### Story 4.1: Unary operation support and Square
+
+As a user,
+I want to square the First number without entering a second one,
+So that I can use a one-number operation in the same window.
+
+**Acceptance Criteria:**
+
+**Given** the window is open
+**When** I look at the operation row
+**Then** a `x²` control is visible and identifiable (CR-AC-01, CR-FR-01)
+
+**Given** `x²` selected and First number `-3`, `1.2` or `0`, Second number empty
+**When** I Calculate (button or Enter)
+**Then** the result is `9`, `1.44` or `0` (CR-AC-02..04, CR-FR-02..04)
+
+**Given** a unary operation selected
+**When** First number is valid and Second number is empty, holds another value, or holds malformed text
+**Then** the result depends only on First number (CR-AC-16, 17; LOG-17)
+
+**Given** a unary operation selected
+**When** First number is empty or malformed
+**Then** I see "Enter both numbers" or "Invalid number" and no result (CR-AC-14, 15; LOG-18, LOG-21)
+
+**And** the baseline operations and validation are unchanged (CR-FR-11).
+
+### Story 4.2: Reciprocal
+
+As a user,
+I want the reciprocal of a number,
+So that I get `1/x` with the same rounding as division.
+
+**Acceptance Criteria:**
+
+**Given** `1/x` selected and First number `4`, `3` or `-4`
+**When** I Calculate
+**Then** the result is `0.25`, `0.3333333333` or `-0.25` (CR-AC-09..11, CR-FR-07)
+
+**Given** `1/x` selected and First number `0`, `0.0` or `-0.0`
+**When** I Calculate
+**Then** I see "Cannot divide by zero" and no result (CR-AC-12, 13, CR-FR-08)
+
+**Given** that error is shown
+**When** I correct First number and Calculate
+**Then** the correct result appears and the error is gone (CR-AC-19, CR-FR-10).
+
+### Story 4.3: Square root
+
+As a user,
+I want the square root of a non-negative number,
+So that I get a deterministic 10-decimal result.
+
+**Acceptance Criteria:**
+
+**Given** `√x` selected and First number `9`, `2` or `0`
+**When** I Calculate
+**Then** the result is `3`, `1.4142135624` or `0` (CR-AC-05..07, CR-FR-05; algorithm per architecture CR-01 rule)
+
+**Given** `√x` selected and First number `-1`
+**When** I Calculate
+**Then** I see "Cannot take square root of a negative number" and no result (CR-AC-08, CR-FR-06)
+
+**Given** that error is shown
+**When** I correct First number and Calculate
+**Then** the correct result appears (CR-AC-18, CR-FR-10).
+
+### Story 4.4: CR-01 regression and acceptance evidence
+
+As a team member,
+I want the baseline checks and CR-01 checks executed and recorded individually,
+So that the change can be evaluated against the baseline.
+
+**Acceptance Criteria:**
+
+**Given** the changed application
+**When** I run Clear after a unary calculation
+**Then** the calculator returns to the baseline initial state (CR-AC-20)
+
+**Given** the changed application
+**When** I run all `BASE-AC-01..19` checks
+**Then** each result is recorded individually as Pass, Fail, Blocked or Not run (CR-AC-21)
+
+**Given** a clean checkout
+**When** I follow the documented build and test instructions
+**Then** it builds and the tests run, with prerequisites, outcomes and failures documented (CR-AC-22)
+
+**And** `evidence/` holds a CR-01 results and traceability file, missed impacts, defects and rework.

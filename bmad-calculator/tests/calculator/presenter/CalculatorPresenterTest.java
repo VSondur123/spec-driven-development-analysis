@@ -308,4 +308,108 @@ class CalculatorPresenterTest {
         assertEquals(ErrorKind.NO_OPERATION.message(), fresh.state().error());
         assertEquals("", fresh.state().result());
     }
+
+    @ParameterizedTest(name = "square of {0} with second [{1}] = {2}")
+    @CsvSource(value = {"-3, '', 9", "1.2, '', 1.44", "0, '', 0", "4, 7, 16", "4, abc, 16"})
+    void crAc02to04_16_17_square_through_the_presenter(String a, String b, String expected) {
+        presenter.onOperationSelected(Operation.SQUARE, a, b);
+        ViewState state = presenter.onCalculate(a, b);
+        assertEquals(expected, state.result());
+        assertEquals("", state.error());
+        assertEquals(Operation.SQUARE, state.selected());
+    }
+
+    @Test
+    void crAc14_15_square_errors_show_no_result_and_recover() {
+        presenter.onOperationSelected(Operation.SQUARE, "", "5");
+        ViewState empty = presenter.onCalculate("", "5");
+        assertEquals(ErrorKind.EMPTY_OPERAND.message(), empty.error());
+        assertEquals("", empty.result());
+        ViewState bad = presenter.onCalculate("abc", "");
+        assertEquals(ErrorKind.INVALID_NUMBER.message(), bad.error());
+        ViewState fixed = presenter.onCalculate("3", "");
+        assertEquals("9", fixed.result());
+        assertEquals("", fixed.error());
+    }
+
+    @Test
+    void selectingSquareKeepsAnErrorShownUntilCalculate() {
+        presenter.onOperationSelected(Operation.ADD, "7", "");
+        presenter.onCalculate("7", "");
+        ViewState afterSelect = presenter.onOperationSelected(Operation.SQUARE, "7", "");
+        assertEquals(ErrorKind.EMPTY_OPERAND.message(), afterSelect.error());
+        assertEquals("", afterSelect.result());
+        assertEquals("49", presenter.onCalculate("7", "").result());
+    }
+
+    @Test
+    void selectingSquareKeepsAnythingShownAndClearResets() {
+        presenter.onOperationSelected(Operation.ADD, "7", "5");
+        presenter.onCalculate("7", "5");
+        ViewState afterSelect = presenter.onOperationSelected(Operation.SQUARE, "7", "5");
+        assertEquals("12", afterSelect.result());
+        assertEquals(Operation.SQUARE, afterSelect.selected());
+        assertEquals(ViewState.initial(), presenter.onClear());
+    }
+
+    @ParameterizedTest(name = "reciprocal of {0} = {1}")
+    @CsvSource({"4, 0.25", "3, 0.3333333333", "-4, -0.25"})
+    void crAc09to11_reciprocal_through_the_presenter(String a, String expected) {
+        presenter.onOperationSelected(Operation.RECIPROCAL, a, "");
+        ViewState state = presenter.onCalculate(a, "");
+        assertEquals(expected, state.result());
+        assertEquals("", state.error());
+    }
+
+    @ParameterizedTest(name = "reciprocal of zero [{0}] then recovery")
+    @CsvSource({"0", "0.0", "-0.0"})
+    void crAc12_13_19_reciprocal_of_zero_shows_the_error_and_recovers(String zero) {
+        presenter.onOperationSelected(Operation.RECIPROCAL, zero, "");
+        ViewState error = presenter.onCalculate(zero, "");
+        assertEquals(ErrorKind.DIVIDE_BY_ZERO.message(), error.error());
+        assertEquals("", error.result());
+        ViewState fixed = presenter.onCalculate("4", "");
+        assertEquals("0.25", fixed.result());
+        assertEquals("", fixed.error());
+    }
+
+    @Test
+    void failedReciprocalClearsEarlierResult() {
+        presenter.onOperationSelected(Operation.RECIPROCAL, "4", "");
+        presenter.onCalculate("4", "");
+        ViewState state = presenter.onCalculate("0", "");
+        assertEquals("", state.result());
+        assertEquals(ErrorKind.DIVIDE_BY_ZERO.message(), state.error());
+    }
+
+    @ParameterizedTest(name = "square root of {0} = {1}")
+    @CsvSource({"9, 3", "2, 1.4142135624", "0, 0"})
+    void crAc05to07_square_root_through_the_presenter(String a, String expected) {
+        presenter.onOperationSelected(Operation.SQRT, a, "");
+        ViewState state = presenter.onCalculate(a, "");
+        assertEquals(expected, state.result());
+        assertEquals("", state.error());
+    }
+
+    @Test
+    void crAc08_18_negative_square_root_shows_the_error_clears_the_result_and_recovers() {
+        presenter.onOperationSelected(Operation.SQRT, "9", "");
+        assertEquals("3", presenter.onCalculate("9", "").result());
+        ViewState error = presenter.onCalculate("-1", "");
+        assertEquals(ErrorKind.NEGATIVE_SQRT.message(), error.error());
+        assertEquals("", error.result());
+        ViewState fixed = presenter.onCalculate("9", "");
+        assertEquals("3", fixed.result());
+        assertEquals("", fixed.error());
+    }
+
+    @ParameterizedTest(name = "clear after {2} with A=[{0}] B=[{1}]")
+    @CsvSource({"-3, '', SQUARE", "4, '', RECIPROCAL", "9, '', SQRT", "-1, '', SQRT", "0, '', RECIPROCAL",
+            "4, 7, SQUARE"})
+    void crAc20_clear_after_a_unary_calculation_returns_to_the_initial_state(String a, String b, Operation op) {
+        presenter.onOperationSelected(op, a, b);
+        presenter.onCalculate(a, b);
+        assertEquals(ViewState.initial(), presenter.onClear());
+        assertEquals(ViewState.initial(), presenter.state());
+    }
 }

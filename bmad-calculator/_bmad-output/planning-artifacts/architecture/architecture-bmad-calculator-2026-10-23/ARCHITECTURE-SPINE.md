@@ -7,13 +7,15 @@ paradigm: 'Layered: functional core + MVP-style presenter + passive Swing view'
 scope: 'Single-module Java Swing calculator, baseline (pre-change) behaviour only'
 status: final
 created: '2026-10-23'
-updated: '2026-10-23'
+updated: '2026-11-03'
 binds: [FR-1, FR-2, FR-3, FR-4, FR-5, FR-6, FR-7, FR-8, FR-9, FR-10, NFR-1, NFR-2, NFR-3, NFR-4, NFR-5]
 sources: ['_bmad-output/planning-artifacts/prds/prd-bmad-calculator-2026-10-23/prd.md']
 companions: ['_bmad-output/planning-artifacts/prds/prd-bmad-calculator-2026-10-23/addendum.md']
 ---
 
 # Architecture Spine — Baseline Desktop Calculator
+
+> **Amended 2026-11-03 (CR-01):** AD-4, AD-5, AD-7, AD-9 and the capability map updated by `sprint-change-proposal-2026-11-03.md`. Baseline text is in git history (commit `740c78d`).
 
 ## Design Paradigm
 
@@ -53,12 +55,12 @@ graph LR
 ### AD-4 — Single display and message source
 - **Binds:** FR-7, FR-8, FR-9
 - **Prevents:** divergent formatting or error wording between layers.
-- **Rule:** Result text is produced only by `ResultFormatter.format(BigDecimal)`: `stripTrailingZeros().toPlainString()`, zero normalised to `"0"`. Division is `divide(b, 10, RoundingMode.HALF_UP)` before formatting. Error text comes only from `ErrorKind.message()`: `EMPTY_OPERAND` → "Enter both numbers", `NO_OPERATION` → "Select an operation", `INVALID_NUMBER` → "Invalid number", `DIVIDE_BY_ZERO` → "Cannot divide by zero". No other user-visible error strings.
+- **Rule:** Result text is produced only by `ResultFormatter.format(BigDecimal)`: `stripTrailingZeros().toPlainString()`, zero normalised to `"0"`. Division is `divide(b, 10, RoundingMode.HALF_UP)` before formatting. Error text comes only from `ErrorKind.message()`: `EMPTY_OPERAND` → "Enter both numbers", `NO_OPERATION` → "Select an operation", `INVALID_NUMBER` → "Invalid number", `DIVIDE_BY_ZERO` → "Cannot divide by zero", `NEGATIVE_SQRT` → "Cannot take square root of a negative number" (CR-01). Reciprocal of zero reuses `DIVIDE_BY_ZERO`. No other user-visible error strings.
 
 ### AD-5 — Validation order and grammar
 - **Binds:** FR-7, FR-9, FR-10
 - **Prevents:** different errors for the same input in different code paths.
-- **Rule:** Checks run in this order and stop at the first failure: (1) either operand blank after `strip()` → `EMPTY_OPERAND`; (2) `op == null` → `NO_OPERATION`; (3) operand not matching `-?\d+(\.\d+)?` → `INVALID_NUMBER`; (4) divisor compares equal to zero → `DIVIDE_BY_ZERO`. Operands are trimmed before matching. The regex lives in one constant in `core`.
+- **Rule:** Checks run in this order and stop at the first failure: (1) a required operand is blank after `strip()` → `EMPTY_OPERAND` (required: A for unary operations, A and B for binary; B is ignored for unary operations, even if malformed); (2) `op == null` → `NO_OPERATION`; (3) a required operand not matching `-?\d+(\.\d+)?` → `INVALID_NUMBER`; (4) domain error: divisor or reciprocal input equal to zero → `DIVIDE_BY_ZERO`; square-root input negative → `NEGATIVE_SQRT`. Operands are trimmed before matching. The regex lives in one constant in `core`.
 
 ### AD-6 — Presenter owns all state
 - **Binds:** FR-3, FR-5, FR-6, FR-10
@@ -68,7 +70,7 @@ graph LR
 ### AD-7 — Operation is the extension point
 - **Binds:** FR-3, FR-4, NFR-4
 - **Prevents:** scattered `switch` statements per operation.
-- **Rule:** `Operation` is an enum of symbol, label and a `BinaryOperator<BigDecimal>`-style function; adding an operation touches only the enum plus the view's button list. The divide-by-zero check is expressed in the core evaluation path, not in the view.
+- **Rule:** `Operation` is an enum of symbol, label, arity (BINARY or UNARY) and a function over `BigDecimal` (B is ignored for unary); adding an operation touches the enum and the view's button list. *Amended for CR-01:* adding a unary operation also changes `Calculator.evaluate` (arity-aware validation and domain checks), so the baseline claim of enum-plus-buttons only did not hold. The divide-by-zero check is expressed in the core evaluation path, not in the view.
 
 ### AD-8 — Threading
 - **Binds:** FR-2, NFR-2, NFR-3
@@ -78,7 +80,7 @@ graph LR
 ### AD-9 — Identifiable controls
 - **Binds:** FR-1, FR-3, FR-4, FR-6, FR-7
 - **Prevents:** tests and evidence that cannot reliably find controls.
-- **Rule:** Every control has a visible label/text and a stable `setName(...)`: `operandA`, `operandB`, `op-add`, `op-subtract`, `op-multiply`, `op-divide`, `calculate`, `clear`, `result`, `error`. Enter in either operand field triggers Calculate (D-02). Errors render inline in the `error` label; no modal dialogs.
+- **Rule:** Every control has a visible label/text and a stable `setName(...)`: `operandA`, `operandB`, `op-add`, `op-subtract`, `op-multiply`, `op-divide`, `op-square`, `op-sqrt`, `op-reciprocal`, `calculate`, `clear`, `result`, `error`. Enter in either operand field triggers Calculate (D-02). Errors render inline in the `error` label; no modal dialogs.
 
 ### AD-10 — Testability and build
 - **Binds:** NFR-4, NFR-5
@@ -145,10 +147,16 @@ sequenceDiagram
 | FR-8 Display Policy | `core.ResultFormatter` | AD-3, AD-4 |
 | FR-9 Division by zero | `core.Calculator` | AD-4, AD-5 |
 | FR-10 Error recovery | presenter | AD-6 |
+| FR-11 to FR-14 Unary operations (CR-01) | `core.Operation`, `core.Calculator`, `ui.CalculatorFrame` | AD-4, AD-5, AD-7, AD-9 |
+| FR-15 Recovery and regression (CR-01) | presenter, all | AD-6 |
 | NFR-2 Responsiveness | all | AD-8 |
 | NFR-3 No crash | `core.Calculator` | AD-2 |
 | NFR-4 Separation | all | AD-1, AD-7 |
 | NFR-5 Reproducible build | `pom.xml`, README | AD-10 |
+
+### CR-01 square-root rule (added 2026-11-03)
+
+Square root uses exact integers, no `double` and no `BigDecimal.sqrt(MathContext)`: `r = floor(a × 10^20).sqrt()`; add one to `r` when `a × 10^20 ≥ r² + r + 1/4` (exact comparison); the result is `r × 10^-10`, formatted by `ResultFormatter`.
 
 ## Deferred
 
