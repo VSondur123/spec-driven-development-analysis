@@ -195,3 +195,55 @@ Result: `/speckit-analyze` run, read-only, nothing written. 10 findings: 1 criti
 > Yes, apply the fixes for I1, I2 and I3 (in I3, return a failure instead of throwing). For I4, I5, G1, G2: note them in the T048 addendum, no edits now. C1: keep my decision, no change. Log the analyze run and the edits (prompt log and decisions log, as before). Show me what you changed, then wait. Don't start implement until I say.
 
 Result: `tasks.md` edited for I1, I2, I3 (DL-51). I4, I5, G1, G2 left unedited for the T048 addendum. C1 unchanged. No code, no implement, no commit.
+
+## CR-01 implementation, 2026-11-05
+
+P33 to P45 were written after the fact from the session transcript (reconstructed, not logged live). Model `claude-sonnet-5-5`. Prompts are quoted or closely summarised.
+
+## P33 — Approve implementation
+
+> Approved: run /speckit-implement
+
+Result: AP-04 recorded; `/speckit-implement` run; T001 to T021 done; stopped at T022 (owner).
+
+## P34 — Check the screenshots (T022)
+
+> i saved the screenshots. check them and see if they are fine / check cr01-05-enter-sqrt-9.png i just added. is that enough?
+
+Result: four screenshots matched; the Enter-key evidence was missing, then screenshot cr01-05 accepted together with the owner's report (DL-54, DL-55). T022 closed.
+
+## P35 — US2 and the open calculator window
+
+> (agent continued) / i closed the calculator window
+
+Result: US2 code done; one slip of mine (a wrong US1 test) and a failed clean build caused by the open window (DL-56); jar rebuilt.
+
+## P36 — Check screenshots 06 to 13; fix the truncated message
+
+> check the new screenshots. also, no popups. when you check them, reply to me if its all good before you move / fix it now
+
+Result: seven of eight fine; the negative-root message was cut off. Owner chose to fix it now; defect D-CR-01 fixed with a test first (DL-57).
+
+## P37 — Re-check, wrong file, right file
+
+> check screenshot cr01-14-sqrt-negative-fixed.png / im sorry check it again
+
+Result: the first file was a capture of the chat window and was not used; the second showed the full message (DL-58).
+
+## P38 — US3 screenshots
+
+> added the new screenshots
+
+Result: cr01-15 to cr01-17 matched; `CR-AC-18` to `20` recorded.
+
+## P39 — Baseline checks in the real window
+
+> BASE-AC-19 works and all BASE-AC-11 cases work. check the screenshots too. is there anything else? / i checked it with network off and it works. whats next?
+
+Result: screenshots cr01-18 to cr01-21 matched; `BASE-AC-01` recorded from the owner's statement and `wifi-off.png`; commit proposal shown.
+
+## P40 — Commit
+
+> yes
+
+Result: Sync Impact Report comment removed; commit 411ab32 (AP-05, DL-61, DL-62); clean-clone build and launch; BASE-AC-15, CR-AC-21, CR-AC-22 Pass. T046 to T049 done afterwards; those edits are uncommitted.

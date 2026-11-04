@@ -1,0 +1,40 @@
+CR-01 code review (T046), 2026-11-05, run on commit 411ab32 plus uncommitted evidence edits (no source change since the commit)
+
+1. Dialog classes (JOptionPane, JDialog, JFileChooser, showMessageDialog) in src/main:
+   none
+
+2. Network, file or persistence classes in src/main:
+   none
+
+3. GUI imports in calculator.core:
+   none
+
+4. double, float or Math.sqrt in the calculation code:
+src/main/java/calculator/core/Calculator.java:84:     * scaled back: only the final integer step rounds, and no {@code double} is used.
+
+5. Operations present (Operation.java constants):
+ADD("+", false),
+SUBTRACT("−", false), // U+2212 MINUS SIGN
+MULTIPLY("×", false), // U+00D7 MULTIPLICATION SIGN
+DIVIDE("÷", false),   // U+00F7 DIVISION SIGN
+SQUARE("x²", true),   // U+00B2 SUPERSCRIPT TWO
+SQUARE_ROOT("√x", true), // U+221A SQUARE ROOT
+RECIPROCAL("1/x", true);
+
+6. Square root of -0.0 / negative zero in src (code, tests, comments):
+   src/test/java/calculator/core/CalculatorTest.java:76:    void negativeZeroIsNeverShown() { // FR-011
+   src/test/java/calculator/core/CalculatorTest.java:82:        assertResult("-0.0004882813", "-1", "2048", Operation.DIVIDE);
+   src/test/java/calculator/core/CalculatorTest.java:176:        assertResult("0", "-0.0", "", Operation.SQUARE);
+   src/test/java/calculator/core/CalculatorTest.java:229:        assertResult("-0.0004882813", "-2048", "", Operation.RECIPROCAL);
+   src/test/java/calculator/core/CalculatorTest.java:264:        for (String zero : new String[] {"0", "0.0", "-0.0", "-0"}) {
+   src/test/java/calculator/ui/CalculatorPanelTest.java:485:        for (String zero : new String[] {"0", "0.0", "-0.0"}) {
+
+7. BigInteger.sqrt() use and rounding steps in Calculator.java:
+   5:import java.math.RoundingMode;
+   66:            case DIVIDE -> a.divide(b, RESULT_SCALE, RoundingMode.HALF_UP);
+   75:            case RECIPROCAL -> BigDecimal.ONE.divide(x, RESULT_SCALE, RoundingMode.HALF_UP);
+   82:     * (research C-01). With {@code T = 4 x 10^20 x}, {@code q = floor(sqrt(floor(T)))} and
+   83:     * {@code R = floor((q + 1) / 2)}, {@code R x 10^-10} equals {@code floor(sqrt(x) x 10^10 + 1/2)}
+   88:        BigInteger n = t.setScale(0, RoundingMode.FLOOR).toBigInteger();
+   89:        BigInteger q = n.sqrt();
+   90:        BigInteger r = q.add(BigInteger.ONE).shiftRight(1);

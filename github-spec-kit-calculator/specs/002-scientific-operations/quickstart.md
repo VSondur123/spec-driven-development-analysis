@@ -1,6 +1,6 @@
 # Quickstart: Scientific Operations (CR-01)
 
-Validation and run guide for the changed application. **The commands below are planned and have not been run for CR-01 yet.** Real output and any correction will be recorded in `evidence/` when the change is built. The baseline commands in [../001-baseline-calculator/quickstart.md](../001-baseline-calculator/quickstart.md) are the starting point and are expected to stay the same.
+Validation and run guide for the changed application. **The build, test and run commands below were run on 2026-11-05**, first in the working tree and then from a clean clone of commit 411ab32 (`BASE-AC-15`, `CR-AC-22`). The real output is recorded in `evidence/logs/` (`cr-t037-final-verify.txt`, `cr-t043-clean-checkout-build.txt`, `cr-t043-clean-checkout-launch.txt`) and in `evidence/08-cr01-test-results.md`. The baseline commands in [../001-baseline-calculator/quickstart.md](../001-baseline-calculator/quickstart.md) are the starting point and are expected to stay the same.
 
 Details: [plan.md](plan.md), [data-model.md](data-model.md), [contracts/calculation-contract.md](contracts/calculation-contract.md), [contracts/ui-contract.md](contracts/ui-contract.md).
 
@@ -17,7 +17,7 @@ mvn -version        # expect: Java version 22.0.2, vendor Amazon.com Inc.
 mvn -B clean verify
 ```
 
-Expected: the build succeeds and all automated tests pass (the 81 baseline tests plus the new CR-01 tests; the final count is recorded when run), and `target/baseline-calculator-1.0.0.jar` exists. The jar name stays as in the baseline unless the owner decides otherwise.
+Expected: the build succeeds and all automated tests pass (116 tests on 2026-11-05: the 81 baseline tests plus 35 new ones), and `target/baseline-calculator-1.0.0.jar` exists. The jar name stays as in the baseline unless the owner decides otherwise.
 
 ## Run
 

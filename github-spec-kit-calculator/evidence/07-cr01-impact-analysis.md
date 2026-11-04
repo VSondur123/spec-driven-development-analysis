@@ -75,3 +75,73 @@ Baseline checks I consider most exposed: `BASE-AC-11`, `BASE-AC-17`, `BASE-AC-10
 ## 7. Not done yet
 
 No `/speckit-*` command has been run for CR-01. No code, test or spec has been changed. No CR-01 results exist.
+
+
+---
+
+## Addendum 2026-11-05: predicted against actual (T048)
+
+Added after the change was built and tested. The text above is unchanged. Actual changes are from `git diff 88f56d0 HEAD` (commit 411ab32), outside `evidence/` and `specs/002-scientific-operations/`: 9 files, 462 insertions, 30 deletions. Nothing under `specs/001-baseline-calculator/`, `pom.xml` or `README.md` changed.
+
+### Code
+
+| Predicted | Actual | Verdict |
+|---|---|---|
+| `Operation.java`: three constants, a unary flag | Done (`isUnary()`) | Correct |
+| `CalculationError.java`: `NEGATIVE_SQUARE_ROOT` last | Done | Correct |
+| `Calculator.java`: unary operands, three computations | Done; square root by the single-rounding integer method | Correct |
+| `ErrorMessages.java`: one new case | Done (1 line) | Correct |
+| `CalculatorPanel.java`: three buttons; `calculate()` and `clear()` unchanged; wider window | Three buttons added; `calculate()` and `clear()` unchanged. **Also** a new `errorAreaSize` method, because the error area was too narrow for the new message | Partly correct: the extra change was not predicted (see defect below) |
+| `OperandParser`, `ResultFormatter`, `CalculationOutcome`, `CalculatorApp`, `pom.xml`: none | Unchanged | Correct |
+
+### Tests
+
+| Predicted | Actual | Verdict |
+|---|---|---|
+| `CalculatorPanelTest.buttonName` stops compiling | It did (red run `cr-t006`), fixed with 3 lines | Correct |
+| The two tests that loop over `Operation.values()` "will cover the new buttons once the switch is fixed" | They would have failed until the buttons existed (they look the buttons up). Found by `/speckit-analyze` (finding I1), not by this analysis; the buttons were moved into the foundational step | Wrong in detail |
+| `operationButtonsShowTheirSymbols` unchanged, three assertions added | Left unchanged; the new labels got their own tests | Partly correct |
+| New tests for `CR-AC-02` to `20` plus boundary cases | 35 new tests (116 in total) | Correct |
+| Baseline result file stays intact; separate CR-01 results file | `08-cr01-test-results.md` | Correct |
+| Not predicted | `OperationTest.java` (new file, 4 tests) | Unpredicted addition |
+
+### Specs and design
+
+| Predicted | Actual | Verdict |
+|---|---|---|
+| `specs/001-baseline-calculator/spec.md` amended (or a new spec) | Owner chose a new folder; `001` untouched | Correct (the decision was left open) |
+| plan, research, data model, contracts, tasks | New in `specs/002-scientific-operations/` | Correct |
+| `checklists/requirements.md`: agent may not edit | New file in 002, written by `/speckit-specify` | Correct |
+| `.specify/memory/constitution.md`: "no change predicted" | **Amended to 1.1.0** (principle II said scientific operations were out of scope; CR-01 had been released) | **Wrong**: the conflict was found when running `/speckit-specify`, not in this analysis |
+| `README.md`, `quickstart.md`: build commands unchanged, "what to expect" may need the buttons | `README.md` unchanged; the new quickstart is in 002 | Correct |
+
+### Risks and regressions
+
+| Predicted | What happened |
+|---|---|
+| 1 Empty-operand rule | Handled by arity in `Calculator`; tested both ways; no regression |
+| 2 Malformed Second field | Second is not parsed for unary operations; tested; no regression |
+| 3 Error priority | Kept; tested; no regression |
+| 4 `-0.0` reciprocal | Zero check by sign; tested for `0`, `0.0`, `-0.0`, `-0`; no regression |
+| 5 Square-root rounding | Integer method, rounded once; tie and just-below-tie cases pass |
+| 6 Layout (wider window) | Window wider; screenshots for `BASE-AC-02`, `03` re-taken; no baseline check failed |
+| 7 Clear | Existing code deselects the new buttons; tested |
+| 8 Enter key | Works for unary operations (owner's report, screenshot consistent) |
+| 9 Wording | `Enter both numbers` kept (LOG-21) |
+| 10 Large reciprocal shows `0` | Tested (LOG-19) |
+| Most exposed baseline checks: `BASE-AC-11`, `17`, `10`, `16`, `19`, `02`, `03` | All 19 baseline checks re-run: 19 Pass, 0 regressions |
+
+Not predicted: defect D-CR-01 (DL-57). The negative-square-root message was cut off in the real window because the error area was a fixed width. It came from the same cause as predicted risk 6 (layout) but was a CR-01 defect, not a baseline regression, and the automated test did not catch it before the owner's screenshot. Not predicted either: that the first green run of the US2 tests would fail because of one of my own US1 tests (DL-56).
+
+### Analysis findings noted for this addendum (owner decision, 2026-11-05)
+
+| Finding | Status at the end |
+|---|---|
+| I4: plan said the `BASE-AC-16` test would be extended; tasks added a new test instead | The baseline test was not edited (0 removed lines, `cr-t040`); the mixed-sequence test is new; the `BASE-AC-16` row cites the baseline test |
+| I5: plan tree lacks `OperationTest.java` and the optional `SquareRoot.java` | `OperationTest.java` was added; no `SquareRoot.java` (the square root is a private method in `Calculator`, DL-53) |
+| G1: automated rows for `BASE-AC-02` and `03` not in T038 | The rows were filled from the owner's real-window screenshots (cr01-18, cr01-19), with the automated test named in the notes |
+| G2: `BASE-NFR-04` (NFR-002) not named in the review task | The change is confined to five source files plus tests; `specs/001` was not edited; the review log `cr-t046-review.txt` does not name NFR-002 explicitly, this addendum does |
+
+### Accuracy summary
+
+Of the 5 predicted source files, all 5 changed and the 5 predicted-unchanged files stayed unchanged. One predicted-unchanged item (the constitution) changed. One unpredicted source change (`errorAreaSize`) and one unpredicted new test file. One prediction (the loop tests) was wrong in detail. No predicted regression happened.

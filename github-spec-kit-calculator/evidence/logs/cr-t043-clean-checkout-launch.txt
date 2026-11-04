@@ -1,0 +1,6 @@
+﻿launch of the jar built from the clean clone (commit 411ab32) at C:\Temp\cr01-clean, run by the agent on 2026-11-05 01:22
+command: C:\Program Files\Amazon Corretto\jdk22.0.2_9\bin\java.exe -jar C:\Temp\cr01-clean\github-spec-kit-calculator\target\baseline-calculator-1.0.0.jar
+process alive after 5 s: True
+OS-reported window title: 'Calculator'
+stdout bytes: 0; stderr bytes: 0
+process stopped by the agent after the check
