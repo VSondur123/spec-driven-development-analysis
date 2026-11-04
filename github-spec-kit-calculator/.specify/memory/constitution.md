@@ -3,20 +3,24 @@
 ## Core Principles
 
 ### I. Shared Requirements Are the Source of Truth
-`shared/baseline-requirements.md` and `shared/acceptance-criteria.md` define the product. This
+`shared/baseline-requirements.md` and `shared/acceptance-criteria.md` define the product. Since
+the release of CR-01 on 2026-11-04, `shared/change-request-CR-01.md` (v0.2) and the decisions
+`LOG-17` to `LOG-21` in `shared/experiment-log.md` are part of the source of truth. This
 track MUST NOT reinterpret, extend or silently resolve them. Any ambiguity or gap MUST be
 recorded in `shared/experiment-log.md` and confirmed by the owner before it affects the spec,
-plan or code. Every requirement (`BASE-FR-*`, `BASE-NFR-*`) and acceptance check (`BASE-AC-*`)
-MUST be traceable to a spec item, plan decision, task, code and test.
+plan or code. Every requirement (`BASE-FR-*`, `BASE-NFR-*`, `CR-FR-*`) and acceptance check
+(`BASE-AC-*`, `CR-AC-*`) MUST be traceable to a spec item, plan decision, task, code and test.
 Rationale: both tracks must deliver identical observable behaviour for the comparison to be valid.
 
-### II. Baseline Scope Only
-Only the baseline is built: a Java desktop GUI for add, subtract, multiply and divide, with
-clear/reset and defined handling of invalid input and division by zero. Scientific operations,
-history, memory, persistence, networking and unrequested styling are out of scope. The change
-request (`shared/change-request-CR-01.md`) MUST NOT be read or implemented until the owner
-releases it to both tracks.
-Rationale: early scope growth would contaminate the controlled change phase.
+### II. Baseline and Released Change Scope Only
+The baseline was built first and frozen at commit `88f56d0`: a Java desktop GUI for add,
+subtract, multiply and divide, with clear/reset and defined handling of invalid input and
+division by zero. The owner released CR-01 on 2026-11-04, so the unary operations square,
+square root and reciprocal defined in `shared/change-request-CR-01.md` v0.2 (with the agreed
+decisions `LOG-17` to `LOG-21`) are also in scope. Every other exclusion stays out of scope:
+trigonometry, logarithms and exponentials, arbitrary powers, history, memory, persistence,
+networking and unrequested styling.
+Rationale: scope growth beyond the released change would contaminate the controlled comparison.
 
 ### III. Observable Correctness Without Crashes
 Behaviour MUST match the frozen requirements: exact decimal arithmetic, the agreed rounding and
@@ -28,8 +32,10 @@ documents and are referenced, not restated, here.
 Rationale: avoids two copies of one rule drifting apart.
 
 ### IV. Test Evidence Is Honest and Reproducible
-Every `BASE-AC-*` check MUST have a recorded result of Pass, Fail, Blocked or Not run. A result
-is Pass only if the behaviour was observed. Manual checks (such as `BASE-AC-01`) MUST be marked
+Every `BASE-AC-*` and `CR-AC-*` check MUST have a recorded result of Pass, Fail, Blocked or Not
+run. A result is Pass only if the behaviour was observed. After the change, each of `BASE-AC-01`
+to `BASE-AC-19` MUST be re-run against the changed application and its result recorded
+individually, not as one aggregate. Manual checks (such as `BASE-AC-01`) MUST be marked
 as manual and backed by a screenshot or note. Failures MUST record steps, expected result, actual
 result and evidence. Build, run and test commands MUST work from a clean checkout.
 Rationale: the study compares evidence quality, so evidence cannot be inferred or rounded up.
@@ -57,6 +63,8 @@ Rationale: CR-01 will extend this codebase, and its impact analysis depends on c
   Verify each command against the installed version; do not add artefacts the tool does not
   produce. Any deviation or manual substitute MUST be disclosed to the owner and logged.
 - The owner MUST approve the plan before any code is written.
+- The frozen baseline spec in `specs/001-baseline-calculator/` MUST NOT be edited; the change
+  lives in `specs/002-scientific-operations/`.
 - Work only inside this track's folder. Do not read or copy the other track's generated
   artefacts. `shared/*` is read-only for track work.
 - Evidence MUST be recorded as work happens: versions, prompts, decisions, commands, test logs,
@@ -80,4 +88,4 @@ or materially expanding one, PATCH for wording fixes.
 
 Compliance: the plan MUST include a constitution check.
 
-**Version**: 1.0.0 | **Ratified**: 2026-10-27 | **Last Amended**: 2026-10-27
+**Version**: 1.1.0 | **Ratified**: 2026-10-27 | **Last Amended**: 2026-11-04

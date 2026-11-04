@@ -72,6 +72,9 @@ class CalculatorPanelTest {
             case SUBTRACT -> "subtractButton";
             case MULTIPLY -> "multiplyButton";
             case DIVIDE -> "divideButton";
+            case SQUARE -> "squareButton";
+            case SQUARE_ROOT -> "squareRootButton";
+            case RECIPROCAL -> "reciprocalButton";
         };
     }
 
@@ -393,5 +396,184 @@ class CalculatorPanelTest {
         first().postActionEvent();
         assertEquals("Invalid number", error());
         assertEquals("", result());
+    }
+
+    // ---- CR-01 user story 1: the unary operations through the GUI ----
+
+    @Test
+    void theThreeUnaryButtonsExistWithTheirLabels() { // CR-AC-01 (automated part), CR-FR-01
+        assertEquals("x²", button("squareButton").getText());
+        assertEquals("√x", button("squareRootButton").getText());
+        assertEquals("1/x", button("reciprocalButton").getText());
+    }
+
+    @Test
+    void sevenOperationButtonsFormOneSelectionGroup() { // CR-FR-01
+        Operation[] all = Operation.values();
+        assertEquals(7, all.length);
+        for (Operation chosen : all) {
+            button(buttonName(chosen)).doClick();
+            for (Operation other : all) {
+                assertEquals(other == chosen, button(buttonName(other)).isSelected(),
+                        "after choosing " + chosen + ", button " + other);
+            }
+        }
+    }
+
+    @Test
+    void theSecondFieldStaysEnabledWithAUnaryOperationSelected() { // LOG-20 (agreed)
+        for (Operation operation : new Operation[] {Operation.SQUARE, Operation.SQUARE_ROOT, Operation.RECIPROCAL}) {
+            button(buttonName(operation)).doClick();
+            assertTrue(second().isEnabled(), operation.toString());
+            assertTrue(second().isVisible() || second().getParent() != null, operation.toString());
+        }
+    }
+
+    @Test
+    void unaryCalculationsShowTheirResults() { // CR-AC-02, CR-AC-06, CR-AC-10
+        assertCalculation("-3", "", Operation.SQUARE, "9");
+        assertCalculation("2", "", Operation.SQUARE_ROOT, "1.4142135624");
+        assertCalculation("3", "", Operation.RECIPROCAL, "0.3333333333");
+    }
+
+    @Test
+    void enterInEitherFieldRunsAUnaryCalculation() { // CR-FR-03
+        button("squareRootButton").doClick();
+        first().setText("9");
+        first().postActionEvent();
+        assertEquals("3", result());
+        button("reciprocalButton").doClick();
+        second().postActionEvent();
+        assertEquals("0.1111111111", result());
+        assertEquals("", error());
+    }
+
+    @Test
+    void aDifferentSecondValueDoesNotChangeAUnaryResult() { // CR-AC-16, CR-AC-17, LOG-17 (agreed)
+        assertCalculation("4", "", Operation.RECIPROCAL, "0.25");
+        assertCalculation("4", "7", Operation.RECIPROCAL, "0.25");
+        assertCalculation("4", "abc", Operation.RECIPROCAL, "0.25");
+        assertEquals("", error());
+    }
+
+    @Test
+    void aShownResultStaysWhenTheOperationChangesUntilTheNextCalculate() { // LOG-13 (agreed)
+        assertCalculation("-3", "", Operation.SQUARE, "9");
+        button("squareRootButton").doClick();
+        assertEquals("9", result());
+        first().setText("16");
+        assertEquals("9", result());
+        calculate();
+        assertEquals("4", result());
+        assertEquals("", error());
+    }
+
+    // ---- CR-01 user story 2: inline errors for the unary operations ----
+
+    private static final Operation[] UNARY = {Operation.SQUARE, Operation.SQUARE_ROOT, Operation.RECIPROCAL};
+
+    @Test
+    void negativeSquareRootShowsItsMessageAndNoResult() { // CR-AC-08
+        int windows = java.awt.Window.getWindows().length;
+        enter("-1", "", Operation.SQUARE_ROOT);
+        assertErrorShown("Cannot take square root of a negative number");
+        assertEquals(windows, java.awt.Window.getWindows().length, "no dialog may open");
+    }
+
+    @Test
+    void reciprocalOfZeroShowsTheDivisionByZeroMessage() { // CR-AC-12, CR-AC-13
+        for (String zero : new String[] {"0", "0.0", "-0.0"}) {
+            enter(zero, "", Operation.RECIPROCAL);
+            assertErrorShown("Cannot divide by zero");
+        }
+    }
+
+    @Test
+    void emptyFirstNumberShowsEnterBothNumbersForEachUnaryOperation() { // CR-AC-14, LOG-21 (agreed)
+        for (Operation operation : UNARY) {
+            enter("", "", operation);
+            assertErrorShown("Enter both numbers");
+        }
+    }
+
+    @Test
+    void malformedFirstNumberShowsInvalidNumberForEachUnaryOperation() { // CR-AC-15
+        for (Operation operation : UNARY) {
+            enter("abc", "", operation);
+            assertErrorShown("Invalid number");
+        }
+    }
+
+    @Test
+    void theErrorAreaIsWideEnoughToShowEveryMessageInFull() { // CR-AC-08 (found in the real window, DL-57)
+        JLabel errorLabel = find("errorLabel", JLabel.class);
+        java.awt.FontMetrics metrics = errorLabel.getFontMetrics(errorLabel.getFont());
+        for (calculator.core.CalculationError error : calculator.core.CalculationError.values()) {
+            String message = ErrorMessages.messageFor(error);
+            assertTrue(metrics.stringWidth(message) <= errorLabel.getPreferredSize().width,
+                    "message cut off in the window: " + message);
+        }
+    }
+
+    // ---- CR-01 user story 3: recovery and Clear after unary operations ----
+
+    @Test
+    void afterANegativeSquareRootErrorACorrectedInputGivesTheResult() { // CR-AC-18, CR-FR-10
+        enter("-1", "", Operation.SQUARE_ROOT);
+        assertErrorShown("Cannot take square root of a negative number");
+        first().setText("16");
+        calculate();
+        assertEquals("4", result());
+        assertEquals("", error());
+    }
+
+    @Test
+    void afterAReciprocalOfZeroErrorACorrectedInputGivesTheResult() { // CR-AC-19, CR-FR-10
+        enter("0", "", Operation.RECIPROCAL);
+        assertErrorShown("Cannot divide by zero");
+        first().setText("4");
+        calculate();
+        assertEquals("0.25", result());
+        assertEquals("", error());
+    }
+
+    @Test
+    void clearAfterAUnaryCalculationReturnsToTheInitialState() { // CR-AC-20, BASE-FR-05
+        for (Operation operation : UNARY) {
+            enter("4", "9", operation);
+            calculate();
+            assertFalse(result().isEmpty(), "a result is shown before Clear: " + operation);
+            button("clearButton").doClick();
+            assertEquals("", first().getText(), operation.toString());
+            assertEquals("", second().getText(), operation.toString());
+            for (Operation each : Operation.values()) {
+                assertFalse(button(buttonName(each)).isSelected(), "after Clear, " + each + " (was " + operation + ")");
+            }
+            assertEquals("", result(), operation.toString());
+            assertEquals("", error(), operation.toString());
+        }
+    }
+
+    @Test
+    void clearAfterAUnaryErrorReturnsToTheInitialState() { // CR-AC-20
+        enter("-1", "", Operation.SQUARE_ROOT);
+        calculate();
+        button("clearButton").doClick();
+        assertEquals("", error());
+        assertEquals("", result());
+        assertFalse(button("squareRootButton").isSelected());
+    }
+
+    @Test
+    void aMixedSequenceOfBasicAndUnaryCalculationsStaysUsable() { // BASE-AC-16 idea for the changed application
+        assertCalculation("7", "5", Operation.ADD, "12");
+        assertCalculation("12", "", Operation.SQUARE, "144");
+        assertCalculation("144", "", Operation.SQUARE_ROOT, "12");
+        assertCalculation("4", "", Operation.RECIPROCAL, "0.25");
+        assertCalculation("7", "2", Operation.DIVIDE, "3.5");
+        enter("0", "", Operation.RECIPROCAL);
+        assertErrorShown("Cannot divide by zero");
+        assertCalculation("9", "", Operation.SQUARE_ROOT, "3");
+        assertEquals("", error());
     }
 }

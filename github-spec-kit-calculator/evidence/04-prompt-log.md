@@ -143,3 +143,55 @@ Result so far: DL-34 and DL-35 added; quickstart line 3 corrected; file list sho
 Owner: set the repository-local email to the GitHub noreply address, rewrite 9b35cc0 and 84fb470 (same messages, no Co-Authored-By, c897a42 untouched), prove the tree is unchanged, replace the old ids in the evidence files and `quickstart.md`, and add a dated decision entry; then record the owner's hand tests for `BASE-AC-16`, `14` and `12` as the owner's report. Follow-up: do not purge the reflog; delete `C:\Temp\ac15-clean` at the very end; do not change the old full hash in the raw launch log (give old → new in DL-36).
 
 Result: new ids 419f92f and 6bdf927, `git diff` between the old and the new tip empty; DL-36 to DL-38 added; results recorded. A third commit waits for the owner's yes. See `00-STATUS.md`.
+
+## CR-01 session, 2026-11-04 and 2026-11-05
+
+P25 to P34 were written after the fact from the session transcript (reconstructed, not logged live). Model `claude-sonnet-5-5`. Prompts are quoted or closely summarised.
+
+## P25 — Status
+
+> what is the current status of this project
+
+Result: status read from `00-STATUS.md` and reported (baseline frozen at 88f56d0, CR-01 released, nothing started). Nothing changed.
+
+## P26 — Next step, then begin
+
+> ok so what is the next step / yes lets begin
+
+Result: next step reported as the pre-coding impact analysis. Agent read CR-01 v0.2, the CR-AC rows, the protocol section 5 and LOG-16 to LOG-21, plus this track's own code and baseline specs, and wrote `evidence/07-cr01-impact-analysis.md`. See DL-43.
+
+## P27 — Where the change goes; effort clock
+
+> 1) pick a  2) yes
+
+Result: new feature folder `specs/002-scientific-operations/` (option a, DL-44); CR-01 start logged in `05-effort-intervention-log.md`. `/speckit-specify` run with a prompt limited to the CR-01, baseline and LOG sources. Spec and checklist written (DL-45). One gap raised: square root of `-0.0`.
+
+## P28 — Ignore the gap; amend the constitution
+
+> ignore the gap. yes for question 2
+
+Result: the gap stays undefined and unlogged (DL-46). Constitution amended 1.0.0 to 1.1.0 via `/speckit-constitution` (DL-47).
+
+## P29 — Run the plan
+
+> yes, run /speckit-plan. keep the constitution check against v1.1.0, pick the square-root method so the result isn't rounded twice, and stop for your approval before tasks and code. (The first send was interrupted and repeated.)
+
+Result: plan, research (C-01 to C-10), data model, contracts and quickstart written; method checked with an independent exact calculation; one arithmetic slip found and fixed (DL-48). Stopped for approval.
+
+## P30 — Approve the plan
+
+> aprove
+
+Result: recorded as AP-03 in `02-approvals.md`. `/speckit-tasks` run with a prompt asking for tests first, the CR-01 results file, owner-marked real-window steps and the commit step, and no task for `-0.0`. 49 tasks (DL-49).
+
+## P31 — Analyze
+
+> Run /speckit-analyze first, read-only. Show me the findings. Don't start implement yet.
+
+Result: `/speckit-analyze` run, read-only, nothing written. 10 findings: 1 critical (C1, owner-accepted exception), 1 high (I1), 3 medium (I2, I3, I4), 5 low. 17 of 17 requirements had at least one task. See DL-50.
+
+## P32 — Apply fixes I1 to I3; note the rest; keep C1
+
+> Yes, apply the fixes for I1, I2 and I3 (in I3, return a failure instead of throwing). For I4, I5, G1, G2: note them in the T048 addendum, no edits now. C1: keep my decision, no change. Log the analyze run and the edits (prompt log and decisions log, as before). Show me what you changed, then wait. Don't start implement until I say.
+
+Result: `tasks.md` edited for I1, I2, I3 (DL-51). I4, I5, G1, G2 left unedited for the T048 addendum. C1 unchanged. No code, no implement, no commit.

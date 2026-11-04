@@ -14,6 +14,7 @@ final class ErrorMessages {
             case NO_OPERATION -> "Select an operation";
             case INVALID_NUMBER -> "Invalid number";
             case DIVISION_BY_ZERO -> "Cannot divide by zero";
+            case NEGATIVE_SQUARE_ROOT -> "Cannot take square root of a negative number";
         };
     }
 }

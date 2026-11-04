@@ -1,9 +1,11 @@
 package calculator.ui;
 
+import calculator.core.CalculationError;
 import calculator.core.CalculationOutcome;
 import calculator.core.Calculator;
 import calculator.core.Operation;
 import java.awt.Dimension;
+import java.awt.FontMetrics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -49,6 +51,9 @@ public class CalculatorPanel extends JPanel {
         addOperationButton(Operation.SUBTRACT, "subtractButton");
         addOperationButton(Operation.MULTIPLY, "multiplyButton");
         addOperationButton(Operation.DIVIDE, "divideButton");
+        addOperationButton(Operation.SQUARE, "squareButton");
+        addOperationButton(Operation.SQUARE_ROOT, "squareRootButton");
+        addOperationButton(Operation.RECIPROCAL, "reciprocalButton");
 
         calculateButton.addActionListener(event -> calculate());
         clearButton.addActionListener(event -> clear());
@@ -86,12 +91,27 @@ public class CalculatorPanel extends JPanel {
         resultLabel.setPreferredSize(valueAreaSize(resultLabel));
         addRow(row++, new JLabel("Result:"), resultLabel);
 
-        errorLabel.setPreferredSize(valueAreaSize(errorLabel));
+        errorLabel.setPreferredSize(errorAreaSize(errorLabel));
         addRow(row++, new JLabel("Error:"), errorLabel);
     }
 
     private static Dimension valueAreaSize(JLabel label) {
         return new Dimension(220, label.getFontMetrics(label.getFont()).getHeight() + 4);
+    }
+
+    /**
+     * The error area is at least the normal value-area width and wide enough for the longest
+     * message, so no message is cut off in the window (the CR-01 message for a negative square
+     * root is longer than the baseline width).
+     */
+    private static Dimension errorAreaSize(JLabel label) {
+        FontMetrics metrics = label.getFontMetrics(label.getFont());
+        int widest = 0;
+        for (CalculationError error : CalculationError.values()) {
+            widest = Math.max(widest, metrics.stringWidth(ErrorMessages.messageFor(error)));
+        }
+        Dimension normal = valueAreaSize(label);
+        return new Dimension(Math.max(normal.width, widest + 8), normal.height);
     }
 
     private static JLabel labelFor(String text, JTextField field) {

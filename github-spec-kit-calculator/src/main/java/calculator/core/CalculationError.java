@@ -5,5 +5,6 @@ public enum CalculationError {
     EMPTY_OPERAND,
     NO_OPERATION,
     INVALID_NUMBER,
-    DIVISION_BY_ZERO
+    DIVISION_BY_ZERO,
+    NEGATIVE_SQUARE_ROOT
 }

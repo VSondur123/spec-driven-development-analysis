@@ -1,0 +1,31 @@
+git diff 88f56d0 --stat -- src/test
+warning: in the working copy of 'github-spec-kit-calculator/src/test/java/calculator/core/CalculatorTest.java', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java', LF will be replaced by CRLF the next time Git touches it
+ .../test/java/calculator/core/CalculatorTest.java  | 126 ++++++++++++++
+ .../java/calculator/ui/CalculatorPanelTest.java    | 182 +++++++++++++++++++++
+ 2 files changed, 308 insertions(+)
+
+removed or changed lines in existing test files (lines starting with '-'):
+warning: in the working copy of 'github-spec-kit-calculator/src/test/java/calculator/core/CalculatorTest.java', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java', LF will be replaced by CRLF the next time Git touches it
+(none)
+
+added lines in the existing helper (buttonName):
+warning: in the working copy of 'github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java', LF will be replaced by CRLF the next time Git touches it
+diff --git a/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java b/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java
+index 37d8d62..ffb3664 100644
+--- a/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java
++++ b/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java
+@@ -74,0 +75,3 @@ class CalculatorPanelTest {
++            case SQUARE -> "squareButton";
++            case SQUARE_ROOT -> "squareRootButton";
++            case RECIPROCAL -> "reciprocalButton";
+@@ -396,0 +400,179 @@ class CalculatorPanelTest {
++
++    // ---- CR-01 user story 1: the unary operations through the GUI ----
++
++    @Test
++    void theThreeUnaryButtonsExistWithTheirLabels() { // CR-AC-01 (automated part), CR-FR-01
+
+baseline tests missing from the final run: none (81 of 81 present); see cr-t037-test-names.txt and cr-t003-baseline-test-names.txt
+final run: 116 tests, 0 failures (cr-t037-final-verify.txt)
