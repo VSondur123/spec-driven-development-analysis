@@ -62,3 +62,12 @@ The line "Still open: LOG-12 to LOG-15 proposed" in AP-01 is now out of date. Th
 | Approved by | George (owner of this track), reply "yes" to the file list and to removing the Sync Impact Report comment |
 | What was approved | (1) Removing the Sync Impact Report comment from `.specify/memory/constitution.md` (version stays 1.1.0). (2) One interim commit on `george/spec-kit-cr01` of the 40 changed or new paths shown in `git status`, plus the 19 `evidence/logs/cr-*.txt` files added with `git add -f`; no `Co-Authored-By` line; repository-local noreply email; not the freeze. |
 | What this does not cover | A push, a tag, a freeze, or any later commit (the T043 to T049 edits need their own yes). |
+
+## AP-06 Second commit, delete clone, push and CR-01 freeze approved (2026-11-05)
+
+| Item | Value |
+|---|---|
+| Date | 2026-11-05 (time of day not recorded) |
+| Approved by | George (owner of this track): "yes" to the file list (11 paths) and to the exact commands shown |
+| What was approved | (1) A second commit of 11 paths on `george/spec-kit-cr01` (8 modified, 3 logs force-added), noreply email, no `Co-Authored-By`. (2) A local annotated tag `speckit-cr01-frozen` on that commit, not pushed. (3) Deleting the temporary clone `C:/Temp/cr01-clean` after the commit. (4) `git push origin george/spec-kit-cr01`, no `-u`, no force, no tags. |
+| What this does not cover | A pull request, a push of any tag, a push to `main`, or any later commit. The freeze record below is uncommitted until the owner asks. |
