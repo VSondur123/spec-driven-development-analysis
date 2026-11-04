@@ -67,6 +67,8 @@ Update after every major step. Last updated: 2026-10-27.
 
 - Commits rewritten and hand tests recorded (2026-10-27): the two unpushed interim commits were rewritten to the noreply email (old → new: 9b35cc0 → 419f92f, 84fb470 → 6bdf927). The tree is identical (`git diff` between the old and new tip was empty), so `BASE-AC-15` still applies (DL-36). Old ids replaced in the evidence files and `quickstart.md` (the raw launch log keeps the old full hash by the owner's choice). The owner's real-window tests for `BASE-AC-12` (`abc`, `1.2.3`, `1,5`, `1e3`, `.5`), `BASE-AC-14` and `BASE-AC-16` all matched; recorded as the owner's report (DL-37). A `printf` slip (control characters in DL-33, P22 and the launch log) was fixed (DL-38). The owner's earlier commit 19bc52d (pushed, before c897a42) also carries the university email; not touched. The reflog was not purged. `C:\Temp\ac15-clean` is deleted at the end of this step. These edits are uncommitted until the owner says yes to a third commit.
 
+- Push (2026-10-27): the three interim commits (419f92f, 6bdf927, 88f56d0) are on origin as branch `george/spec-kit-baseline` (DL-39). `origin/main` is unchanged. No pull request, no tag, no freeze. These status and log edits are uncommitted until the owner asks.
+
 ## Pending
 
 - Owner: third commit (new email) for the id replacement, DL-36 to DL-38, the hand-test results and the control-character fix. The owner asks for it and approves the file list first.
@@ -75,6 +77,20 @@ Update after every major step. Last updated: 2026-10-27.
 - Open Claude Code with `github-spec-kit-calculator/` as the workspace so the `/speckit-*` skills are available (they live in this folder's `.claude/skills`).
 - LOG-12 to LOG-15 are agreed (2026-10-27). They change only if the team reopens them; the tests marked `// LOG-nn (agreed)` would then change.
 - Do not read `shared/change-request-CR-01.md` until it is released to both tracks.
+
+## Standing rules from the owner (2026-10-27)
+
+These come from the owner's chat instructions and are not in `CLAUDE.md`:
+
+- Ask before every commit and every push; show the file list (or the exact command) first and wait for a yes. An earlier yes does not cover later changes.
+- Commits: no `Co-Authored-By` line; repository-local `user.email` is `33762298+Geomale25@users.noreply.github.com` (check with `git config --local user.email`; do not use the university email); name unchanged.
+- `evidence/logs/` is ignored by the root `.gitignore`; new log files need `git add -f`.
+- Push only to a feature branch the owner names (current: `george/spec-kit-baseline`, pushed without `-u`). Never push to `main`, never push tags.
+- No tag and no freeze until the owner asks, after reviewing the 19 results.
+- Commit hashes that are rewritten must be updated in the evidence files; raw logs keep what was true at test time.
+- Delete temporary clones and scratch files outside the repo only when the owner says so (or at the end of a step they named).
+- Write text with a script or heredoc, not `printf` with backslashes (it turns `\a` and `\b` into control characters, DL-38).
+- Report manual results as the owner's report when the agent did not see them.
 
 ## Next step
 
