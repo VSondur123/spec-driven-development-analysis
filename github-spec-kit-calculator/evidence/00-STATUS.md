@@ -69,6 +69,8 @@ Update after every major step. Last updated: 2026-10-27.
 
 - Push (2026-10-27): the three interim commits (419f92f, 6bdf927, 88f56d0) are on origin as branch `george/spec-kit-baseline` (DL-39). `origin/main` is unchanged. No pull request, no tag, no freeze. These status and log edits are uncommitted until the owner asks.
 
+- Update 2026-11-04 (CR-01 release and baseline freeze): checked with git, the three interim commits (419f92f, 6bdf927, 88f56d0) are now in `origin/main`, which has since moved on (d777153, with other members' merges). The "origin/main is unchanged" and "no tag, no freeze" statements in the Push entry above were true on 2026-10-27 and are out of date; they are left as written. The owner confirmed that CR-01 is released to both tracks (DL-40) and froze the baseline at **88f56d0** with the local annotated tag `speckit-baseline-frozen` (DL-41). The tag is not pushed. The existing `baseline-frozen` tag on origin points to the BMAD track's commit 740c78d, not to this track. The owner agreed to LOG-17 to LOG-21 (commit 09d5038 on branch `george/spec-kit-cr01`, not pushed). Read for CR-01: `shared/change-request-CR-01.md` v0.2, `shared/experiment-protocol.md`, `shared/experiment-log.md` (Sections E and F), the CR-AC rows in `shared/acceptance-criteria.md`. Not read: the BMAD track folder and its CR-01 work. No CR-01 work started. Next: new session in this folder, pre-coding impact analysis first.
+
 ## Pending
 
 - Owner: third commit (new email) for the id replacement, DL-36 to DL-38, the hand-test results and the control-character fix. The owner asks for it and approves the file list first.
