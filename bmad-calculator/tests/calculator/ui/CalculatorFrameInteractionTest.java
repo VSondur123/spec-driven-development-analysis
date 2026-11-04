@@ -92,7 +92,7 @@ class CalculatorFrameInteractionTest {
     void everyControlHasAStableName() throws Exception {
         withFrame(frame -> {
             for (String name : new String[]{"operandA", "operandB", "op-add", "op-subtract", "op-multiply",
-                    "op-divide", "calculate", "clear", "result", "error"}) {
+                    "op-divide", "op-square", "op-reciprocal", "op-sqrt", "calculate", "clear", "result", "error"}) {
                 assertNotNull(find(frame.getContentPane(), name), "missing component " + name);
             }
         });
@@ -103,7 +103,7 @@ class CalculatorFrameInteractionTest {
         withFrame(frame -> {
             assertEquals("", field(frame, "operandA").getText());
             assertEquals("", field(frame, "operandB").getText());
-            for (String op : new String[]{"op-add", "op-subtract", "op-multiply", "op-divide"}) {
+            for (String op : new String[]{"op-add", "op-subtract", "op-multiply", "op-divide", "op-square", "op-reciprocal", "op-sqrt"}) {
                 assertFalse(button(frame, op).isSelected());
             }
             assertEquals("", label(frame, "result"));
@@ -510,7 +510,8 @@ class CalculatorFrameInteractionTest {
     private static void assertInitialState(CalculatorFrame frame) {
         assertEquals("", field(frame, "operandA").getText());
         assertEquals("", field(frame, "operandB").getText());
-        for (String op : new String[]{"op-add", "op-subtract", "op-multiply", "op-divide"}) {
+        for (String op : new String[]{"op-add", "op-subtract", "op-multiply", "op-divide", "op-square",
+                "op-reciprocal", "op-sqrt"}) {
             assertFalse(button(frame, op).isSelected(), op + " still selected");
         }
         assertEquals("", label(frame, "result"));
@@ -587,6 +588,259 @@ class CalculatorFrameInteractionTest {
             assertEquals("5", field(frame, "operandB").getText());
             assertTrue(button(frame, "op-add").isSelected());
             assertEquals("", label(frame, "error"));
+        });
+    }
+
+    @Test
+    void crAc01_square_control_is_visible_and_identifiable() throws Exception {
+        withFrame(frame -> {
+            AbstractButton square = button(frame, "op-square");
+            assertEquals("x²", square.getText());
+            assertTrue(square.isVisible());
+            Container row = square.getParent();
+            assertTrue(square.getWidth() >= square.getPreferredSize().width, "x² button is clipped");
+            assertTrue(square.getX() + square.getWidth() <= row.getWidth(), "x² button is outside its row");
+            assertTrue(field(frame, "operandB").isVisible());
+            assertTrue(field(frame, "operandB").isEnabled());
+        });
+    }
+
+    @Test
+    void crAc02to04_square_with_second_number_empty() throws Exception {
+        withFrame(frame -> {
+            calculate(frame, "-3", "op-square", "");
+            assertEquals("9", label(frame, "result"));
+            calculate(frame, "1.2", "op-square", "");
+            assertEquals("1.44", label(frame, "result"));
+            calculate(frame, "0", "op-square", "");
+            assertEquals("0", label(frame, "result"));
+            assertEquals("", label(frame, "error"));
+        });
+    }
+
+    @Test
+    void crAc16and17_second_number_is_ignored_even_when_malformed() throws Exception {
+        withFrame(frame -> {
+            calculate(frame, "4", "op-square", "7");
+            assertEquals("16", label(frame, "result"));
+            calculate(frame, "4", "op-square", "abc");
+            assertEquals("16", label(frame, "result"));
+            assertEquals("", label(frame, "error"));
+        });
+    }
+
+    @Test
+    void crAc14_15_square_errors_and_selection_switching() throws Exception {
+        withFrame(frame -> {
+            calculate(frame, "", "op-square", "5");
+            assertEquals("Enter both numbers", label(frame, "error"));
+            assertEquals("", label(frame, "result"));
+            calculate(frame, "abc", "op-square", "");
+            assertEquals("Invalid number", label(frame, "error"));
+            assertEquals("", label(frame, "result"));
+            button(frame, "op-add").doClick();
+            assertFalse(button(frame, "op-square").isSelected());
+            assertTrue(button(frame, "op-add").isSelected());
+            button(frame, "op-square").doClick();
+            assertFalse(button(frame, "op-add").isSelected());
+        });
+    }
+
+    @Test
+    void squareCalculatesOnEnterFromEitherField() throws Exception {
+        withFrame(frame -> {
+            field(frame, "operandA").setText("3");
+            button(frame, "op-square").doClick();
+            field(frame, "operandA").postActionEvent();
+            assertEquals("9", label(frame, "result"));
+            field(frame, "operandA").setText("5");
+            field(frame, "operandB").postActionEvent();
+            assertEquals("25", label(frame, "result"));
+        });
+    }
+
+    @Test
+    void baselineBehaviourUnchangedNextToSquare() throws Exception {
+        withFrame(frame -> {
+            calculate(frame, "7", "op-add", "5");
+            assertEquals("12", label(frame, "result"));
+            calculate(frame, "7", "op-divide", "0");
+            assertEquals("Cannot divide by zero", label(frame, "error"));
+            calculate(frame, "7", "op-divide", "");
+            assertEquals("Enter both numbers", label(frame, "error"));
+        });
+    }
+
+    @Test
+    void crAc01_reciprocal_control_is_visible_and_not_clipped() throws Exception {
+        withFrame(frame -> {
+            AbstractButton reciprocal = button(frame, "op-reciprocal");
+            assertEquals("1/x", reciprocal.getText());
+            assertTrue(reciprocal.isVisible());
+            assertTrue(reciprocal.getWidth() >= reciprocal.getPreferredSize().width, "1/x button is clipped");
+            assertTrue(reciprocal.getX() + reciprocal.getWidth() <= reciprocal.getParent().getWidth(),
+                    "1/x button is outside its row");
+            assertTrue(field(frame, "operandB").isEnabled());
+        });
+    }
+
+    @Test
+    void reciprocalSelectionReplacesTheOtherSelections() throws Exception {
+        withFrame(frame -> {
+            button(frame, "op-square").doClick();
+            button(frame, "op-reciprocal").doClick();
+            assertTrue(button(frame, "op-reciprocal").isSelected());
+            assertFalse(button(frame, "op-square").isSelected());
+            button(frame, "op-divide").doClick();
+            assertFalse(button(frame, "op-reciprocal").isSelected());
+            assertTrue(button(frame, "op-divide").isSelected());
+        });
+    }
+
+    @Test
+    void crAc09to11_reciprocal_results_with_second_number_empty() throws Exception {
+        withFrame(frame -> {
+            calculate(frame, "4", "op-reciprocal", "");
+            assertEquals("0.25", label(frame, "result"));
+            calculate(frame, "3", "op-reciprocal", "");
+            assertEquals("0.3333333333", label(frame, "result"));
+            calculate(frame, "-4", "op-reciprocal", "");
+            assertEquals("-0.25", label(frame, "result"));
+            assertEquals("", label(frame, "error"));
+        });
+    }
+
+    @Test
+    void crAc12_13_19_reciprocal_of_zero_then_recovery() throws Exception {
+        withFrame(frame -> {
+            for (String zero : new String[]{"0", "0.0", "-0.0"}) {
+                calculate(frame, zero, "op-reciprocal", "");
+                assertEquals("Cannot divide by zero", label(frame, "error"));
+                assertEquals("", label(frame, "result"));
+                assertNoNonNumbers(frame);
+            }
+            field(frame, "operandA").setText("4");
+            button(frame, "calculate").doClick();
+            assertEquals("0.25", label(frame, "result"));
+            assertEquals("", label(frame, "error"));
+        });
+    }
+
+    @Test
+    void crAc16and17_reciprocal_ignores_second_number_and_enter_works() throws Exception {
+        withFrame(frame -> {
+            calculate(frame, "4", "op-reciprocal", "abc");
+            assertEquals("0.25", label(frame, "result"));
+            calculate(frame, "4", "op-reciprocal", "0");
+            assertEquals("0.25", label(frame, "result"));
+            field(frame, "operandA").setText("8");
+            field(frame, "operandB").postActionEvent();
+            assertEquals("0.125", label(frame, "result"));
+            calculate(frame, "30000000000", "op-reciprocal", "");
+            assertEquals("0", label(frame, "result"));
+        });
+    }
+
+    @Test
+    void crAc14_15_reciprocal_errors_and_baseline_division_unchanged() throws Exception {
+        withFrame(frame -> {
+            calculate(frame, "", "op-reciprocal", "");
+            assertEquals("Enter both numbers", label(frame, "error"));
+            calculate(frame, "abc", "op-reciprocal", "");
+            assertEquals("Invalid number", label(frame, "error"));
+            calculate(frame, "7", "op-divide", "0");
+            assertEquals("Cannot divide by zero", label(frame, "error"));
+            calculate(frame, "7", "op-divide", "2");
+            assertEquals("3.5", label(frame, "result"));
+            calculate(frame, "-3", "op-square", "");
+            assertEquals("9", label(frame, "result"));
+        });
+    }
+
+    @Test
+    void crAc01_square_root_control_is_visible_not_clipped_and_replaces_the_selection() throws Exception {
+        withFrame(frame -> {
+            AbstractButton sqrt = button(frame, "op-sqrt");
+            assertEquals("√x", sqrt.getText());
+            assertTrue(sqrt.isVisible());
+            assertTrue(sqrt.getWidth() >= sqrt.getPreferredSize().width, "√x button is clipped");
+            assertTrue(sqrt.getX() + sqrt.getWidth() <= sqrt.getParent().getWidth(), "√x button is outside its row");
+            button(frame, "op-reciprocal").doClick();
+            sqrt.doClick();
+            assertTrue(sqrt.isSelected());
+            assertFalse(button(frame, "op-reciprocal").isSelected());
+            assertTrue(field(frame, "operandB").isEnabled());
+        });
+    }
+
+    @Test
+    void crAc05to07_square_root_results_with_second_number_empty() throws Exception {
+        withFrame(frame -> {
+            calculate(frame, "9", "op-sqrt", "");
+            assertEquals("3", label(frame, "result"));
+            calculate(frame, "2", "op-sqrt", "");
+            assertEquals("1.4142135624", label(frame, "result"));
+            calculate(frame, "0", "op-sqrt", "");
+            assertEquals("0", label(frame, "result"));
+            assertEquals("", label(frame, "error"));
+        });
+    }
+
+    @Test
+    void crAc08_18_negative_square_root_then_recovery() throws Exception {
+        withFrame(frame -> {
+            calculate(frame, "-1", "op-sqrt", "");
+            assertEquals("Cannot take square root of a negative number", label(frame, "error"));
+            assertEquals("", label(frame, "result"));
+            assertNoNonNumbers(frame);
+            calculate(frame, "-1", "op-sqrt", "abc");
+            assertEquals("Cannot take square root of a negative number", label(frame, "error"));
+            field(frame, "operandA").setText("9");
+            button(frame, "calculate").doClick();
+            assertEquals("3", label(frame, "result"));
+            assertEquals("", label(frame, "error"));
+        });
+    }
+
+    @Test
+    void crAc14_15_16_17_square_root_errors_second_number_and_enter() throws Exception {
+        withFrame(frame -> {
+            calculate(frame, "", "op-sqrt", "");
+            assertEquals("Enter both numbers", label(frame, "error"));
+            calculate(frame, "abc", "op-sqrt", "");
+            assertEquals("Invalid number", label(frame, "error"));
+            calculate(frame, "9", "op-sqrt", "abc");
+            assertEquals("3", label(frame, "result"));
+            calculate(frame, "9", "op-sqrt", "4");
+            assertEquals("3", label(frame, "result"));
+            field(frame, "operandA").setText("16");
+            field(frame, "operandB").postActionEvent();
+            assertEquals("4", label(frame, "result"));
+        });
+    }
+
+    @Test
+    void baselineAndEarlierOperationsUnchangedNextToSquareRoot() throws Exception {
+        withFrame(frame -> {
+            calculate(frame, "7", "op-divide", "0");
+            assertEquals("Cannot divide by zero", label(frame, "error"));
+            calculate(frame, "0", "op-reciprocal", "");
+            assertEquals("Cannot divide by zero", label(frame, "error"));
+            calculate(frame, "-3", "op-square", "");
+            assertEquals("9", label(frame, "result"));
+            calculate(frame, "4", "op-reciprocal", "");
+            assertEquals("0.25", label(frame, "result"));
+        });
+    }
+
+    @ParameterizedTest(name = "clear after unary [{0}] [{1}] {2}")
+    @CsvSource({"-3, '', op-square", "4, '', op-reciprocal", "9, '', op-sqrt", "-1, '', op-sqrt",
+            "0, '', op-reciprocal", "4, 7, op-square"})
+    void crAc20_clear_after_a_unary_calculation_resets_everything(String a, String b, String op) throws Exception {
+        withFrame(frame -> {
+            calculate(frame, a, op, b);
+            button(frame, "clear").doClick();
+            assertInitialState(frame);
         });
     }
 }

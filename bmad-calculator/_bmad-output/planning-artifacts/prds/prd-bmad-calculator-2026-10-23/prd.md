@@ -2,8 +2,10 @@
 title: Baseline Desktop Calculator
 status: final
 created: 2026-10-23
-updated: 2026-10-23
+updated: 2026-11-03
 ---
+
+> **Amended 2026-11-03 (CR-01):** §3, §5, §6.2, FR-7 and new §11 updated by the BMAD correct-course proposal `sprint-change-proposal-2026-11-03.md`. Baseline text before this amendment is in git history (commit `740c78d`).
 
 # PRD: Baseline Desktop Calculator
 
@@ -40,11 +42,11 @@ Anyone needing scientific, statistical, programmer, financial or graphing functi
 
 - **Calculator** — the desktop application defined by this PRD.
 - **Operand** — one of the two numbers the user types. The first is **Operand A** (left), the second **Operand B** (right).
-- **Operation** — one of Addition (`+`), Subtraction (`−`), Multiplication (`×`), Division (`÷`).
+- **Operation** — one of Addition (`+`), Subtraction (`−`), Multiplication (`×`), Division (`÷`) (binary, two Operands), or, from CR-01, Square (`x²`), Square root (`√x`), Reciprocal (`1/x`) (unary, Operand A only; Operand B is ignored).
 - **Selected Operation** — the Operation most recently chosen; none is selected in the initial state.
 - **Calculate** — the action that evaluates Operand A, Selected Operation, Operand B. Triggered by the Calculate button or the Enter key.
 - **Result** — the numeric value shown after a successful Calculate.
-- **Error Message** — inline text naming why Calculate did not produce a Result. Exactly one of: "Enter both numbers", "Select an operation", "Invalid number", "Cannot divide by zero".
+- **Error Message** — inline text naming why Calculate did not produce a Result. Exactly one of: "Enter both numbers", "Select an operation", "Invalid number", "Cannot divide by zero", or, from CR-01, "Cannot take square root of a negative number".
 - **Clear** — the action that returns the Calculator to the Initial State.
 - **Initial State** — both Operands empty, no Selected Operation, no Result, no Error Message.
 - **Valid Number** — text consisting of an optional leading `-`, one or more digits, and optionally a single `.` followed by one or more digits. `[ASSUMPTION: no leading '+', no exponent, no comma decimals, no thousands separators, no whitespace padding other than leading/trailing spaces being trimmed]`
@@ -116,7 +118,7 @@ The user can click Clear to return the Calculator to the Initial State. Realizes
 
 #### FR-7: Invalid and incomplete input (BASE-FR-06)
 
-If either Operand is empty (after trimming), Calculate shows "Enter both numbers"; if either Operand is not a Valid Number, Calculate shows "Invalid number". In both cases no Result is shown and the Calculator remains usable.
+If a required Operand is empty (after trimming), Calculate shows "Enter both numbers"; if a required Operand is not a Valid Number, (binary Operations require A and B; unary Operations require only A, CR-01) Calculate shows "Invalid number". In both cases no Result is shown and the Calculator remains usable.
 
 **Consequences (testable):**
 - Empty Operand A or B → "Enter both numbers" (BASE-AC-11).
@@ -153,7 +155,7 @@ After any Error Message, the user can correct an Operand and Calculate again, or
 
 ## 5. Non-Goals (Explicit)
 
-- No scientific operations (trigonometry, logarithms, roots, exponentiation) — these arrive only through a later, separately frozen change request. `[NON-GOAL for MVP]`
+- No scientific operations (trigonometry, logarithms, roots, exponentiation) — these arrive only through a later, separately frozen change request. `[NON-GOAL for MVP]` Exception from 2026-11-03: CR-01 adds square, square root and reciprocal only (§11).
 - No graphing, history, memory buttons, variables, unit conversion, symbolic algebra.
 - No accounts, networking, persistence, databases, or external services.
 - No styling or features that change the interaction model; visual polish is not a goal.
@@ -167,7 +169,7 @@ FR-1 to FR-10 above; a documented build/run/test procedure; automated tests cove
 
 ### 6.2 Out of Scope for MVP
 
-Everything in §5. The change request CR-01 is intentionally excluded and has not been consulted.
+Everything in §5. CR-01 was excluded from the baseline MVP. It is in scope from 2026-11-03; see §11.
 
 ## 7. Cross-Cutting Non-Functional Requirements
 
@@ -201,3 +203,14 @@ Everything in §5. The change request CR-01 is intentionally excluded and has no
 - FR-7 emptiness takes precedence over malformation.
 - FR-8 scale 10, HALF_UP (D-03).
 - NFR-2 100 ms threshold.
+
+## 11. CR-01 — Scientific operations (added 2026-11-03)
+
+Source: `shared/change-request-CR-01.md` v0.2 and `shared/acceptance-criteria.md` §3 (`CR-AC-01..22`). Agreed decisions LOG-17..21 apply.
+
+- **FR-11: Square (CR-FR-01..04, 09).** Control `x²`. Result is the exact square of Operand A, no rounding (`-3` → `9`, `1.2` → `1.44`, `0` → `0`).
+- **FR-12: Reciprocal (CR-FR-07, 08).** Control `1/x`. `4` → `0.25`, `3` → `0.3333333333`, `-4` → `-0.25` (10 decimals, HALF_UP). `0`, `0.0`, `-0.0` → "Cannot divide by zero".
+- **FR-13: Square root (CR-FR-05, 06).** Control `√x`. `9` → `3`, `2` → `1.4142135624`, `0` → `0` (10 decimals, HALF_UP, deterministic). Negative input → "Cannot take square root of a negative number".
+- **FR-14: Unary input policy (CR-FR-02, 03, 09; LOG-17, 18, 20).** Uses the First number field and the existing Calculate and Enter interactions. Operand B is ignored, even when it holds malformed text, and may stay empty. Error priority on Operand A only: empty, no operation, invalid number, domain error. Operand B stays visible and enabled; a shown result or error stays until the next Calculate or Clear.
+- **FR-15: Recovery and regression (CR-FR-10, 11).** After a unary error the user can correct the input or Clear. All baseline requirements and `BASE-AC-01..19` still apply and are recorded individually.
+- **Assumption (LOG-19):** the reciprocal of a very large value may show `0` under the 10-decimal policy; accepted.

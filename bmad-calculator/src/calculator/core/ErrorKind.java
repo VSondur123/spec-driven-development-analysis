@@ -5,7 +5,8 @@ public enum ErrorKind {
     EMPTY_OPERAND("Enter both numbers"),
     NO_OPERATION("Select an operation"),
     INVALID_NUMBER("Invalid number"),
-    DIVIDE_BY_ZERO("Cannot divide by zero");
+    DIVIDE_BY_ZERO("Cannot divide by zero"),
+    NEGATIVE_SQRT("Cannot take square root of a negative number");
 
     private final String message;
 

@@ -1,0 +1,6 @@
+# Clean-copy build 2026-11-03 11:54:22 (only pom.xml, BUILD.md, src, tests copied; no target/); source working tree on top of 1e39815 (uncommitted)
+javac 22.0.2
+mvn -q test exit: 0
+[INFO] Tests run: 316, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+compile ok

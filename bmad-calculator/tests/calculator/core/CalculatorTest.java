@@ -137,4 +137,104 @@ class CalculatorTest {
         assertEquals("Invalid number", ErrorKind.INVALID_NUMBER.message());
         assertEquals("Cannot divide by zero", ErrorKind.DIVIDE_BY_ZERO.message());
     }
+
+    @ParameterizedTest(name = "square of {0} is {1}")
+    @CsvSource({"-3, 9", "1.2, 1.44", "0, 0", "-0.0, 0", "4, 16", "' 5 ', 25", "0.5, 0.25", "2.50, 6.25", "0.0000001, 0.00000000000001", "0.1234567890123, 0.01524157875322755800955129"})
+    void crAc02to04_square_of_the_first_number(String a, String expected) {
+        assertEquals(success(expected), calculator.evaluate(a, Operation.SQUARE, ""));
+    }
+
+    @ParameterizedTest(name = "square ignores second number [{0}]")
+    @ValueSource(strings = {"", "   ", "7", "abc", "1.2.3", "-", "1e3"})
+    void crAc16and17_second_number_is_ignored_for_square(String second) {
+        assertEquals(success("16"), calculator.evaluate("4", Operation.SQUARE, second));
+        assertEquals(success("16"), calculator.evaluate("4", Operation.SQUARE, null));
+    }
+
+    @ParameterizedTest(name = "square first number [{0}]")
+    @CsvSource(value = {"'', 5", "'   ', ''", "'', abc"})
+    void crAc14_empty_first_number_is_reported_for_square(String a, String b) {
+        assertEquals(failure(ErrorKind.EMPTY_OPERAND), calculator.evaluate(a, Operation.SQUARE, b));
+    }
+
+    @ParameterizedTest(name = "square malformed [{0}]")
+    @ValueSource(strings = {"abc", "1.2.3", "1,5", "1e3", "--1", ".", "+1", "1.", ".5", "-"})
+    void crAc15_malformed_first_number_is_invalid_for_square(String text) {
+        assertEquals(failure(ErrorKind.INVALID_NUMBER), calculator.evaluate(text, Operation.SQUARE, "5"));
+    }
+
+    @Test
+    void unaryDoesNotChangeTheBaselineRulesWithoutAnOperation() {
+        assertEquals(failure(ErrorKind.EMPTY_OPERAND), calculator.evaluate("3", null, ""));
+        assertEquals(failure(ErrorKind.NO_OPERATION), calculator.evaluate("3", null, "5"));
+        assertEquals(failure(ErrorKind.EMPTY_OPERAND), calculator.evaluate("7", Operation.ADD, ""));
+        assertEquals(failure(ErrorKind.DIVIDE_BY_ZERO), calculator.evaluate("7", Operation.DIVIDE, "0"));
+    }
+
+    @ParameterizedTest(name = "reciprocal of {0} is {1}")
+    @CsvSource({"4, 0.25", "3, 0.3333333333", "-4, -0.25", "0.3, 3.3333333333", "1, 1", "0.5, 2",
+            "30000000000, 0", "-30000000000, 0", "' 8 ', 0.125"})
+    void crAc09to11_reciprocal_of_the_first_number(String a, String expected) {
+        assertEquals(success(expected), calculator.evaluate(a, Operation.RECIPROCAL, ""));
+    }
+
+    @ParameterizedTest(name = "reciprocal of zero [{0}]")
+    @ValueSource(strings = {"0", "0.0", "-0.0", "0.000", "-0", "00"})
+    void crAc12and13_reciprocal_of_zero_is_a_divide_by_zero_error(String zero) {
+        assertEquals(failure(ErrorKind.DIVIDE_BY_ZERO), calculator.evaluate(zero, Operation.RECIPROCAL, ""));
+        assertEquals(failure(ErrorKind.DIVIDE_BY_ZERO), calculator.evaluate(zero, Operation.RECIPROCAL, "5"));
+    }
+
+    @ParameterizedTest(name = "reciprocal ignores second number [{0}]")
+    @ValueSource(strings = {"", "   ", "0", "7", "abc", "1e3"})
+    void crAc16and17_second_number_is_ignored_for_reciprocal(String second) {
+        assertEquals(success("0.25"), calculator.evaluate("4", Operation.RECIPROCAL, second));
+        assertEquals(success("0.25"), calculator.evaluate("4", Operation.RECIPROCAL, null));
+    }
+
+    @Test
+    void nullFirstNumberIsEmptyForUnaryOperations() {
+        assertEquals(failure(ErrorKind.EMPTY_OPERAND), calculator.evaluate(null, Operation.SQUARE, "5"));
+        assertEquals(failure(ErrorKind.EMPTY_OPERAND), calculator.evaluate(null, Operation.RECIPROCAL, null));
+    }
+
+    @Test
+    void crAc14_15_reciprocal_empty_and_malformed_first_number() {
+        assertEquals(failure(ErrorKind.EMPTY_OPERAND), calculator.evaluate("", Operation.RECIPROCAL, "5"));
+        assertEquals(failure(ErrorKind.EMPTY_OPERAND), calculator.evaluate("  ", Operation.RECIPROCAL, ""));
+        assertEquals(failure(ErrorKind.INVALID_NUMBER), calculator.evaluate("abc", Operation.RECIPROCAL, ""));
+        assertEquals(failure(ErrorKind.INVALID_NUMBER), calculator.evaluate(".5", Operation.RECIPROCAL, "0"));
+    }
+
+    @ParameterizedTest(name = "square root of {0} is {1}")
+    @CsvSource({"9, 3", "2, 1.4142135624", "0, 0", "0.0, 0", "-0.0, 0", "-0, 0", "0.25, 0.5", "1.21, 1.1",
+            "0.0000000002, 0.0000141421", "0.0000000000000000000025, 0.0000000001",
+            "0.0000000000000000000024, 0", "99999999999999999999, 9999999999.9999999999",
+            "123456789.123456789, 11111.1110661111", "' 16 ', 4"})
+    void crAc05to07_square_root_of_the_first_number(String a, String expected) {
+        assertEquals(success(expected), calculator.evaluate(a, Operation.SQRT, ""));
+    }
+
+    @ParameterizedTest(name = "square root of negative [{0}]")
+    @ValueSource(strings = {"-1", "-0.0000001", "-9", "-0.0000000000000000000001"})
+    void crAc08_square_root_of_a_negative_number_is_an_error(String negative) {
+        assertEquals(failure(ErrorKind.NEGATIVE_SQRT), calculator.evaluate(negative, Operation.SQRT, ""));
+        assertEquals(failure(ErrorKind.NEGATIVE_SQRT), calculator.evaluate(negative, Operation.SQRT, "abc"));
+    }
+
+    @ParameterizedTest(name = "square root ignores second number [{0}]")
+    @ValueSource(strings = {"", "   ", "4", "abc", "-1", "1e3"})
+    void crAc16and17_second_number_is_ignored_for_square_root(String second) {
+        assertEquals(success("3"), calculator.evaluate("9", Operation.SQRT, second));
+        assertEquals(success("3"), calculator.evaluate("9", Operation.SQRT, null));
+    }
+
+    @Test
+    void crAc14_15_square_root_check_order() {
+        assertEquals(failure(ErrorKind.EMPTY_OPERAND), calculator.evaluate("", Operation.SQRT, "5"));
+        assertEquals(failure(ErrorKind.EMPTY_OPERAND), calculator.evaluate(null, Operation.SQRT, null));
+        assertEquals(failure(ErrorKind.INVALID_NUMBER), calculator.evaluate("abc", Operation.SQRT, ""));
+        assertEquals(failure(ErrorKind.INVALID_NUMBER), calculator.evaluate("-1e3", Operation.SQRT, ""));
+        assertEquals(failure(ErrorKind.INVALID_NUMBER), calculator.evaluate("1,5", Operation.SQRT, ""));
+    }
 }
