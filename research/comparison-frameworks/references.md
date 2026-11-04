@@ -1,9 +1,8 @@
-
 # References — Comparison Frameworks and Metrics
 
 **Author:** Pham Thanh (Thanh)  
-**Checked:** 2026-10-25 to 2026-10-30  
-**Revision:** draft-4 (verification and citation-use clarification)  
+**Checked:** 2026-10-25 to 2026-11-02  
+**Revision:** draft-5 (GQM integration and citation-use clarification)  
 **Status:** Register for team verification. AI assisted source discovery and drafting; the author/team must confirm each source before citing it in the final report. Amin's sources M1–M5 remain in `../empirical-methodology/references.md` and are not repeated here. This file holds L1–L14.
 
 ## 1. Verification labels
@@ -27,7 +26,7 @@ Do not describe a Record, Ref-only or Unverified source as fully read. Cite only
 
 **[L4]** S. Agarwal, A. Singhal, A. Macvean, B. Vasilescu, and T. Breaux, “Spec-Driven Development as Prescribed and as Practiced,” arXiv:2608.25202 [cs.SE], 2026. DOI: 10.48550/arXiv.2608.25202. [https://arxiv.org/pdf/2608.25202](https://arxiv.org/pdf/2608.25202). **Opened:** partial text of the version fetched 2026-10-25; not the whole paper. **Metadata/version warning:** this arXiv ID appeared in other records under the title “SpecMine: A Large-Scale Corpus of Spec-Driven Development Artifacts” with a different author list. Confirm the canonical arXiv abstract page, version number, title and authors before final citation. Do not merge metadata from different versions/records.
 
-**[L5]** V. R. Basili, G. Caldiera, and H. D. Rombach, “The Goal Question Metric Approach,” in _Encyclopedia of Software Engineering_, vol. 1, New York: Wiley, 1994. **Record:** bibliographic entry only. Confirm exact pages/edition and bibliographic details.
+**[L5]** V. R. Basili, G. Caldiera, and H. D. Rombach, “The Goal Question Metric Approach,” in _Encyclopedia of Software Engineering_, vol. 1, New York: Wiley, 1994. **Record:** bibliographic entry only. Confirm exact pages/edition and bibliographic details before final citation. The full source has not yet been read for this review.
 
 **[L6]** J. Cleland-Huang, O. C. Z. Gotel, J. Huffman Hayes, P. Mäder, and A. Zisman, “Software traceability: Trends and future directions,” in _Proc. Future of Software Engineering (FOSE 2014)_, ACM, 2014. [https://scholars.uky.edu/en/publications/software-traceability-trends-and-future-directions/](https://scholars.uky.edu/en/publications/software-traceability-trends-and-future-directions/). **Record:** abstract. Confirm page range and DOI.
 
@@ -75,7 +74,7 @@ These entries remain **Unverified** and should not be cited as read until checke
 | Artefact-set view, quality dimensions and 0–3 rubric example | L2 | Full text |
 | Specification artefacts did not reduce defects in the studied sample | L3 | Abstract/metadata; do not imply full-paper review |
 | Implementation drift/spec decay/verification debt | L4 | Partial text; confirm version metadata |
-| GQM as goal-to-question-to-measure structure | L5 | Bibliographic record only; verify before detailed claim |
+| GQM as a goal-to-question-to-measure organising approach | L5 | Bibliographic record only; source text and exact details still need verification |
 | Traceability trends and practical challenges | L6 | Abstract |
 | Code-based impact-analysis survey | L7 | Abstract |
 | Requirements as a less-mentioned impact-analysis target | L8 | Abstract |
@@ -86,6 +85,22 @@ These entries remain **Unverified** and should not be cited as read until checke
 | Code-generation non-determinism | L13 | Abstract and metadata |
 | Precision/recall for impact prediction | L14 | Excerpt on evaluation metrics |
 
-## 7. Verification and AI-use note
+## 7. GQM use in this project
+
+The project applies GQM as a structure for connecting evaluation goals, questions and measures. The working mapping is recorded in `metric-catalogue.md` §1:
+
+| GQM goal | Focus | Working research question |
+|---|---|---|
+| G1 | Specification and traceability | RQ1 |
+| G2 | Change-impact handling | RQ2 |
+| G3 | Implementation and verification outcomes | RQ3 |
+| G4 | Human work and effort | RQ4 |
+| G5 | Evidence and reproducibility | RQ5 |
+
+The G1–G5 mapping is a project-specific proposal based on the current working research questions in `project.md` §3. It must be checked against the final approved research-question wording.
+
+L5 is the intended foundational GQM reference, but it is currently Record only. Do not claim that the original GQM source has been fully reviewed or that it validates the project's particular metrics, operational definitions or thresholds. The final report should cite L5 only after the bibliographic details and relevant source text have been verified.
+
+## 8. Verification and AI-use note
 
 Sources were discovered through general web searches and reference lists. No Scopus or direct Google Scholar search is claimed. No systematic screening is claimed. AI assisted discovery and drafting; the author/team must verify the source itself, confirm the exact version and metadata, and check that the cited passage supports the report claim. Update the reading-scope label if a team member reads more. Include the actual AI use in the course's AI-use declaration.

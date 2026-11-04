@@ -1,13 +1,13 @@
 # Literature Review — Comparison Frameworks, Metrics and Presentation
 
 **Author:** Pham Thanh (Thanh)  
-**Date:** 2026-10-30  
-**Revision:** draft-4 (consistency revision)  
+**Date:** 2026-11-02  
+**Revision:** draft-5 (GQM integration and cross-document alignment)  
 **Status:** Targeted literature review for team verification. This is **not** a systematic literature review. It supports `metric-catalogue.md`; it sets no evaluation rules and does not replace Amin's rubric or protocol. No track has been scored.
 
 ## 1. Scope and method
 
-**Question.** Which existing frameworks, measures and findings can inform a comparison of two spec-driven development (SDD) workflows used to evolve the same Java desktop GUI calculator, for RQ1–RQ5 in `project.md` §3?
+**Question.** Which existing frameworks, measures and findings can inform a comparison of two spec-driven development (SDD) workflows used to evolve the same Java desktop GUI calculator, for the five working research questions in `project.md` §3?
 
 **Work completed (2026-10-25 to 2026-10-30).** General web searches surfaced arXiv records, publisher and proceedings pages, institutional records and project documentation. The reading scope is stated for each source in `references.md`:
 
@@ -18,13 +18,40 @@
 
 An abstract-only or excerpt-only reading supports only claims visible in that material. Do not imply that the full paper was reviewed.
 
-**Completeness.** This review does not claim systematic coverage. Scopus and Google Scholar were not searched directly; there was no systematic screening and no structured snowballing beyond the named reference lists. Section 6 is a proposed search plan, not evidence that the searches have been completed.
+**Completeness.** This review does not claim systematic coverage. Scopus and Google Scholar were not searched directly; there was no systematic screening and no structured snowballing beyond the named reference lists. Section 7 is a proposed search plan, not evidence that the searches have been completed.
 
 **Relationship to Amin's work.** Amin's empirical-methodology sources M1–M5 remain in `research/empirical-methodology/references.md` and are not duplicated here. This review focuses on what to measure and how related research evaluates it.
 
-## 2. Relevant sources
+## 2. GQM as the measurement structure
 
-### 2.1 SDD context
+The project uses the Goal–Question–Metric (GQM) approach to organise the relationship between research aims, evaluation questions and measures. The working GQM structure is documented in `metric-catalogue.md` §1.
+
+The overall study is a comparative case study using a mixed-methods evaluation framework. GQM is the measurement-organising approach within that design; it is not a replacement for the case-study design or the qualitative/quantitative distinction.
+
+The GQM structure is used to:
+- define what the comparison is intended to evaluate;
+- derive answerable questions from each evaluation goal;
+- select measures that provide evidence for those questions;
+- make the connection between evidence and conclusions explicit;
+- identify questions that cannot be answered because evidence is missing or shared inputs are incomplete.
+
+The five proposed goals are:
+
+| Goal | Focus | Related working RQ |
+|---|---|---|
+| G1 | Specification and traceability | RQ1 |
+| G2 | Change-impact handling | RQ2 |
+| G3 | Implementation and verification outcomes | RQ3 |
+| G4 | Human work and effort | RQ4 |
+| G5 | Evidence and reproducibility | RQ5 |
+
+This mapping is based on the current working research-question structure in `project.md` §3. The team must confirm the exact wording and numbering before the final report.
+
+**Source limitation:** L5, Basili, Caldiera and Rombach's “The Goal Question Metric Approach,” is currently a bibliographic record only in this review. It is the intended foundational reference for GQM, but the exact bibliographic details and source text must be verified before making detailed claims about the original method or citing it as fully reviewed. The project's GQM mapping is a proposed application to this study, not a claim that the original source validates the project's metrics.
+
+## 3. Relevant sources
+
+### 3.1 SDD context
 
 **L1. Piskala (2026), _Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants_, arXiv:2602.00180.** Opened: abstract and opening sections. Preprint.
 - The paper describes levels of specification rigour: spec-first, spec-anchored and spec-as-source.
@@ -50,13 +77,15 @@ An abstract-only or excerpt-only reading supports only claims visible in that ma
 - **Limitations:** partial reading; mixed qualitative/repository study; not a controlled comparison of BMAD and Spec Kit; metadata/version discrepancy remains to be resolved.
 - **Use:** background for examining whether implementation and verification artefacts remain aligned after a change. It supplies no project metric and does not establish causality.
 
-### 2.2 Measurement design
+### 3.2 Measurement design and GQM
 
 **L5. Basili, Caldiera and Rombach (1994), _The Goal Question Metric Approach_.** Record only.
-- GQM derives measures from goals through questions.
-- **Use:** organising principle for mapping RQ1–RQ5 to proposed measures. Bibliographic details need confirmation before final citation.
+- The work is the intended foundational reference for the Goal–Question–Metric measurement approach.
+- The project's proposed GQM structure starts from evaluation goals, derives questions from those goals and maps measures to the questions.
+- **Limitations:** only a bibliographic record was checked for this review. Exact pages, edition and bibliographic details require confirmation. Do not claim the original text has been read or that it validates the specific metrics in this project.
+- **Use:** cite only after bibliographic verification and review of the relevant source text. The current G1–G5 mapping is a project-specific proposal.
 
-### 2.3 Traceability and change impact
+### 3.3 Traceability and change impact
 
 **L6. Cleland-Huang et al. (2014), _Software traceability: Trends and future directions_.** Record/abstract only.
 - The source discusses the value and practical difficulty of traceability, including ad hoc and retrospective links.
@@ -75,7 +104,7 @@ An abstract-only or excerpt-only reading supports only claims visible in that ma
 - **Limitations:** code-level call-graph prediction, not requirement-level impact analysis by an agent or operator.
 - **Use:** supports precision/recall as a general evaluation device only. The project's reference set, granularity and proposed `Extra` category are project-specific procedures.
 
-### 2.4 Requirements quality and testing
+### 3.4 Requirements quality and testing
 
 **L9. Femmer et al. (2017), _Rapid quality assurance with requirements smells_.** Record/abstract.
 - Describes detection of requirements text smells and reports limitations in distinguishing some smells.
@@ -93,46 +122,61 @@ An abstract-only or excerpt-only reading supports only claims visible in that ma
 - Seen through EPIC's reference list, not independently read.
 - **Use:** no substantive claim should rely on this source until it is opened and checked.
 
-### 2.5 AI non-determinism
+### 3.5 AI non-determinism
 
 **L13. Ouyang et al. (2025), _An Empirical Study of the Non-Determinism of ChatGPT in Code Generation_.** Record/abstract and Crossref metadata.
 - The abstract reports non-determinism in ChatGPT code generation and notes that temperature zero does not guarantee deterministic output.
 - **Limitations:** benchmark code generation, not agentic SDD workflows or this calculator.
 - **Use:** caution to record model/tool settings and preserve primary runs and reruns separately. A single run per workflow cannot estimate run-to-run variance.
 
-### 2.6 Grey literature
+### 3.6 Grey literature
 
 GitHub Spec Kit documentation, BMAD documentation, Böckeler's practitioner comparison and Eberhardt's practitioner critique have not been opened in this pass. Treat vendor and practitioner statements as claims, not independent empirical findings. Verify current versions before describing exact tool behaviour.
 
-## 3. Synthesis: support, limits and project proposals
+## 4. Synthesis: support, limits and GQM goals
 
-| Area | What the reviewed material supports | What it does not establish | Project-specific proposal |
+| GQM goal / area | What the reviewed material supports | What it does not establish | Project-specific proposal |
 |---|---|---|---|
-| Specification quality (J1/J3) | Artefact-set view; requirement-quality vocabulary; an example 0–3 rubric approach (L2; L10 not opened) | Validity of this project's anchors or causal effect on outcomes | Use Amin's J1–J7 anchors; optional evidence prompts |
-| Traceability (M03/M13) | Traceability concept and practical difficulty (L6) | A validated counting formula for these tracks | Separate native links from evaluator-reconstructed links |
-| Change impact (M07) | Precision/recall as evaluation concepts (L14); requirement-level impact is underrepresented in the mapped literature (L8) | A ready-made requirement-level benchmark | Build and freeze a project reference set before matching |
-| Defects, regressions and rework | Large-scale approaches exist (L3) | That repository-scale methods transfer to two small tracks | Count distinct defects and documented rework episodes |
-| Testing (M01/M16) | Coverage is not equivalent to effectiveness (L11) | That test count or coverage alone measures quality | Use shared AC outcomes as primary evidence; report counts as context |
-| Human work and effort (M08–M10) | No direct SDD norm established by the sources reviewed here | Expected intervention or effort levels | Record interventions and measured time consistently for both operators |
-| Reproducibility (M15/J7) | General empirical-method guidance is covered by Amin's M1–M5 | A validated evidence-completeness ratio | Treat M15 as a project proposal pending agreement |
+| G1 — Specification and traceability | Artefact-set view; requirement-quality vocabulary; an example 0–3 rubric approach (L2; L10 not opened); traceability challenges (L6) | Validity of this project's anchors or a causal effect on outcomes | Use Amin's J1–J7 anchors; keep native links separate from reconstructed links |
+| G2 — Change-impact handling | Precision/recall as evaluation concepts (L14); requirement-level impact is underrepresented in the mapped literature (L8) | A ready-made requirement-level benchmark | Build and freeze a project reference set before matching |
+| G3 — Implementation and verification outcomes | Repository-scale defect/rework research (L3); coverage is not equivalent to effectiveness (L11) | That test count or coverage alone measures quality, or that SDD automatically reduces defects | Use shared AC outcomes and distinct defects as primary evidence; report counts as context |
+| G4 — Human work and effort | No direct SDD norm established by the sources reviewed here | Expected intervention or effort levels | Record interventions and measured time consistently for both operators |
+| G5 — Evidence and reproducibility | The reviewed sources provide some measurement and evaluation examples; Amin's M1–M5 provide additional empirical-methodology context | A validated evidence-completeness ratio for this project | Treat M15 as a project proposal pending agreement; preserve snapshots and provenance |
+| GQM measurement structure | GQM is the intended goal-to-question-to-measure structure (L5 record only) | Validation of this project's goals, questions, metric catalogue or thresholds | Use GQM to keep each measure connected to a project question; verify L5 before final citation |
 | Non-determinism | Code-generation non-determinism is reported in L13 | Variance of the two workflows in this project | Preserve primary runs, settings and reruns; do not infer variance from one run |
 
-**Overall interpretation.** The literature provides concepts and measurement precedents, not validation of this project's complete measurement system. The measures, operational definitions, thresholds, data structures and visualisations remain project-specific proposals unless the team adopts them.
+**Overall interpretation.** The literature provides concepts and measurement precedents, not validation of this project's complete measurement system. The GQM mapping, measures, operational definitions, thresholds, data structures and visualisations remain project-specific proposals unless the team adopts them.
 
-## 4. Limitations
+## 5. Implications for the comparison
+
+The literature suggests several cautions for interpreting the two workflows:
+
+1. **Specification presence is not proof of specification quality.** The existence or volume of specification artefacts should not be treated as a quality result by itself.
+2. **Traceability origin matters.** Links created by a workflow and links reconstructed later by evaluators answer different questions and should be reported separately.
+3. **Impact analysis needs an explicit reference set.** Precision and recall are meaningful only when the reference elements and their granularity are agreed and frozen before matching.
+4. **Testing needs shared outcomes.** Native test counts and coverage can describe the workflow, but shared acceptance criteria provide a more comparable evaluation basis.
+5. **Human effort needs direct measurement.** Intervention counts, active minutes and elapsed duration are different quantities; one should not be used as a proxy for another.
+6. **Reproducibility depends on preserved evidence.** Snapshots, environment settings, original reports and evaluator observations should remain identifiable.
+7. **Causal claims must remain limited.** Two workflows with different operators, agents, operating systems and configurations do not isolate the effect of the tool alone.
+
+These points inform the proposed G1–G5 structure and the metric definitions in `metric-catalogue.md`. They do not independently establish that the proposed measures are valid or reliable.
+
+## 6. Limitations
 
 - This is a small targeted review, not a systematic review.
 - Scopus and Google Scholar searches have not been completed.
 - Several sources are abstracts, records, reference-list entries or partial excerpts.
 - Recent SDD work may change quickly; preprint status and bibliographic metadata require checking.
 - No reviewed source validates the exact measures proposed for this calculator comparison.
+- The GQM source L5 has not yet been read in full or bibliographically verified.
 - Human intervention and effort in agentic SDD workflows remain an identified search gap.
+- Tool documentation and practitioner comparisons have not been independently checked in this review.
 
-## 5. Carried-over sources not yet verified
+## 7. Carried-over sources not yet verified
 
 The following were carried over from an earlier plan and are not evidence in this review: arXiv:2609.05667, arXiv:2608.30572 and arXiv:2605.18461. Open each record and the paper, confirm title/authors/version and relevance, then retain or remove it. Do not cite these as read.
 
-## 6. Search plan (not yet completed)
+## 8. Search plan (not yet completed)
 
 Run the searches and record date, database, exact query, number of results, screening decision and reason for inclusion/exclusion.
 
@@ -143,6 +187,7 @@ Run the searches and record date, database, exact query, number of results, scre
 | Scopus | `TITLE-ABS-KEY("change impact analysis") AND TITLE-ABS-KEY(requirement* AND (LLM OR generative))` | Requirement-level impact analysis |
 | Google Scholar | `"spec-driven development" empirical OR "case study" OR comparison` | Early empirical work |
 | Google Scholar | `"requirements quality" "coding agents"` | Specification quality for agents |
+| Google Scholar | `"Goal Question Metric" software measurement` | GQM method and original bibliographic details |
 | arXiv (cs.SE) | `spec-driven development`; `agentic software engineering specification quality` | Preprints |
 | Any | `("human intervention" OR "human-in-the-loop") AND "coding agent" AND (effort OR rework)` | Human-work measurement gap |
 
