@@ -1,6 +1,6 @@
 # Evaluator Execution Sheet — Baseline (BASE-AC-01 to 19)
 
-**Status:** Baseline evaluation completed for the requested online scope on 2026-11-05: **18 Pass, 0 Fail, 1 Blocked, 0 Not run**. Offline launch (BASE-AC-01) remains unverified; Amin requested no further attempt.
+**Status:** Completed including Amin’s supplementary manual offline-launch report: **19 Pass, 0 Fail, 0 Blocked, 0 Not run** (19 parents). Earlier blocked results remain documented in the history.
 **Scope:** Baseline only. CR-01 is excluded. The denominator is 19 parent ACs; subcases never add to it.
 **Authority:** `shared/acceptance-criteria.md` §2 (frozen 2026-10-23, with the LOG-12 to LOG-15 clarifications added 2026-11-03). If this sheet and that file differ, that file wins.
 **Common test procedures:** Operands, order within the performed checks, procedures and expected outcomes below are unchanged from the shared sheet. This is the populated Spec Kit run; results differ by track. The offline check was omitted at Amin’s request; the common denominator remains 19.
@@ -12,7 +12,7 @@
 |---|---|
 | Track | GitHub Spec Kit — Baseline |
 | Evaluator (name, role, prior exposure to this track) | Amin — methodology, independent of the implementation per team roles. Codex collected GUI results using OS mouse/keyboard automation and inspected screenshots; Amin confirmed the initial application window was visible. Codex inspected baseline build/UI code while preparing automation. Other prior exposure was not supplied. This is AI-assisted evidence, not a claim that Amin manually executed every check. |
-| Date / time / timezone | 2026-11-05, EET (UTC+02:00). Native build completed 15:37:53. Valid GUI run 2026-11-05T15:47:59.489235+02:00 to 2026-11-05T15:49:35.819103+02:00. |
+| Date / time / timezone | 2026-11-05, EET (UTC+02:00). Native build completed 15:37:53. Valid GUI run 2026-11-05T15:47:59.489235+02:00 to 2026-11-05T15:49:35.819103+02:00.  Manual offline follow-up reported 2026-11-05; actual observation time not supplied. |
 | Snapshot (full commit SHA or tag; clean or dirty) | `88f56d0979e2fae1fb5d59e8681975e3a1fc2a27`; clean tracked working tree before and after evaluation; no source/POM changes. |
 | OS / version | macOS 27.0.1 (26A434), Apple Silicon aarch64 |
 | JDK version and `JAVA_HOME` | Amazon Corretto 22.0.2; `/Library/Java/JavaVirtualMachines/amazon-corretto-22.jdk/Contents/Home` |
@@ -35,7 +35,7 @@
 
 | Test ID | Requirement | Procedure (same operands for both tracks) | Expected | Layer / subcases | Outcome | Observed / actual | Evidence ref |
 |---|---|---|---|---|---|---|---|
-| `BASE-AC-01` | `BASE-FR-01` | Disable networking. Launch with the documented command. | GUI opens. Record a screenshot or note showing the network state and the window. | Manual; GUI | Blocked | Offline prerequisite could not be established reliably during setup. No offline GUI launch was performed. Amin then instructed: “ignore offline-launch check and do the rest”. Wi-Fi was restored. | [Network setup record](../../research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/offline-network-state.txt); deviation D-EVAL-03 below. |
+| `BASE-AC-01` | `BASE-FR-01` | Disable networking. Launch with the documented command. | GUI opens. Record a screenshot or note showing the network state and the window. | Manual; GUI | Pass | Amin subsequently reported successful offline launch and explicitly confirmed both baseline and CR-01 versions passed. Named manual follow-up; exact time, network-disabling procedure and new screenshot not supplied. Initial automated run remained blocked. | [MANUAL-OFFLINE-01](../../research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/../2026-11-05-spec-kit-cr01/offline-manual-follow-up.md) |
 | `BASE-AC-02` | `BASE-FR-02` | Enter integer `7` in First number. | Accepted and displayed clearly. | GUI | Pass | BASE-AC-02: first=7; second=; result=; error= | [BASE-AC-02](../../research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/screenshots/BASE-AC-02.png); [raw observations](../../research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/gui-observations.tsv) |
 | `BASE-AC-03` | `BASE-FR-02` | Enter decimal `1.5` in First number. | Accepted and displayed clearly. | GUI | Pass | BASE-AC-03: first=1.5; second=; result=; error= | [BASE-AC-03](../../research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/screenshots/BASE-AC-03.png); [raw observations](../../research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/gui-observations.tsv) |
 | `BASE-AC-04` | `BASE-FR-03`, `BASE-FR-04` | `7 + 5`, click Calculate. | `12` | GUI | Pass | BASE-AC-04: first=7; second=5; result=12; error= | [BASE-AC-04](../../research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/screenshots/BASE-AC-04.png); [raw observations](../../research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/gui-observations.tsv) |
@@ -59,9 +59,9 @@
 
 | P | F | B | N | D | Verified pass coverage P/D | Decisive (P+F)/D | Complete C/D |
 |---|---|---|---|---|---|---|---|
-| 18 | 0 | 1 | 0 | 19 | 18/19 (94.74%) | 18/19 (94.74%) | 18/19 (94.74%) |
+| 19 | 0 | 0 | 0 | 19 | 19/19 (100%) | 19/19 (100%) | 19/19 (100%) |
 
-All 18 performed parent criteria passed. The offline criterion remains in the denominator. No claim of 19/19 or verified offline operation is made.
+The initial automated record was 18 Pass / 1 Blocked. Including Amin’s separately attributed offline follow-up, all 19 criteria have Pass outcomes. The original automated results are unchanged.
 
 ## Defects found in this run
 
@@ -121,9 +121,13 @@ The records below were collected from the real displayed calculator using OS mou
 
 - **D-EVAL-01 — build environment:** Initial sandbox attempt could not resolve Maven Central. Preserved in `build-primary.txt`; excluded from functional judgments. The same native build succeeded with network access, recorded in `build-network-retry.txt`.
 - **D-EVAL-02 — GUI input delivery:** An initial automation attempt did not bring the Java app to the foreground; OS input was not delivered and fields stayed empty. Its partial raw assertions/screenshots remain in `invalid-input-delivery-attempt/`. These are invalid input-delivery observations, not calculator defects. The harness was corrected to request application foreground. A separate probe visibly entered `7`; the complete valid run above followed. Native implementation files were unchanged. Partial assertions are not silently overwritten or treated as genuine failing product reruns.
-- **D-EVAL-03 — offline check:** Wi-Fi was briefly disabled, but route output did not establish the required offline state; no offline GUI run occurred. Wi-Fi was restored. Amin then requested that this check be ignored. BASE-AC-01 is retained as Blocked/unverified in the 19-parent denominator rather than marked Pass or removed.
+- **D-EVAL-03 — offline check:** Wi-Fi was briefly disabled, but route output did not establish the required offline state; no offline GUI run occurred. Wi-Fi was restored. Amin then requested that this check be ignored. BASE-AC-01 was initially retained as Blocked/unverified. Amin’s later manual confirmation is recorded separately and updates the current result to Pass.
 - **D-EVAL-04 — environment/shell:** George’s quickstart is for Windows/PowerShell; commands were adapted to macOS and used a separate Maven cache. OS differs from Thanh’s Windows 11 run. Compare with this environment limitation disclosed.
 - **D-EVAL-05 — authority:** George’s PR #13 declares baseline `88f56d0` frozen, matching LOG-26’s owner designation. LOG-26 still lacks his response and the freeze tag is not published. Exact SHA was used. Protocol/rubric adoption reference remains incomplete as described in the run record.
 - **D-EVAL-06 — review provenance:** This is Amin’s AI-assisted baseline acceptance evaluation, not a second independent human rating or a claim of manual execution by Amin. Screenshots and raw component observations support review. No CR-01 checks, workflow rankings, subjective rubric ratings, or implementation fixes are included.
 - BASE-AC-14 retained state from invalid `abc + 2` to corrected `1.5 + 2 = 3.5`. BASE-AC-16 used `7 + 5`, `7 / 2`, then `-7 + 2` without reset/restart between them. BASE-AC-19 used OS Enter in **First number**, compared with Calculate for `7 + 5 = 12`.
-- No functional defects were observed in the 18 performed parent checks. This is limited to the recorded inputs and does not establish defect-free operation or offline launch. Validity limits: VT-C02 (GUI versus engine layer), VT-C06 (missing evidence), VT-I05 (environment), and human-review limits.
+- No functional defects were observed in the 18 performed parent checks. This is limited to the recorded inputs and does not establish defect-free operation. Offline launch is supported separately by Amin’s manual report. Validity limits: VT-C02 (GUI versus engine layer), VT-C06 (missing evidence), VT-I05 (environment), and human-review limits.
+
+## Supplementary manual offline follow-up — 2026-11-05
+
+Amin confirmed that **both versions passed offline launch**. See [MANUAL-OFFLINE-01](../../research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/../2026-11-05-spec-kit-cr01/offline-manual-follow-up.md) for the original statements, snapshot mapping, missing procedural details and prior blocked outcomes. This dated follow-up updates current totals without changing the automated raw evidence or backdating an automated Pass.

@@ -1,0 +1,24 @@
+2026-11-05T23:18:37.774950+02:00
+$ /Library/Java/JavaVirtualMachines/amazon-corretto-22.jdk/Contents/Home/bin/java -jar target/baseline-calculator-1.0.0.jar
+Native process pid: 8535
+[
+  {
+    "kCGWindowAlpha" : 1,
+    "kCGWindowBounds" : {
+      "Height" : 270,
+      "Width" : 702,
+      "X" : 405,
+      "Y" : 330
+    },
+    "kCGWindowIsOnscreen" : true,
+    "kCGWindowLayer" : 0,
+    "kCGWindowMemoryUsage" : 2432,
+    "kCGWindowName" : "Calculator",
+    "kCGWindowNumber" : 34697,
+    "kCGWindowOwnerName" : "CalculatorApp",
+    "kCGWindowOwnerPID" : 8535,
+    "kCGWindowSharingState" : 1,
+    "kCGWindowStoreType" : 1
+  }
+]
+Native JAR process running; calculator window captured. Networking enabled.
