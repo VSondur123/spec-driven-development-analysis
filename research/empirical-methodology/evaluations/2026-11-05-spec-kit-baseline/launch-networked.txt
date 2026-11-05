@@ -1,0 +1,1 @@
+2026-11-05 15:40:05.653 java[23327:12358416] TSM AdjustCapsLockLEDForKeyTransitionHandling - _ISSetPhysicalKeyboardCapsLockLED Inhibit
