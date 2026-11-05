@@ -2,18 +2,19 @@
 
 **Research role:** Comparison Frameworks and Metrics  
 **Prepared:** 2026-11-04  
+**Updated with independent Baseline evidence:** 2026-11-05  
 **Case study:** Java desktop GUI calculator  
 **Study repository:** [VSondur123/spec-driven-development-analysis](https://github.com/VSondur123/spec-driven-development-analysis)  
-**Companion dataset:** `Experiment_1_Baseline_Comparison_SKILL_Enhanced.xlsx`  
+**Companion dataset:** `Experiment_1_Baseline_Comparison.xlsx`  
 **Phase:** Baseline only; CR-01 excluded
 
-> **Evidence status and interpretation.** This document is a complete *retrospective extraction and preliminary three-aspect comparison of the existing Baseline records*, not a claim that a new independent acceptance test or independent rubric evaluation was performed. Operator-recorded outcomes and evaluator-verified outcomes must remain separate. Where the necessary measurements or formal review results do not exist, this document records **Not calculable / Not assessed / Not rated**, rather than inventing them. The workbook provides AC-by-AC evidence, requirement-by-requirement traceability candidates, the full artefact inventory, and metric-readiness details.
+> **Evidence status (updated 2026-11-05).** This report preserves the earlier retrospective operator-evidence analysis and now incorporates **two additional Baseline evaluator execution records**: Thanh's BMAD manual reports (**19 Pass / 0 Fail / 0 Blocked / 0 Not run**) and Amin's Codex-assisted real-window Spec Kit evaluation (**18 Pass / 0 Fail / 1 Blocked / 0 Not run**). Spec Kit's single Blocked criterion is offline launch (BASE-AC-01), not an observed software defect. These records differ in evidence provenance. BMAD's offline network state was not documented, despite its reported Pass. Independent J1–J7 reviewer ratings and several workflow metrics remain unavailable; no missing observation or decision date is invented. Dated 2026-11-04 audit sections remain as historical preparatory analysis and are superseded where these new evaluator findings conflict.
 
 ## Abstract
 
 This exploratory case study compares two specification-driven development workflows, **BMAD** (operated by Varun) and **GitHub Spec Kit** (operated by George), applied to the same frozen Baseline requirements for a Java Swing calculator. The shared inputs specify eight functional requirements, five non-functional requirements (13 IDs in total), and 19 parent acceptance criteria. Evidence was extracted from the operators' planning artefacts, architecture/design documents, implementation sources, tests, build and review logs, decisions, prompts, screenshots, and manual observations. The analysis is organised under **(A) application quality**, **(B) development workflow quality**, and **(C) development results and documentation**.
 
-Both operators reported **19/19 parent acceptance criteria as Pass**, although BMAD's clean-build criterion has documented limitations and the Spec Kit clean-checkout result was obtained on an interim commit. BMAD produced a PRD, dedicated Architecture Spine, three epics and nine stories. Spec Kit produced a constitution, specification, plan, research and data-model documents, two contracts, and 34 tasks, supported by a detailed prompt and decision log. Both tracks demonstrate substantial candidate requirements-to-implementation-and-test chains, but no final M03a/M03b/M03c numerical score is justified until semantic link verification is finished. Neither a common independent acceptance run nor independent J1–J7 ratings were located. Active effort was not measured. The findings thus describe **workflow differences and the strength and limitations of available evidence**, without claiming that one tool or calculator is universally superior.
+Both operators initially reported **19/19 parent criteria as Pass**, but the subsequent independent evaluator records differ: **BMAD 19/19 Pass as reported by Thanh**, and **Spec Kit 18/19 Pass with one Blocked** in Amin's Codex-assisted real-window execution. The Blocked Spec Kit check is BASE-AC-01: networking was not reliably disabled and an offline launch was not performed; it is not a Fail. BMAD also lacks a network-state record for its reported offline Pass, so its 100% coverage has a specified evidence limitation. Spec Kit's frozen evaluation contains 35 timestamped real-GUI observations and a native suite of 81 passing tests; BMAD's current independent sheet contains written evaluator observations without attached raw GUI logs. Both tracks have substantive planning and traceability artefacts, but M03 native-link scores, M11 independent rubric ratings, comparable active effort and some evidence-completeness metrics remain unresolved. This descriptive result **does not establish that BMAD produces a higher-quality calculator**.
 
 ## 1. Study question, scope and evidence rules
 
@@ -29,18 +30,20 @@ The shared inventory has one common limitation: **four NFRs (`BASE-NFR-01`…`04
 
 ### 1.3 Method and distinctions
 
-This document is a **source-based retrospective review**. It uses existing evidence as recorded; it does not claim to have launched either calculator. The following categories are deliberately separate:
+The study remains an exploratory comparative case study of complete tool–agent–operator workflows. The 2026-11-04 desk review extracted the operators' historical outcomes and artefacts; the **2026-11-05 amendment incorporates independent evaluation records** at two identified immutable Baseline snapshots. This report does not assert that its author launched either program when updating the report itself.
 
-| Category | Meaning | Status here |
-|---|---|---|
-| Operator-reported acceptance outcome | The result written by Varun or George against an AC | Extracted for all 19 ACs in both tracks |
-| Evaluator-observed common AC run | The same independent procedure executed against both precise frozen snapshots | **Not performed** |
-| Native traceability | Links explicitly recorded by the original workflow/operator, semantically reviewed against implementation and verification artefacts | **Candidates extracted; formal M03 verification incomplete** |
-| Reconstructed traceability | Links inferred later by the comparison evaluator | Kept separate; not credited to M03 |
-| Rubric judgement | Independent 0–3/NR/N/A assessment against J1–J7 | **Not rated** |
-| Evidence availability | Available, Confirmed absent, Unavailable, or Unassessed | Not all checklist items assessed; **M15 not calculable** |
+| Information layer | BMAD | Spec Kit | Analytical rule |
+|---|---|---|---|
+| Original operator report | 19/19 Pass | 19/19 Pass | Historical developer-reported, not pooled with independent outcomes |
+| Independent Baseline evaluator | Thanh: 19 Pass, 0 Fail, 0 Blocked, 0 Not run | Amin/Codex: 18 Pass, 0 Fail, 1 Blocked, 0 Not run | Separate frozen-snapshot test records; D=19 per track |
+| Observation method | Manual GUI outcomes entered by Thanh; raw screenshots/logs not supplied | Java Robot real-display keyboard/mouse GUI actions, live Swing state readback, screenshots, raw TSV; Amin directed run | Different evidence levels and human/AI participation must be explicit |
+| Native test suite | BMAD Maven test command reportedly exited 0; raw independent output absent | 81 tests passed, 0 failure/error/skip, from successful clean verify retry | Native test counts are context, not acceptance parent counts or common quality units |
+| Ordinal rubric J1–J7 | NR / N/A where justified | NR / N/A where justified | No paired independent 0–3 human scoring; do not create numerical ratings |
+| Native traceability (M03) | Desk-reviewed candidates; formal provenance sign-off pending | Desk-reviewed candidates; formal provenance sign-off pending | No unsupported M03 fraction from the new acceptance run |
 
-No parent AC is added for every subcase. The metric catalogue and proposed evaluation rules distinguish pass coverage, execution completion, layer of observation, and primary versus supplementary runs. The workbook records the source of each reported status rather than treating screenshots, manual reports and tests as interchangeable.
+Sources: [BMAD independent sheet](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/bmad-calculator/evidence/07-evaluator-execution-sheet.md), [Spec Kit independent sheet](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/github-spec-kit-calculator/evidence/07-evaluator-execution-sheet.md), [Spec Kit reproducibility README](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/README.md), and [experiment log](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/shared/experiment-log.md).
+
+Parent pass coverage is **P/D**, D=19 per track; **Blocked** stays in the denominator. Execution completeness C/D requires decisive observations of every required subcase of each parent. BASE-AC-11 (four), AC-12 (nine), AC-13 (two), and AC-18 (four) retain their subcase evidence without increasing D. Reporting 19 BMAD Pass preserves Thanh's submitted statuses, **not** a claim that the missing offline network-state record is independently proven.
 
 ### 1.4 Conditions and snapshot integrity
 
@@ -53,6 +56,8 @@ No parent AC is added for every subcase. The metric catalogue and proposed evalu
 | Build/test | Maven 3.9.16; JUnit Jupiter 6.1.3; Swing | Maven 3.9.16; JUnit Jupiter 6.1.3; Swing |
 | Snapshot record | `baseline-frozen` tag declared; acceptance file cites `ebac834`, final manual AC-01 cites `943c73f` | AC-15 on interim `419f92f`; `6bdf927` another interim commit; no final freeze/tag declared in status |
 | Evidence limitation | Tag target verified as 740c78de; alignment of historical result trees remains to be checked | Most AC reports refer to an uncommitted working tree; later edits remain outside an immutable final freeze |
+
+**Evaluator runs (2026-11-05, separate from the operator environments above):** Thanh used Windows 11, Eclipse Temurin Java 22 and Maven 3.9.11, testing BMAD `740c78de062bb1edd8076e4a49dde768b0fe1e49` (`baseline-frozen`) by reported manual GUI checks. Amin's Codex-assisted Spec Kit run used macOS 27.0.1 (aarch64), Amazon Corretto 22.0.2 and Maven 3.9.16 against `88f56d0979e2fae1fb5d59e8681975e3a1fc2a27`. The latter SHA was designated in LOG-26; the original operator's own final freeze declaration remained pending in the checked log. This newer evaluation evidence supersedes the former *lack-of-frozen-evaluator-run* limitation but does not retroactively change the historical operator record.
 
 Sources: [BMAD environment](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/bmad-calculator/evidence/01-environment.md), [BMAD status](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/bmad-calculator/evidence/00-STATUS.md), [BMAD acceptance record](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/bmad-calculator/evidence/04-acceptance-results-and-traceability.md), [Spec Kit environment](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/github-spec-kit-calculator/evidence/01-environment.md), [Spec Kit status](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/github-spec-kit-calculator/evidence/00-STATUS.md).
 
@@ -68,7 +73,7 @@ This Experiment 1 comparison follows the **Goal–Question–Metric (GQM)** orga
 |---|---|---|---|
 | **G1 – Specification and traceability** | Q1.1 native requirement representation; Q1.2 stage links; Q1.3 shared-check gaps; Q1.4 reviewer quality | M03a/b/c, M13, C1, M01, optional M02, M11 J1–J4 | Native mapping tables found for both tracks; formal link verification and reviewer ratings pending |
 | **G2 – Change-impact handling** | Q2.1–Q2.4 impact, omissions, propagation and evidence | M07, M07b, M04/M05, M11 J5–J6, M01/M03 | **Not applicable to Baseline**; CR-01 remains outside Experiment 1 |
-| **G3 – Implementation and verification outcomes** | Q3.1 parent AC outcomes; Q3.2 regressions; Q3.3 distinct defects; Q3.4 reviewer judgement | M01, M06, M04, M05, M12, M11 | Operator-reported 19/19 each; no independent common run; defect totals and formal rubric ratings pending |
+| **G3 – Implementation and verification outcomes** | Q3.1 parent AC outcomes; Q3.2 regressions; Q3.3 distinct defects; Q3.4 reviewer judgement | M01, M06, M04, M05, M12, M11 | Operator reports 19/19 each; evaluator BMAD 19 Pass reported, Spec Kit 18 Pass + 1 Blocked; rubric ratings pending |
 | **G4 – Human work and effort** | Q4.1–Q4.4 interventions, active effort, duration, rework | M08–M10, M12 | Retrospective event candidates; measured effort and comparable phase boundaries unavailable |
 | **G5 – Evidence and reproducibility** | Q5.1–Q5.4 evidence availability, snapshots, review, limitations | M15, M16, M11, M14, C1 | Evidence inventory available; applicable checklist and independent reviews not fully adopted/completed |
 
@@ -80,23 +85,29 @@ The workbook sheet **GQM goal question map** records the question-level crosswal
 
 **Evaluation question:** When the two calculators are assessed against the same Baseline requirements, which observable behaviours are supported by the existing evidence and where are the evidence limits?
 
-### 2.1 M01 – Acceptance outcomes
+### 2.1 M01 – Acceptance outcomes (updated 2026-11-05)
 
-Both tracks have parent-level records for all 19 Baseline ACs:
+The **same 19 frozen Baseline parent ACs** were used for both tracks. The evaluator-status matrix in the updated workbook is in **Independent M01 audit**; all individual required subcases are in **Independent subcases**. Operator results are retained, without overwriting them, in **M01 AC evidence**.
 
-| Operator report | BMAD | Spec Kit |
+| Baseline measure | BMAD | Spec Kit |
 |---|---:|---:|
-| Parent ACs in frozen Baseline | 19 | 19 |
-| Reported Pass | 19 | 19 |
-| Reported Fail | 0 | 0 |
-| Reported Blocked | 0 | 0 |
-| Reported Not run | 0 | 0 |
-| Operator-reported pass fraction | **19/19 (100%)** | **19/19 (100%)** |
-| Independent common evaluator pass fraction | **Not assessed** | **Not assessed** |
+| Denominator D | 19 | 19 |
+| Historical operator-reported Pass | 19 | 19 |
+| **Independent evaluator Pass (P)** | **19** | **18** |
+| Independent Fail (F) | 0 | 0 |
+| Independent Blocked (B) | 0 | **1** (`BASE-AC-01`) |
+| Independent Not run (N) | 0 | 0 |
+| **Reported independent pass coverage P/D** | **19/19 = 100%** | **18/19 = 94.74%** |
+| Decisive parent share (P+F)/D | 19/19 = 100% | 18/19 = 94.74% |
+| Complete parent execution C/D | 19/19 = 100% *as recorded* | 18/19 = 94.74% |
+| Distinct observed product failures | None reported | None observed in valid run |
+| Important limitation | Reported AC-01 Pass without explicit offline network-state evidence; raw GUI screenshot/log not attached | Offline run omitted after unsuccessful network setup and evaluator direction; Codex-assisted, not all scenarios manually executed by Amin |
 
-**This is a factual extraction of operator records, not the formal verified M01 result.** BMAD explicitly qualifies `BASE-AC-15` as **“Pass with limits.”** Spec Kit records its clean-checkout `BASE-AC-15` against interim commit `419f92f`. The exact snapshot corresponding to the rest of Spec Kit's reported AC observations is described as an uncommitted working tree. The same independent common procedure therefore remains necessary before making a formal acceptance-outcome ranking.
+**Interpretation.** The 5.26 percentage-point difference in *recorded pass coverage* is entirely attributable to Spec Kit's one **environment/procedure Blocked** check, not to a demonstrated failing calculator behaviour. On the 18 checks that were actually completed for Spec Kit, all passed. BMAD reported Pass for its offline launch, but the independent sheet does not record proof that the network was disabled. It is inappropriate to conclude that BMAD's software is more correct, that Spec Kit cannot work offline, or that one workflow wins a controlled benchmark.
 
-Source: [BMAD AC results](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/bmad-calculator/evidence/04-acceptance-results-and-traceability.md); [Spec Kit AC results](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/github-spec-kit-calculator/evidence/06-test-results.md). The **M01 AC evidence** sheet in the workbook contains all 19 ID-by-ID rows and their track-specific test, screenshot or manual-record references.
+**Status provenance:** Thanh manually supplied a complete Pass checklist and noted a clean BMAD checkout with Maven test exit 0, but no raw GUI observations or network state were archived in the current evaluator sheet. Amin's Codex-assisted evaluation produced 35 timestamped real-window observations using Java Robot, GUI state readback, screenshots and saved logs, with BASE-AC-01 excluded from any Pass. A preceding invalid GUI activation attempt is retained separately and **not counted** as a product failure. The primary Maven build initially failed due to sandbox network restrictions; a documented network-enabled retry succeeded, with all 81 native tests passing.
+
+**Sources:** [BMAD evaluator sheet](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/bmad-calculator/evidence/07-evaluator-execution-sheet.md); [Spec Kit evaluator sheet](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/github-spec-kit-calculator/evidence/07-evaluator-execution-sheet.md); [Spec Kit run README](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/README.md); [GUI TSV](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/gui-observations.tsv); [network record](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/offline-network-state.txt); [successful native build](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/build-network-retry.txt).
 
 ### 2.2 Functional correctness and numeric representation
 
@@ -116,13 +127,15 @@ Spec Kit includes a test named `neverThrowsForAnyCombination`, described as cove
 
 These results support a comparison of **observed shared ACs**, not a full usability experiment with measured task time, user satisfaction or accessibility. Visual polish was deliberately not a Baseline comparison objective.
 
-### 2.5 Offline launch and reproducibility
+### 2.5 Offline launch and reproducibility — evaluator update
 
-**AC-01 (offline launch).** Varun reported Wi-Fi disabled during a final-GUI launch and supplied calculator screenshots, but the screenshots do not display network status. George reported disabling networking before launching; the screenshot shows the GUI and a globe-shaped tray icon, but the icon alone is not definitive proof of offline status. In both tracks, the offline state is therefore an **operator-reported manual observation**, not independently demonstrated by a network-state test.
+**BASE-AC-01 (offline launch).** BMAD evaluator Thanh marked **Pass**, reporting that the program opened and a supplementary `1−1=0` calculation worked. However, the submitted observation **does not explicitly state or demonstrate that networking was disabled**. This remains an evidentiary qualification and should be resolved with a dated network-state note, not silently treated as proven. Spec Kit evaluator Amin/Codex marked **Blocked**: the network-off prerequisite was not reliably achieved, no offline GUI launch took place and Amin instructed the assistant to skip the case. This is **not an observed product defect** and does not contradict George's older operator-reported offline Pass; the records describe different runs.
 
-**AC-15 (clean checkout/build/launch).** BMAD records a build and test from a copied set of files (`pom.xml`, `BUILD.md`, `src`, `tests`), but this was **not a real clean Git clone**, and the launch was not repeated from the copy. Spec Kit records a clean Git clone at interim `419f92f`, a successful `mvn -B clean verify` (81 tests) and a `java -jar` launch that remained running with the expected window title observed by the OS. Thus **the documented Spec Kit AC-15 evidence is closer to the prescribed clean-checkout procedure**, while its interim snapshot and lack of a screenshot of that exact launch remain caveats. This is a conclusion about **strength of evidence**, not a declared overall quality winner.
+**BASE-AC-15 (clean build and GUI launch).** Thanh reported a fresh BMAD repository clone and checkout of `740c78de`, `mvn -q test` exit code 0, then `mvn -q compile exec:java` opening the GUI. No terminal capture was provided with this evaluator report. Amin/Codex used a clean tracked Spec Kit clone detached at `88f56d0`; the first `clean verify` was environment-blocked because dependencies could not be downloaded in the sandbox; the identical build retried with network access exited 0, producing 81/81 passing tests. A real GUI window was opened/confirmed; the valid OS-automated GUI run separately used the frozen JAR. These new observations should **not** be confused with operator-era AC-15 evidence tied to older commits.
 
-Sources: [BMAD manual AC-01](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/bmad-calculator/evidence/ac-01-manual-check.md), [BMAD acceptance/limitations](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/bmad-calculator/evidence/04-acceptance-results-and-traceability.md), [Spec Kit AC-01 note](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/github-spec-kit-calculator/evidence/screenshots/ac-01-manual-check.md), [Spec Kit test results](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/github-spec-kit-calculator/evidence/06-test-results.md).
+The conditions are not identical: Thanh tested on Windows 11 with Temurin 22 and Maven 3.9.11; Amin's Codex run used macOS 27.0.1 with Corretto 22 and Maven 3.9.16. Both evaluated the documented Baseline behaviour, but platform and evidence modality remain comparison limitations.
+
+Sources: [BMAD evaluator record](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/bmad-calculator/evidence/07-evaluator-execution-sheet.md); [Spec Kit evaluator record](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/github-spec-kit-calculator/evidence/07-evaluator-execution-sheet.md); [Spec Kit run README](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/README.md); [network setup log](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/offline-network-state.txt); [build attempt log](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/build-primary.txt); [successful build log](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/build-network-retry.txt).
 
 ### 2.6 Native test suites and reliability
 
@@ -374,6 +387,8 @@ This is a useful and auditable **preliminary comparison of the existing Baseline
 
 # Supplementary audit update — 4 November 2026
 
+> **Historical evidence checkpoint:** This appendix records the 2026-11-04 preparatory state. Where it says no independent evaluation had been performed, read that as **true at this earlier checkpoint**; the 2026-11-05 evaluator result in §2.1 supersedes it.
+
 This section updates the initial retrospective comparison with direct read-only GitHub commit/branch verification, additional Java source/test inspection, a structured intervention episode screen and a complete provisional **EC-01–EC-21** checklist audit. The original three aspects—**A. Application Quality, B. Development Workflow Quality, C. Development Results and Documentation**—remain the organising framework. The companion workbook supplies row-level evidence; this section specifies what the added review can and cannot establish.
 
 ## D1. Baseline snapshot verification — completed as far as the repository permits
@@ -475,6 +490,8 @@ The study's [project.md](https://github.com/VSondur123/spec-driven-development-a
 
 # Final evidence-disposition addendum (4 November 2026)
 
+> **Historical evidence checkpoint:** These are prior desk-study dispositions. New baseline evaluator results are integrated in the revised main sections and the final 2026-11-05 update below.
+
 This section supersedes earlier statements that the M03 and M15 desk review itself had not been performed. The revised workbook contains a row-level **evidence-based desk determination** for each of the 13 shared requirements on both tracks, and a state for each of the 42 EC track-item checklist entries. These are **not** independently executed test results or independent human ratings.
 
 ## M03 – Requirement-by-requirement desk assessment
@@ -514,6 +531,8 @@ The three-aspect **retrospective Baseline evidence comparison is complete as a d
 ---
 
 # Appendix E — Alignment with the research packages (submission edition)
+
+> **Dating note:** The source integration below was prepared before the 2026-11-05 evaluator runs and is retained as historical methodology context, not the latest M01 status.
 
 **Document control.** This appendix reconciles the Stage 1 retrospective comparison with the 2026-10-30 draft-5 comparison catalogue/visualisation proposal and the 2026-11-03 draft-5 empirical methodology package. The corresponding expanded workbook is `Experiment_1_Baseline_Comparison_FINAL.xlsx`. This appendix is a methodological crosswalk, not a claim of new independent observations or of formal team adoption. The earlier body and Appendix D retain the original source-by-source analysis; where a candidate mapping is described, the stricter verification limitations in this appendix apply.
 
@@ -689,3 +708,94 @@ The workbook retains all pre-existing sheets and adds **Skill evaluation manifes
 To move from this completed desk study to a formal Evaluate-mode result, the team must record the effective adopted protocol/rubric, confirm both immutable Baseline submissions and align primary evidence with them, conduct a common evaluator acceptance procedure where required, apply agreed native-link sign-off rules, collect independent reviewer ratings, and settle applicable M15 collection obligations. None of these external decisions is represented as already completed here.
 
 **Conclusion:** The previous three-aspect Experiment 1 comparison remains the main research analysis. The skill adds explicit procedural governance, provenance, readiness gates and GQM-to-validity traceability. The desk review is **complete within the stated retrospective evidence scope**; the formal independent evaluation is **not claimed complete**.
+
+
+---
+
+# Experiment 1 — Independent Baseline Evaluation Integration (2026-11-05)
+
+This update is the operative M01 finding and supersedes older statements elsewhere in this report that *no independent evaluation has yet been performed*. Earlier operator evidence and desk-review records are preserved as prior checkpoints, not deleted.
+
+## U1. Evidence register and observed conditions
+
+| Record | Frozen version / date | Observation type | Primary record |
+|---|---|---|---|
+| BMAD — independent evaluation | `baseline-frozen` → `740c78de062bb1edd8076e4a49dde768b0fe1e49`; 2026-11-05 | Thanh's reported manual GUI observations, 19 Pass; no separate screenshots or raw native-test log attached | [BMAD 07 sheet](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/bmad-calculator/evidence/07-evaluator-execution-sheet.md) |
+| Spec Kit — independent evaluation | `88f56d0979e2fae1fb5d59e8681975e3a1fc2a27`; 2026-11-05 | Amin-directed Codex real-window mouse/keyboard automation, live state-readback and screenshots; 18 Pass, 1 Blocked | [Spec Kit 07 sheet](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/github-spec-kit-calculator/evidence/07-evaluator-execution-sheet.md) |
+| Spec Kit — verification artefacts | Same 88f56d0 snapshot; successful build and GUI run, 2026-11-05 | 35 timestamped GUI observations; Maven 81/81 passing on second attempt; initial environment-blocked build retained | [Run README](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/README.md), [raw observations](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/gui-observations.tsv), [build retry](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/build-network-retry.txt) |
+| Spec Kit — offline limitation | 2026-11-05 | Network disabling attempt inconclusive; no offline launch performed; AC-01 Blocked | [Network-state record](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline/offline-network-state.txt) |
+| Governance and freeze | LOG-23 and LOG-26 | Evaluator confirmations recorded; designated Spec Kit snapshot not necessarily George-declared freeze; rubric/protocol revision draft-5 identified as adopted by Thanh, formal decision date absent | [Experiment log](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/shared/experiment-log.md), [protocol](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/shared/experiment-protocol.md), [rubric](https://github.com/VSondur123/spec-driven-development-analysis/blob/main/shared/evaluation-rubric.md) |
+
+The evidence levels must not be conflated: an evaluator's written manual test record is valid reported observation evidence but is less readily reproducible than retained screenshots plus logs. GUI automation provides observable execution records but **does not constitute a second human reviewer rating**. All acceptance results are bound to specific snapshots, not later branch tips.
+
+## U2. Individual parent AC comparison (D=19)
+
+| Shared parent | BMAD independent | Spec Kit independent | Interpretation |
+|---|---|---|---|
+| `BASE-AC-01` | Pass (Thanh report) | Blocked (offline not executed) | Offline-state evidence differs: BMAD undocumented, Spec Kit not attempted |
+| `BASE-AC-02` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-03` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-04` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-05` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-06` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-07` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-08` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-09` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-10` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-11` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-12` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-13` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-14` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-15` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-16` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-17` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-18` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+| `BASE-AC-19` | Pass (Thanh report) | Pass (Codex-assisted GUI) | GUI outcomes concordant on performed case; source/evidence modalities differ |
+
+*Subcases:* AC-11 (four empty-field configurations), AC-12 (nine malformed inputs), AC-13 (two zero divisors) and AC-18 (four precision cases) are explicitly preserved in the workbook. They do not increase the parent denominator. The Spec Kit screenshots and timestamped TSV cover these performed scenarios. BMAD subcase outcomes are based on Thanh's submitted checklist, not an inferred test run.
+
+## U3. Recalculated M01
+
+Let P/F/B/N count parent Pass/Fail/Blocked/Not run, and D = P+F+B+N = 19. `C` counts parents with every required subcase completed decisively. On the reported evaluations:
+
+- **BMAD:** P=19, F=0, B=0, N=0; P/D=19/19 (100%); (P+F)/D=19/19 (100%); C/D=19/19 (100%) according to submitted outcomes. **Qualifier:** AC-01's offline-network condition was not explicitly evidenced; do not describe offline operation as independently corroborated.
+- **Spec Kit:** P=18, F=0, B=1, N=0; P/D=18/19 (94.74%); (P+F)/D=18/19 (94.74%); C/D=18/19 (94.74%). BASE-AC-01 is Blocked, **not** Fail. All 18 executed parent checks passed.
+- **Original operator results:** 19/19 Pass for each workflow, measured at the operator-report layer and prior snapshots; these remain historical observations and do not overwrite the independent results.
+
+The M01 pass-fraction difference is 1/19 ≈ 5.26 percentage points, explained by the **unexecuted offline scenario in Spec Kit**, not an observed wrong answer, crash or failed calculator functionality. Because BMAD's network-off evidence is missing and the execution approaches differ, the data do not justify a ranked software-quality claim or a causal advantage of BMAD over Spec Kit.
+
+## U4. Three comparison aspects after the evaluation
+
+**A. Application Quality:** Both completed sets of ordinary GUI arithmetic, validation, reset, precision and error cases returned expected results. Spec Kit's 18 performed checks have reproducible real-window automation records; BMAD has evaluator-reported Pass outcomes. The online behaviour coverage overlaps; offline launch remains a specific evidence gap for both tracks in different ways. No confirmed functional defect was discovered in either independent evaluation record. An environmental Blocked check is not a product failure.
+
+**B. Development Workflow Quality:** The original distinctions (BMAD PRD, Architecture Spine, three epics and nine stories; Spec Kit constitution, spec, plan, contracts and task breakdown) remain descriptive. The new evaluator runs do not measure operator active minutes, intervention episodes or development rework, so **M08/M09/M10/M12 cannot be filled using the 19 AC results alone**. Native 81/81 Spec Kit tests show that the observed checkout built and passed its suite, but test counts are not cross-track productivity metrics.
+
+**C. Development Results and Documentation:** The Spec Kit evaluation strengthens reproducibility evidence with frozen SHA, raw environment, successful and unsuccessful build attempts, 35 time-stamped GUI observations, screenshots and a method note for invalid input-delivery attempts. BMAD's 07 sheet preserves independent manual results, exact frozen SHA, date, reported commands and some observed error messages, but no attached raw GUI logs/screen captures; AC-01 network status and AC-19 operand field remain gaps. The M03 desk-review conclusions, missing NFR-to-AC associations and qualitative documentation comparison are unchanged; M15 can inventory these new artefacts but its percentage still needs the agreed applicable checklist and formal assessment.
+
+## U5. Metrics M01–M16: what actually changed
+
+| Metric | 2026-11-05 consequence | Status / boundary |
+|---|---|---|
+| **M01** | Calculate independent evaluator parent pass fractions for both tracks (19/19 vs 18/19; Spec Blocked=1), maintain subcases and provenance | **Computed with explicit limitations** |
+| M02 | Acceptance outcomes permit an update to requirements with associated ACs, but four NFRs still have no linked AC | **Partial; mapping/definitions pending** |
+| M03a/b/c | New manual verification pointers do not retroactively establish all native explicit implementation/test links | **Desk-reviewed; formal sign-off and denominators unresolved** |
+| M04 | Neither independent sheet reports a product defect; environmental Blocked is not a defect | **Zero defects observed in evaluator-run scope only; broader distinct defect register incomplete** |
+| M05 | Cannot compute late defect discovery share from no bounded discovery history | **Not calculable** |
+| M06/M07/M07b | Compare changed app and predicted impact during CR-01, outside this Baseline | **Not applicable in Experiment 1** |
+| M08/M09/M10/M12 | No new comparable intervention log, active effort measurement, matched phase boundary or normalised rework register | **Not calculable or preliminary** |
+| M11 | No independent 0–3 J1–J7 human ratings obtained by either evaluated calculator run | **NR / phase-specific N/A** |
+| M13 | Reconstructed link candidates remain separate from native M03 | **Descriptive only** |
+| M14 | No pair of initial independent human ratings | **Not calculable** |
+| M15 | Add two completed execution sheets, Spec GUI capture package and Maven logs to evidence inventory | **Evidence expanded; formal completeness percentage still conditional** |
+| M16 | Record 81 native tests passing for the Spec Kit frozen independent build; do not compare totals as intrinsic quality | **Descriptive context only** |
+
+## U6. Limitations and decisions for final review
+
+1. **Different observation modes:** Thanh manually tested and documented results; Amin directed Codex to execute OS-driven GUI checks. There is no evidence of Amin personally executing each case or two independent human reviewers grading them.
+2. **Offline check:** BMAD AC-01 is a reported Pass with missing explicit offline network-state observation. Spec Kit AC-01 is Blocked because no offline launch occurred. Neither status establishes a comparative difference in intrinsic offline capability.
+3. **Snapshot governance:** BMAD's immutable baseline tag is `740c78de`; Spec Kit's `88f56d0` was study-owner-designated in LOG-26 pending George's own formal freeze confirmation. Historical operator results referred to different working trees/commits.
+4. **Environment / automation:** Windows vs macOS, JDK vendors, Maven versions, model-assisted evaluation and initial GUI focus/build network restrictions are potential threats to comparability and repeatability.
+5. **Protocol/rubric:** Thanh reports draft-5 was officially adopted; the repository's shared document headers still describe proposal status and an adoption decision date/reference is not present in the checked material. Do not retroactively infer when adoption became effective.
+6. **Other metrics:** AC execution cannot replace the missing efforts, event episode classifications, reviewer ratings, complete defect histories, or applicability decisions.
+
+**Conclusion, updated 2026-11-05.** Both workflows' calculators performed correctly on the acceptance cases executed and recorded in the independent Baseline evaluations. The recorded M01 outcomes are **BMAD 19/19 Pass with documented evidence qualification**, and **Spec Kit 18/19 Pass with one environment/procedure Blocked**; no functional Fail was reported. The outcome does not justify a product-quality ranking. Experiment 1 is substantially strengthened by adding independent evidence, but its complete multi-metric scientific assessment remains unfinished until the specific outstanding measures are collected or transparently designated unavailable.
