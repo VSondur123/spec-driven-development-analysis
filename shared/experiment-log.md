@@ -126,20 +126,3 @@ Status: **Proposed — awaiting George's response.** Nothing here changes a requ
 | LOG-25 | Spec Kit snapshots. | George to declare, with commit hash or tag: (a) the baseline snapshot, since results were recorded at `419f92f` and the branch tip was `88f56d0`; (b) the CR-01 snapshot once finished. Then update the Spec Kit track's sheets (run record, snapshot) after CR-01. Evaluation runs use the declared snapshots, not branch tips. Both tracks' sheets must stay identical in content. | George: |
 | LOG-26 | Spec Kit baseline snapshot for evaluation. | Varun, as study owner, designates commit `88f56d0979e2fae1fb5d59e8681975e3a1fc2a27` (branch `george/spec-kit-baseline`) as the Spec Kit baseline snapshot for the evaluator run, so the evaluation can proceed. BMAD baseline stays tag `baseline-frozen` (`740c78de`). This is not a freeze declared by George: his own records call earlier commits interim and give no baseline freeze, and his operator results were recorded at `419f92f` and in an uncommitted tree, so differences between `419f92f` and `88f56d0` may exist. Recorded here as a limitation. Sheet `07-evaluator-execution-sheet.md` in both tracks names these two snapshots. | Varun: designated 2026-11-05. George: |
 
-
-## Section H — Independent Spec Kit CR-01 evaluation (2026-11-05, Amin with Codex assistance)
-
-Frozen snapshot: `speckit-cr01-frozen` = `9e523775e31c42bb9f164ddf84e9ff736b2c2fdc`.
-
-- CR-01: 21 Pass, 0 Fail, 1 Blocked, 0 Not run; denominator 22. CR-AC-21 is blocked because its offline baseline subcheck remains unverified under Amin’s instruction to skip offline launch.
-- Separate baseline regression run on the changed app: 18 Pass, 0 Fail, 1 Blocked; denominator 19. Zero observed regressions among the 18 previously passing comparable criteria; offline regression status is undetermined. Original baseline record unchanged.
-- Native clean build: 116 tests, 0 failures, 0 errors, 0 skipped. Separate real-window GUI automation supplied the acceptance observations, screenshots and actual outputs. AI assistance and prior baseline exposure are disclosed; this does not assert every scenario was manually executed by Amin.
-- Results: `github-spec-kit-calculator/evidence/08-cr01-evaluator-execution-sheet.md` and `github-spec-kit-calculator/evidence/09-cr01-baseline-regression-sheet.md`. Raw evidence and reproduction: `research/empirical-methodology/evaluations/2026-11-05-spec-kit-cr01/`.
-- BMAD CR-01 was not evaluated by Amin in this run. No requirements, rubric, native implementation or original baseline outcomes were changed. Protocol/rubric draft-5 adoption date/reference remains unavailable; no adoption history is invented.
-
-
-## Section I — Amin’s manual offline-launch follow-up (reported 2026-11-05)
-
-Amin subsequently reported successful Spec Kit offline launch and confirmed **both baseline and CR-01 passed**. Evidence/provenance: `research/empirical-methodology/evaluations/2026-11-05-spec-kit-cr01/offline-manual-follow-up.md` (MANUAL-OFFLINE-01). Exact observation times and procedural details were not supplied; no automated offline execution is asserted.
-
-Updated combined outcomes: baseline **19 Pass / 0 Fail / 0 Blocked / 0 Not run**; CR-01 baseline regression **19 Pass / 0 Fail / 0 Blocked / 0 Not run**; CR-AC-21 **Pass**; CR-01 **22 Pass / 0 Fail / 0 Blocked / 0 Not run**. No observed regressions across the 19 paired baseline criteria, with offline observations human-reported. Earlier blocked attempts, initial totals, automated logs and screenshots are preserved. No acceptance requirements changed.
