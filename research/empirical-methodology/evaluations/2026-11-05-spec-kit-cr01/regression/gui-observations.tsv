@@ -1,0 +1,36 @@
+time	id	outcome	expected	actual	evidence
+2026-11-05T23:16:48.961164+02:00	BASE-AC-02	Pass	7 displayed	first=7; second=; result=; error=	screenshots/BASE-AC-02.png
+2026-11-05T23:16:50.411216+02:00	BASE-AC-03	Pass	1.5 displayed	first=1.5; second=; result=; error=	screenshots/BASE-AC-03.png
+2026-11-05T23:16:53.080071+02:00	BASE-AC-04	Pass	12	first=7; second=5; result=12; error=	screenshots/BASE-AC-04.png
+2026-11-05T23:16:55.750852+02:00	BASE-AC-05	Pass	2	first=7; second=5; result=2; error=	screenshots/BASE-AC-05.png
+2026-11-05T23:16:58.426340+02:00	BASE-AC-06	Pass	35	first=7; second=5; result=35; error=	screenshots/BASE-AC-06.png
+2026-11-05T23:17:01.096411+02:00	BASE-AC-07	Pass	3.5	first=7; second=2; result=3.5; error=	screenshots/BASE-AC-07.png
+2026-11-05T23:17:03.862509+02:00	BASE-AC-08	Pass	-5	first=-7; second=2; result=-5; error=	screenshots/BASE-AC-08.png
+2026-11-05T23:17:06.940994+02:00	BASE-AC-09	Pass	3.5	first=1.2; second=2.3; result=3.5; error=	screenshots/BASE-AC-09.png
+2026-11-05T23:17:09.923924+02:00	BASE-AC-10	Pass	Inputs, operation, result and error reset	first=; second=; result=; error=	screenshots/BASE-AC-10.png
+2026-11-05T23:17:12.800452+02:00	BASE-AC-10-error	Pass	Error cleared	first=; second=; result=; error=	screenshots/BASE-AC-10-error.png
+2026-11-05T23:17:15.368270+02:00	BASE-AC-11-1	Pass	Enter both numbers	first=; second=5; result=; error=Enter both numbers	screenshots/BASE-AC-11-1.png
+2026-11-05T23:17:17.933367+02:00	BASE-AC-11-2	Pass	Enter both numbers	first=7; second=; result=; error=Enter both numbers	screenshots/BASE-AC-11-2.png
+2026-11-05T23:17:20.394933+02:00	BASE-AC-11-3	Pass	Enter both numbers	first=; second=; result=; error=Enter both numbers	screenshots/BASE-AC-11-3.png
+2026-11-05T23:17:23.266304+02:00	BASE-AC-11-4	Pass	Enter both numbers	first=   ; second=5; result=; error=Enter both numbers	screenshots/BASE-AC-11-4.png
+2026-11-05T23:17:26.131064+02:00	BASE-AC-12-1	Pass	Invalid number	first=abc; second=2; result=; error=Invalid number	screenshots/BASE-AC-12-1.png
+2026-11-05T23:17:29.200426+02:00	BASE-AC-12-2	Pass	Invalid number	first=1.2.3; second=2; result=; error=Invalid number	screenshots/BASE-AC-12-2.png
+2026-11-05T23:17:32.092387+02:00	BASE-AC-12-3	Pass	Invalid number	first=1,5; second=2; result=; error=Invalid number	screenshots/BASE-AC-12-3.png
+2026-11-05T23:17:34.976780+02:00	BASE-AC-12-4	Pass	Invalid number	first=1e3; second=2; result=; error=Invalid number	screenshots/BASE-AC-12-4.png
+2026-11-05T23:17:37.833668+02:00	BASE-AC-12-5	Pass	Invalid number	first=--1; second=2; result=; error=Invalid number	screenshots/BASE-AC-12-5.png
+2026-11-05T23:17:40.482640+02:00	BASE-AC-12-6	Pass	Invalid number	first=.; second=2; result=; error=Invalid number	screenshots/BASE-AC-12-6.png
+2026-11-05T23:17:43.247825+02:00	BASE-AC-12-7	Pass	Invalid number	first=.5; second=2; result=; error=Invalid number	screenshots/BASE-AC-12-7.png
+2026-11-05T23:17:46.022510+02:00	BASE-AC-12-8	Pass	Invalid number	first=5.; second=2; result=; error=Invalid number	screenshots/BASE-AC-12-8.png
+2026-11-05T23:17:48.658164+02:00	BASE-AC-12-9	Pass	Invalid number	first=-; second=2; result=; error=Invalid number	screenshots/BASE-AC-12-9.png
+2026-11-05T23:17:51.305248+02:00	BASE-AC-13-1	Pass	Cannot divide by zero	first=7; second=0; result=; error=Cannot divide by zero	screenshots/BASE-AC-13-1.png
+2026-11-05T23:17:54.163288+02:00	BASE-AC-13-2	Pass	Cannot divide by zero	first=7; second=0.0; result=; error=Cannot divide by zero	screenshots/BASE-AC-13-2.png
+2026-11-05T23:17:58.371626+02:00	BASE-AC-14	Pass	Recover abc+2 error to 1.5+2=3.5	first=1.5; second=2; result=3.5; error=	screenshots/BASE-AC-14.png
+2026-11-05T23:18:01.006250+02:00	BASE-AC-16-1	Pass	12	first=7; second=5; result=12; error=	screenshots/BASE-AC-16-1.png
+2026-11-05T23:18:03.340615+02:00	BASE-AC-16-2	Pass	3.5	first=7; second=2; result=3.5; error=	screenshots/BASE-AC-16-2.png
+2026-11-05T23:18:05.783388+02:00	BASE-AC-16-3	Pass	-5	first=-7; second=2; result=-5; error=	screenshots/BASE-AC-16-3.png
+2026-11-05T23:18:08.118066+02:00	BASE-AC-17	Pass	Select an operation	first=7; second=5; result=; error=Select an operation	screenshots/BASE-AC-17.png
+2026-11-05T23:18:10.774190+02:00	BASE-AC-18-1	Pass	0	first=0; second=5; result=0; error=	screenshots/BASE-AC-18-1.png
+2026-11-05T23:18:13.408423+02:00	BASE-AC-18-2	Pass	0.3333333333	first=1; second=3; result=0.3333333333; error=	screenshots/BASE-AC-18-2.png
+2026-11-05T23:18:16.365003+02:00	BASE-AC-18-3	Pass	0.0004882813	first=1; second=2048; result=0.0004882813; error=	screenshots/BASE-AC-18-3.png
+2026-11-05T23:18:19.425845+02:00	BASE-AC-18-4	Pass	-0.0004882813	first=-1; second=2048; result=-0.0004882813; error=	screenshots/BASE-AC-18-4.png
+2026-11-05T23:18:25.006097+02:00	BASE-AC-19	Pass	Enter in First number gives same 12 as Calculate	first=7; second=5; result=12; error=	screenshots/BASE-AC-19.png
