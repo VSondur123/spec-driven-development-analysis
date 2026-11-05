@@ -1,0 +1,9 @@
+time	id	outcome	expected	actual	evidence
+2026-11-05T15:45:28.716522+02:00	BASE-AC-02	Fail	7 displayed	first=; second=; result=; error=	screenshots/BASE-AC-02.png
+2026-11-05T15:45:30.197598+02:00	BASE-AC-03	Fail	1.5 displayed	first=; second=; result=; error=	screenshots/BASE-AC-03.png
+2026-11-05T15:45:32.910573+02:00	BASE-AC-04	Fail	12	first=; second=; result=; error=	screenshots/BASE-AC-04.png
+2026-11-05T15:45:35.565587+02:00	BASE-AC-05	Fail	2	first=; second=; result=; error=	screenshots/BASE-AC-05.png
+2026-11-05T15:45:38.193538+02:00	BASE-AC-06	Fail	35	first=; second=; result=; error=	screenshots/BASE-AC-06.png
+2026-11-05T15:45:40.861830+02:00	BASE-AC-07	Fail	3.5	first=; second=; result=; error=	screenshots/BASE-AC-07.png
+2026-11-05T15:45:43.631951+02:00	BASE-AC-08	Fail	-5	first=; second=; result=; error=	screenshots/BASE-AC-08.png
+2026-11-05T15:45:46.735772+02:00	BASE-AC-09	Fail	3.5	first=; second=; result=; error=	screenshots/BASE-AC-09.png
