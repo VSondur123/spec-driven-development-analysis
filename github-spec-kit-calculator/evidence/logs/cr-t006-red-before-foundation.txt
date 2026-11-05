@@ -1,0 +1,116 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< study.speckit:baseline-calculator >------------------
+[INFO] Building Baseline Calculator 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ baseline-calculator ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ baseline-calculator ---
+[INFO] skip non existing resourceDirectory C:\!Software, Web and Cloud Courses\Requirements engineering\spec-driven-development-analysis\github-spec-kit-calculator\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ baseline-calculator ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 5 source files with javac [debug release 22] to target\test-classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[14,37] cannot find symbol
+  symbol:   variable SQUARE
+  location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[15,37] cannot find symbol
+  symbol:   variable SQUARE_ROOT
+  location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[16,38] cannot find symbol
+  symbol:   variable RECIPROCAL
+  location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[21,29] cannot find symbol
+  symbol:   variable SQUARE
+  location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[22,29] cannot find symbol
+  symbol:   variable SQUARE_ROOT
+  location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[23,29] cannot find symbol
+  symbol:   variable RECIPROCAL
+  location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[28,34] cannot find symbol
+  symbol:   method isUnary()
+  location: variable ADD of type calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[29,39] cannot find symbol
+  symbol:   method isUnary()
+  location: variable SUBTRACT of type calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[30,39] cannot find symbol
+  symbol:   method isUnary()
+  location: variable MULTIPLY of type calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[31,37] cannot find symbol
+  symbol:   method isUnary()
+  location: variable DIVIDE of type calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java:[75,18] cannot find symbol
+  symbol:   variable SQUARE
+  location: class calculator.ui.CalculatorPanelTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java:[76,18] cannot find symbol
+  symbol:   variable SQUARE_ROOT
+  location: class calculator.ui.CalculatorPanelTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java:[77,18] cannot find symbol
+  symbol:   variable RECIPROCAL
+  location: class calculator.ui.CalculatorPanelTest
+[INFO] 13 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.110 s
+[INFO] Finished at: 2026-11-05T00:24:32+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.16.0:testCompile (default-testCompile) on project baseline-calculator: Compilation failure: Compilation failure: 
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[14,37] cannot find symbol
+[ERROR]   symbol:   variable SQUARE
+[ERROR]   location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[15,37] cannot find symbol
+[ERROR]   symbol:   variable SQUARE_ROOT
+[ERROR]   location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[16,38] cannot find symbol
+[ERROR]   symbol:   variable RECIPROCAL
+[ERROR]   location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[21,29] cannot find symbol
+[ERROR]   symbol:   variable SQUARE
+[ERROR]   location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[22,29] cannot find symbol
+[ERROR]   symbol:   variable SQUARE_ROOT
+[ERROR]   location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[23,29] cannot find symbol
+[ERROR]   symbol:   variable RECIPROCAL
+[ERROR]   location: class calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[28,34] cannot find symbol
+[ERROR]   symbol:   method isUnary()
+[ERROR]   location: variable ADD of type calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[29,39] cannot find symbol
+[ERROR]   symbol:   method isUnary()
+[ERROR]   location: variable SUBTRACT of type calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[30,39] cannot find symbol
+[ERROR]   symbol:   method isUnary()
+[ERROR]   location: variable MULTIPLY of type calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/core/OperationTest.java:[31,37] cannot find symbol
+[ERROR]   symbol:   method isUnary()
+[ERROR]   location: variable DIVIDE of type calculator.core.Operation
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java:[75,18] cannot find symbol
+[ERROR]   symbol:   variable SQUARE
+[ERROR]   location: class calculator.ui.CalculatorPanelTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java:[76,18] cannot find symbol
+[ERROR]   symbol:   variable SQUARE_ROOT
+[ERROR]   location: class calculator.ui.CalculatorPanelTest
+[ERROR] /C:/!Software, Web and Cloud Courses/Requirements engineering/spec-driven-development-analysis/github-spec-kit-calculator/src/test/java/calculator/ui/CalculatorPanelTest.java:[77,18] cannot find symbol
+[ERROR]   symbol:   variable RECIPROCAL
+[ERROR]   location: class calculator.ui.CalculatorPanelTest
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
