@@ -1,0 +1,39 @@
+$ date -Iseconds
+2026-11-05T23:18:40+02:00
+Exit: 0
+
+$ sw_vers
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+Exit: 0
+
+$ uname -m
+arm64
+Exit: 0
+
+$ /Library/Java/JavaVirtualMachines/amazon-corretto-22.jdk/Contents/Home/bin/java -version
+openjdk version "22.0.2" 2024-07-16
+OpenJDK Runtime Environment Corretto-22.0.2.9.1 (build 22.0.2+9-FR)
+OpenJDK 64-Bit Server VM Corretto-22.0.2.9.1 (build 22.0.2+9-FR, mixed mode, sharing)
+Exit: 0
+
+$ /Users/amin/WebstormProjects/spec-driven-development-analysis/tmp/spec-kit-evaluation/tools/apache-maven-3.9.16/bin/mvn -version
+Apache Maven 3.9.16 (2bdd9fddda4b155ebf8000e807eb73fd829a51d5)
+Maven home: /Users/amin/WebstormProjects/spec-driven-development-analysis/tmp/spec-kit-evaluation/tools/apache-maven-3.9.16
+Java version: 22.0.2, vendor: Amazon.com Inc., runtime: /Library/Java/JavaVirtualMachines/amazon-corretto-22.jdk/Contents/Home
+Default locale: en_US, platform encoding: UTF-8
+OS name: "mac os x", version: "27.0.1", arch: "aarch64", family: "mac"
+Exit: 0
+
+$ git -C tmp/spec-kit-cr01/snapshot rev-parse HEAD
+9e523775e31c42bb9f164ddf84e9ff736b2c2fdc
+Exit: 0
+
+$ git -C tmp/spec-kit-cr01/snapshot status --porcelain
+Exit: 0
+
+$ git rev-parse HEAD
+42e9c41c41345acb8bcea3cd4b6a6453ee1fb496
+Exit: 0
+

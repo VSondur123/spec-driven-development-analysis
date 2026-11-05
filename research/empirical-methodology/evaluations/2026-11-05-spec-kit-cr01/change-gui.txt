@@ -1,0 +1,41 @@
+square label=x²
+squareRoot label=√x
+reciprocal label=1/x
+2026-11-05T23:14:45.478878+02:00	CR-AC-01	Pass	Square, square-root and reciprocal controls visible	first=; second=; result=; error=	screenshots/CR-AC-01.png
+2026-11-05 23:14:46.286 java[7708:13045722] TSM AdjustCapsLockLEDForKeyTransitionHandling - _ISSetPhysicalKeyboardCapsLockLED Inhibit
+2026-11-05T23:14:48.213150+02:00	CR-AC-02	Pass	9	first=-3; second=; result=9; error=	screenshots/CR-AC-02.png
+2026-11-05T23:14:51.036727+02:00	CR-AC-03	Pass	1.44	first=1.2; second=; result=1.44; error=	screenshots/CR-AC-03.png
+2026-11-05T23:14:53.609696+02:00	CR-AC-04	Pass	0	first=0; second=; result=0; error=	screenshots/CR-AC-04.png
+2026-11-05T23:14:56.159068+02:00	CR-AC-05	Pass	3	first=9; second=; result=3; error=	screenshots/CR-AC-05.png
+2026-11-05T23:14:58.720532+02:00	CR-AC-06	Pass	1.4142135624	first=2; second=; result=1.4142135624; error=	screenshots/CR-AC-06.png
+2026-11-05T23:15:01.263156+02:00	CR-AC-07	Pass	0	first=0; second=; result=0; error=	screenshots/CR-AC-07.png
+2026-11-05T23:15:03.922117+02:00	CR-AC-08	Pass	Cannot take square root of a negative number	first=-1; second=; result=; error=Cannot take square root of a negative number	screenshots/CR-AC-08.png
+2026-11-05T23:15:06.475164+02:00	CR-AC-09	Pass	0.25	first=4; second=; result=0.25; error=	screenshots/CR-AC-09.png
+2026-11-05T23:15:09.055959+02:00	CR-AC-10	Pass	0.3333333333	first=3; second=; result=0.3333333333; error=	screenshots/CR-AC-10.png
+2026-11-05T23:15:11.716109+02:00	CR-AC-11	Pass	-0.25	first=-4; second=; result=-0.25; error=	screenshots/CR-AC-11.png
+2026-11-05T23:15:14.303021+02:00	CR-AC-12	Pass	Cannot divide by zero	first=0; second=; result=; error=Cannot divide by zero	screenshots/CR-AC-12.png
+2026-11-05T23:15:17.082241+02:00	CR-AC-13-1	Pass	Cannot divide by zero	first=0.0; second=; result=; error=Cannot divide by zero	screenshots/CR-AC-13-1.png
+2026-11-05T23:15:19.934750+02:00	CR-AC-13-2	Pass	Cannot divide by zero	first=-0.0; second=; result=; error=Cannot divide by zero	screenshots/CR-AC-13-2.png
+2026-11-05T23:15:22.396815+02:00	CR-AC-14-1	Pass	Enter both numbers	first=; second=; result=; error=Enter both numbers	screenshots/CR-AC-14-1.png
+2026-11-05T23:15:24.875419+02:00	CR-AC-14-2	Pass	Enter both numbers	first=; second=; result=; error=Enter both numbers	screenshots/CR-AC-14-2.png
+2026-11-05T23:15:27.341282+02:00	CR-AC-14-3	Pass	Enter both numbers	first=; second=; result=; error=Enter both numbers	screenshots/CR-AC-14-3.png
+2026-11-05T23:15:30.109361+02:00	CR-AC-15-1	Pass	Invalid number	first=abc; second=; result=; error=Invalid number	screenshots/CR-AC-15-1.png
+2026-11-05T23:15:32.873896+02:00	CR-AC-15-2	Pass	Invalid number	first=abc; second=; result=; error=Invalid number	screenshots/CR-AC-15-2.png
+2026-11-05T23:15:35.641046+02:00	CR-AC-15-3	Pass	Invalid number	first=abc; second=; result=; error=Invalid number	screenshots/CR-AC-15-3.png
+2026-11-05T23:15:38.318007+02:00	CR-AC-16-1	Pass	9	first=-3; second=; result=9; error=	screenshots/CR-AC-16-1.png
+2026-11-05T23:15:40.891732+02:00	CR-AC-16-2	Pass	3	first=9; second=; result=3; error=	screenshots/CR-AC-16-2.png
+2026-11-05T23:15:43.439241+02:00	CR-AC-16-3	Pass	0.25	first=4; second=; result=0.25; error=	screenshots/CR-AC-16-3.png
+2026-11-05T23:15:46.408067+02:00	CR-AC-17-1	Pass	9	first=-3; second=123; result=9; error=	screenshots/CR-AC-17-1.png
+2026-11-05T23:15:49.277396+02:00	CR-AC-17-2	Pass	3	first=9; second=123; result=3; error=	screenshots/CR-AC-17-2.png
+2026-11-05T23:15:52.164200+02:00	CR-AC-17-3	Pass	0.25	first=4; second=123; result=0.25; error=	screenshots/CR-AC-17-3.png
+2026-11-05T23:15:55.980301+02:00	CR-AC-18	Pass	Recover negative sqrt error to sqrt(9)=3	first=9; second=; result=3; error=	screenshots/CR-AC-18.png
+2026-11-05T23:15:59.686148+02:00	CR-AC-19	Pass	Recover reciprocal zero error to 1/4=0.25	first=4; second=; result=0.25; error=	screenshots/CR-AC-19.png
+2026-11-05T23:16:02.678411+02:00	CR-AC-20-1	Pass	Clear resets all inputs, seven operations and output	first=; second=; result=; error=	screenshots/CR-AC-20-1.png
+2026-11-05T23:16:05.572895+02:00	CR-AC-20-2	Pass	Clear resets all inputs, seven operations and output	first=; second=; result=; error=	screenshots/CR-AC-20-2.png
+2026-11-05T23:16:08.452837+02:00	CR-AC-20-3	Pass	Clear resets all inputs, seven operations and output	first=; second=; result=; error=	screenshots/CR-AC-20-3.png
+2026-11-05T23:16:11.449573+02:00	SUP-SECOND-1	Pass	9	first=-3; second=abc; result=9; error=	screenshots/SUP-SECOND-1.png
+2026-11-05T23:16:14.330216+02:00	SUP-SECOND-2	Pass	3	first=9; second=abc; result=3; error=	screenshots/SUP-SECOND-2.png
+2026-11-05T23:16:17.207549+02:00	SUP-SECOND-3	Pass	0.25	first=4; second=abc; result=0.25; error=	screenshots/SUP-SECOND-3.png
+2026-11-05T23:16:20.193345+02:00	SUP-ENTER-1	Pass	9	first=-3; second=; result=9; error=	screenshots/SUP-ENTER-1.png
+2026-11-05T23:16:23.068120+02:00	SUP-ENTER-2	Pass	3	first=9; second=; result=3; error=	screenshots/SUP-ENTER-2.png
+2026-11-05T23:16:25.952670+02:00	SUP-ENTER-3	Pass	0.25	first=4; second=; result=0.25; error=	screenshots/SUP-ENTER-3.png

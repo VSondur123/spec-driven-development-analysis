@@ -21,9 +21,9 @@ Prepared on 2026-11-05 for Amin, assisted by Codex. This is a baseline-only reco
 
 5. Java Robot then drove real OS mouse clicks and keyboard events against the same frozen JAR in a displayed calculator window. There are 35 timestamped GUI observations, including all required subcases of the performed checks. All 18 performed parent criteria passed. BASE-AC-15 combines the clean build, Amin’s visible-launch confirmation, and the independently observed displayed window. No acceptance Pass is derived solely from the headless suite.
 6. A partial initial GUI automation attempt did not activate the Java app, so OS input was not delivered. Preserved raw assertions and screenshots are in `invalid-input-delivery-attempt/`. They are excluded as invalid input-delivery observations. The harness was corrected to request application foreground, a separate visible input probe succeeded, then the complete valid GUI run took place from 15:47:59 to 15:49:35 EET. No implementation source or POM was changed.
-7. Offline launch remains unverified. Setup briefly disabled Wi-Fi but route output was inconclusive; the offline GUI was not launched. The `finally` block restored Wi-Fi. Amin requested no further offline attempt. BASE-AC-01 is Blocked, retained in D=19.
+7. **Initial automated result:** Offline launch remained unverified. Setup briefly disabled Wi-Fi but route output was inconclusive; the offline GUI was not launched. The `finally` block restored Wi-Fi. Amin requested no further offline attempt. BASE-AC-01 was Blocked, retained in D=19.
 
-**Result: 18 Pass / 0 Fail / 1 Blocked / 0 Not run.** Verified coverage and complete execution are 18/19 (94.74%); all 18 performed parents passed. The completed sheet contains the actual outputs, per-subcase evidence and limitations. This is AI-assisted evaluation with explicit provenance, not a claim that Amin manually executed every scenario or that two humans independently reviewed it.
+**Initial automated result: 18 Pass / 0 Fail / 1 Blocked / 0 Not run.** Verified coverage and complete execution are 18/19 (94.74%); all 18 performed parents passed. The completed sheet contains the actual outputs, per-subcase evidence and limitations. This is AI-assisted evaluation with explicit provenance, not a claim that Amin manually executed every scenario or that two humans independently reviewed it.
 
 ## Commands
 
@@ -71,3 +71,7 @@ run_dir=research/empirical-methodology/evaluations/2026-11-05-spec-kit-baseline
 The real desktop GUI must be available and allowed to take foreground focus. Keep mouse/keyboard free while Robot drives the calculator. BASE-AC-19 uses Enter in First number. These checks do not replace later human review or establish behaviour outside the recorded inputs. Native test counts are context, not a workflow quality score. No CR-01 results or formal rubric judgments are included.
 
 The Spec Kit baseline sheet and Amin’s response in LOG-23 have been updated locally. BMAD’s results, test procedures, acceptance criteria and implementation snapshots are unchanged.
+
+## Updated result — Amin’s manual follow-up
+
+**19 Pass / 0 Fail / 0 Blocked / 0 Not run (19/19)** including Amin’s subsequent manual offline-launch confirmation. See [MANUAL-OFFLINE-01](../2026-11-05-spec-kit-cr01/offline-manual-follow-up.md). Exact observation time and network procedure were not supplied. Earlier blocked attempts and raw records are retained; no automated offline Pass is claimed.
