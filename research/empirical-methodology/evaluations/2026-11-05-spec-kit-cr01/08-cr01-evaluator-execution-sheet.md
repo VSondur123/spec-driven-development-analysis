@@ -1,6 +1,6 @@
 # Evaluator Execution Sheet — CR-01 (CR-AC-01 to 22)
 
-**Status:** Completed for requested online scope: 21 Pass, 0 Fail, 1 Blocked, 0 Not run (22 parents). Offline launch remains unverified at Amin’s request.
+**Status:** Completed including Amin’s supplementary manual offline-launch report: **22 Pass, 0 Fail, 0 Blocked, 0 Not run** (22 parents). Earlier blocked results remain documented in the history.
 **Scope:** CR-01 change phase only. The denominator is 22 parent ACs; subcases never add to it.
 **Authority:** `shared/acceptance-criteria.md` §3 (copied unchanged from `shared/change-request-CR-01.md` §6 v0.2, LOG-16), with the clarifications LOG-17 to LOG-21 applied. If this sheet and that file differ, that file wins.
 **Common test procedures:** This populated evaluator run retains the common procedures, operands and expected outcomes. Results are specific to Spec Kit; the offline check remains in the denominator.
@@ -13,7 +13,7 @@
 |---|---|
 | Track | GitHub Spec Kit — CR-01 (changed snapshot) |
 | Evaluator (name, role, prior exposure to this track) | Amin — methodology, independent of implementation per team record; AI-assisted by Codex. Codex performed the earlier baseline evaluation and inspected UI/build code to locate controls. This run uses real OS mouse/keyboard events and screenshots, not a claim of manual execution of every check by Amin or two independent human reviews. |
-| Date / time / timezone | 2026-11-05, EET (UTC+02:00). CR GUI: 2026-11-05T23:14:45.478878+02:00 to 2026-11-05T23:16:25.952670+02:00; regression GUI: 2026-11-05T23:16:48.961164+02:00 to 2026-11-05T23:18:25.006097+02:00. |
+| Date / time / timezone | 2026-11-05, EET (UTC+02:00). CR GUI: 2026-11-05T23:14:45.478878+02:00 to 2026-11-05T23:16:25.952670+02:00; regression GUI: 2026-11-05T23:16:48.961164+02:00 to 2026-11-05T23:18:25.006097+02:00.  Manual offline follow-up reported 2026-11-05; actual observation time not supplied. |
 | Snapshot (full commit SHA or tag; clean or dirty) | `speckit-cr01-frozen` resolves to `9e523775e31c42bb9f164ddf84e9ff736b2c2fdc`; fresh detached local clone; tracked tree clean before/after evaluation. |
 | OS / version | macOS 27.0.1 (26A434), Apple Silicon aarch64 |
 | JDK version and `JAVA_HOME` | Amazon Corretto 22.0.2; `/Library/Java/JavaVirtualMachines/amazon-corretto-22.jdk/Contents/Home` |
@@ -55,22 +55,22 @@
 | `CR-AC-18` | Trigger a negative square-root error, correct the input, calculate again. | The application recovers and shows the correct result. | GUI; stateful | Pass | CR-AC-18: first=9; second=; result=3; error= | [CR-AC-18](change/screenshots/CR-AC-18.png); [raw records](change/gui-observations.tsv). |
 | `CR-AC-19` | Trigger a reciprocal division-by-zero error, correct the input, calculate again. | The application recovers and shows the correct result. | GUI; stateful | Pass | CR-AC-19: first=4; second=; result=0.25; error= | [CR-AC-19](change/screenshots/CR-AC-19.png); [raw records](change/gui-observations.tsv). |
 | `CR-AC-20` | Use Clear after a unary calculation. | The calculator returns to the agreed baseline initial state. | GUI | Pass | CR-AC-20-1: first=; second=; result=; error=; CR-AC-20-2: first=; second=; result=; error=; CR-AC-20-3: first=; second=; result=; error= | [CR-AC-20-1](change/screenshots/CR-AC-20-1.png), [CR-AC-20-2](change/screenshots/CR-AC-20-2.png), [CR-AC-20-3](change/screenshots/CR-AC-20-3.png); [raw records](change/gui-observations.tsv). |
-| `CR-AC-21` | Execute all `BASE-AC-01` to `BASE-AC-19` against the changed application. Record each individually (use a fresh copy of the baseline sheet). | All baseline criteria retain their required behaviour. | Regression; 19 parents | Blocked | 18/19 baseline parents passed on this changed snapshot; BASE-AC-01 remains unverified because offline launch was skipped under Amin’s standing instruction. No regressions observed among the 18 previously passing, comparable checks. | [Separate regression record](09-cr01-baseline-regression-sheet.md) |
+| `CR-AC-21` | Execute all `BASE-AC-01` to `BASE-AC-19` against the changed application. Record each individually (use a fresh copy of the baseline sheet). | All baseline criteria retain their required behaviour. | Regression; 19 parents | Pass | All 19 baseline checks now have Pass outcomes on the changed snapshot, including Amin’s supplementary manual offline-launch report. No observed regressions; offline continuity is human-reported. | [MANUAL-OFFLINE-01](offline-manual-follow-up.md) |
 | `CR-AC-22` | Follow the documented build and test instructions for the changed application. | Builds and tests execute. Prerequisites, test outcomes and failures are documented. | Build | Pass | Fresh clone at frozen SHA, native clean verify exited 0: 116 tests, 0 failures, 0 errors, 0 skipped. Documented JAR launched in a real window; see native-launch.png. | [Build](build.txt), [environment](environment.txt), [native launch](native-launch.png). |
 
 ## Summary (fill in after the run)
 
 | P | F | B | N | D | Verified pass coverage P/D | Decisive (P+F)/D | Complete C/D |
 |---|---|---|---|---|---|---|---|
-| 21 | 0 | 1 | 0 | 22 | 21/22 (95.45%) | 21/22 (95.45%) | 21/22 (95.45%) |
+| 22 | 0 | 0 | 0 | 22 | 22/22 (100%) | 22/22 (100%) | 22/22 (100%) |
 
-The denominator is unchanged. Missing offline evidence is not a Pass and is not a product Fail. CR-AC-21 includes the blocked offline subcheck; it therefore cannot be marked Pass.
+The denominator is unchanged. Amin’s supplementary manual report supplies the formerly blocked offline result. Current totals combine the initial automated/build observations with that named human follow-up; they are not a claim of one fully automated run.
 
 ## Regressions (baseline Pass observed, now Fail)
 
 | Baseline AC | Baseline outcome (sheet 07) | Change outcome | Evidence |
 |---|---|---|---|
-| BASE-AC-02..19 | 18 Pass at baseline | 18 Pass at CR-01 | [Paired regression record](09-cr01-baseline-regression-sheet.md); BASE-AC-01 undetermined. |
+| BASE-AC-01..19 | 19 Pass including manual offline follow-up | 19 Pass including manual offline follow-up | [Paired regression record](09-cr01-baseline-regression-sheet.md); offline provenance in MANUAL-OFFLINE-01. |
 
 ## Defects found in this run
 
@@ -128,9 +128,13 @@ The denominator is unchanged. Missing offline evidence is not a Pass and is not 
 
 ## Deviations, provenance and interpretation
 
-- Offline launch was not attempted, preserving Amin’s explicit instruction to skip it. The earlier offline prerequisite problem remains unresolved; this run does not disable networking. BASE-AC-01 and aggregate CR-AC-21 remain Blocked/unverified.
-- The original baseline record at commit 88f56d0 is intact. A regression requires a previously observed Pass becoming Fail under comparable conditions. There are 0 observed regressions among 18 comparable parents; offline regression status is undetermined.
+- **Initial automated run:** Offline launch was not attempted, preserving Amin’s explicit instruction to skip it. The earlier offline prerequisite problem remains unresolved; this run does not disable networking. BASE-AC-01 and aggregate CR-AC-21 remain Blocked/unverified. **Follow-up:** Amin subsequently confirmed offline launch passed for both versions; current statuses include MANUAL-OFFLINE-01.
+- The original baseline record at commit 88f56d0 is intact. A regression requires a previously observed Pass becoming Fail under comparable conditions. The automated record has 18 comparable Pass outcomes. With Amin’s manual follow-up for both versions, all 19 paired criteria have Pass outcomes; no regressions observed. Offline provenance remains human-reported.
 - Native quickstart shell/paths are adapted from Windows PowerShell to macOS. A separate local Maven cache is used. The original implementation, POM, tests, acceptance criteria and BMAD evidence are unchanged. Native test success alone is not GUI evidence.
 - CR-FR-03 Enter support for each unary operation and LOG-17 ignoring malformed Second number input have supplementary SUP-ENTER and SUP-SECOND records. These do not increase parent denominators. CR-AC-16/17/20 were exercised for all three unary operations.
 - Evaluator assistance is Codex (GPT-6 based agent; exact serving model identifier unavailable). This is not a second human review. Prior baseline exposure and AI assistance are disclosed. Results are limited to the recorded inputs; no general defect-free or tool-superiority claim is made. Relevant validity limits: VT-C02, VT-C06, VT-I05 and independent-human-review limits.
 - No formal subjective rubric ratings, change-impact metrics, effort estimates or reconstructed operator evidence are included. This deliverable is the requested acceptance/regression evaluation.
+
+## Supplementary manual offline follow-up — 2026-11-05
+
+Amin confirmed that **both versions passed offline launch**. See [MANUAL-OFFLINE-01](offline-manual-follow-up.md) for the original statements, snapshot mapping, missing procedural details and prior blocked outcomes. This dated follow-up updates current totals without changing the automated raw evidence or backdating an automated Pass.

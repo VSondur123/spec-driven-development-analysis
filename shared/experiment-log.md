@@ -136,3 +136,10 @@ Frozen snapshot: `speckit-cr01-frozen` = `9e523775e31c42bb9f164ddf84e9ff736b2c2f
 - Native clean build: 116 tests, 0 failures, 0 errors, 0 skipped. Separate real-window GUI automation supplied the acceptance observations, screenshots and actual outputs. AI assistance and prior baseline exposure are disclosed; this does not assert every scenario was manually executed by Amin.
 - Results: `github-spec-kit-calculator/evidence/08-cr01-evaluator-execution-sheet.md` and `github-spec-kit-calculator/evidence/09-cr01-baseline-regression-sheet.md`. Raw evidence and reproduction: `research/empirical-methodology/evaluations/2026-11-05-spec-kit-cr01/`.
 - BMAD CR-01 was not evaluated by Amin in this run. No requirements, rubric, native implementation or original baseline outcomes were changed. Protocol/rubric draft-5 adoption date/reference remains unavailable; no adoption history is invented.
+
+
+## Section I — Amin’s manual offline-launch follow-up (reported 2026-11-05)
+
+Amin subsequently reported successful Spec Kit offline launch and confirmed **both baseline and CR-01 passed**. Evidence/provenance: `research/empirical-methodology/evaluations/2026-11-05-spec-kit-cr01/offline-manual-follow-up.md` (MANUAL-OFFLINE-01). Exact observation times and procedural details were not supplied; no automated offline execution is asserted.
+
+Updated combined outcomes: baseline **19 Pass / 0 Fail / 0 Blocked / 0 Not run**; CR-01 baseline regression **19 Pass / 0 Fail / 0 Blocked / 0 Not run**; CR-AC-21 **Pass**; CR-01 **22 Pass / 0 Fail / 0 Blocked / 0 Not run**. No observed regressions across the 19 paired baseline criteria, with offline observations human-reported. Earlier blocked attempts, initial totals, automated logs and screenshots are preserved. No acceptance requirements changed.
