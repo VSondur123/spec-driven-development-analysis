@@ -1,0 +1,6 @@
+calculator.core.CalculatorTest: tests=23, failures=0, errors=0, skipped=0
+calculator.core.OperandParserTest: tests=21, failures=0, errors=0, skipped=0
+calculator.core.ResultFormatterTest: tests=5, failures=0, errors=0, skipped=0
+calculator.ui.CalculatorPanelTest: tests=32, failures=0, errors=0, skipped=0
+Total: 81 tests, 0 failures, 0 errors, 0 skipped.
+Maven config: java.awt.headless=true. These are native tests, not a completed manual acceptance run.
