@@ -1,0 +1,10 @@
+Item,BMAD track,Spec Kit track,Source
+Operating system,macOS 15.7.1 (arm64),Windows 11 Home,bmad-calculator/evidence/01-environment.md; github-spec-kit-calculator/evidence/01-environment.md
+JDK (pinned via JAVA_HOME),Amazon Corretto 22.0.2,Amazon Corretto 22.0.2.9.1,same files
+Build tool,Maven 3.9.16,Maven 3.9.16,same files
+GUI toolkit,Swing,Swing,bmad-calculator/evidence/01-environment.md; github-spec-kit-calculator/evidence/00-STATUS.md (decision D-01)
+Test framework,JUnit Jupiter 6.1.3,JUnit Jupiter 6.1.3,bmad-calculator/evidence/00-STATUS.md (D-05 amended); github-spec-kit-calculator/evidence/00-STATUS.md
+Tool and version,BMAD 6.12.4 (core; bmm),specify-cli 1.2.3 (claude integration),same files
+Coding agent,Claude Code,Claude Code (VS Code extension),same files
+Model,claude-sonnet-5-5,claude-opus-5-5 at start; then claude-sonnet-5-5,same files
+Operator,Varun,George,research/final-analysis/final-report.md section 8.2

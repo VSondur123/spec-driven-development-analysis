@@ -68,3 +68,7 @@ yarn-debug.log*
 
 # Keep Git placeholder files where needed
 !.gitkeep
+
+# ManuScript tooling (not part of the study): internals, build output and backups.
+# manuscript/<id>/plan.md and manuscript/<id>/<id>-report.md stay tracked; the final .tex/.pdf can be added by the owner.
+manuscript/.premigration-*.tar.gz

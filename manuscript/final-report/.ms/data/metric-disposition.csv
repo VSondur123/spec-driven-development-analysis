@@ -1,0 +1,12 @@
+Measure,Construct,Status in this study,Source
+M01,Parent acceptance outcomes,Calculable as pass ratios per phase; subcase-level evidence incomplete,results.md section 5
+M02,Requirement-level status,Partial; no verified numeric status,results.md section 5
+M03 / M13,Native / evaluator-reconstructed traceability,Not scored; semantic link verification pending,results.md section 5
+M04 / M05,Product defects / late-defect share,Descriptive examples only; no complete census,results.md section 5
+M06,Baseline regressions after CR-01,Zero reported; observation provenance unequal,results.md section 5
+M07,Change-impact omission and recall,Not calculable; no adjudicated reference set,results.md section 5
+M08 / M12,Human interventions / rework episodes,Illustrative only; no comparable census,results.md section 5
+M09 / M10,Active effort / elapsed duration,Not calculable; no measured sessions,results.md section 5
+M11 / M14,Rubric ratings J1-J7 / reviewer agreement,Not rated; no composite score,results.md section 5
+M15,Evidence completeness,Not calculable as a percentage,results.md section 5
+M16,Native test inventory,Context only; no cross-track quality inference,results.md section 5

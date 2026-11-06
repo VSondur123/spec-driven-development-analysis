@@ -1,0 +1,3 @@
+Phase,Requirement IDs,Parent acceptance criteria,Re-checked baseline parents,Source
+Baseline,8 functional + 5 non-functional,19 (BASE-AC-01..19),n/a,research/final-analysis/results.md section 1
+CR-01,11 functional (CR-FR-01..11),22 (CR-AC-01..22),19,research/final-analysis/results.md section 1

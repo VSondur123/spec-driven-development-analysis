@@ -2,7 +2,7 @@
 
 **Date:** 2026-11-03 (planning only; no source code edited). **Branch:** `cr-01` (from `main` at `1e39815`). **Tool:** `bmad-correct-course`, BMAD 6.12.4, Claude Sonnet 5.5, batch mode.
 
-The full analysis is the Sprint Change Proposal: `_bmad-output/planning-artifacts/sprint-change-proposal-2026-11-03.md` (status: draft, awaiting Varun's approval). It covers affected epics/stories, PRD/architecture conflicts, affected source and test files, the proposed Epic 4 (stories 4.1 to 4.4), the square-root algorithm, risks and handoff.
+The full analysis is the Sprint Change Proposal: `_bmad-output/planning-artifacts/sprint-change-proposal-2026-11-03.md` (status: approved and implemented; the Epic 4 split, LOG-16 and LOG-21 were approved 2026-11-03; CR-01 released and complete per Varun, 2026-11-07). It covers affected epics/stories, PRD/architecture conflicts, affected source and test files, the proposed Epic 4 (stories 4.1 to 4.4), the square-root algorithm, risks and handoff.
 
 Summary of impact: change is local to `core/Operation`, `core/Calculator`, `core/ErrorKind` and `ui/CalculatorFrame`; presenter expected unchanged; `OperationTest` (asserts 4 operations) will need updating; PRD §3/§5/§6.2/FR-7, architecture AD-4/5/7/9, and `epics.md` need amendment.
 
@@ -11,7 +11,7 @@ Summary of impact: change is local to `core/Operation`, `core/Calculator`, `core
 | ID | Entry |
 |---|---|
 | D-08 | Correct-course ran in **Batch** mode, not the recommended Incremental mode, to give one approval point. |
-| D-09 | Shared log: LOG-17..20 agreed by Varun for the BMAD track on 2026-11-03 (George pending); LOG-16 and LOG-21 open. |
+| D-09 | Shared log: LOG-17..20 agreed by Varun for the BMAD track on 2026-11-03 (George pending); LOG-16 and LOG-21 open. Update 2026-11-07: George agreed; LOG-16 to LOG-21 approved (reported by Varun). |
 | D-10 | `bmad-build` step 1 says to HALT on a dirty working tree. The tree is dirty because Varun told the agent not to commit during planning, so the check was waived by that instruction and the run continued. |
 | D-11 | Epic 4 context (`epic-4-context.md`) compiled inline by the agent, not by a subagent. |
 | D-12 | Story 4.1 spec written as a full `dispatch` spec (not `oneshot`): it touches core, UI and tests. No Open Questions remained; stopped at Checkpoint 1 for Varun's approval. |

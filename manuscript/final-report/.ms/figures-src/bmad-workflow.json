@@ -1,0 +1,20 @@
+{"type":"blocks","caption":"BMAD as used in the BMAD track (version 6.12.4): workflow steps, the artefact each step leaves, and the change path.","orientation":"vertical","width_cm":8.8,
+ "lanes":[
+  {"label":"Change path","nodes":[
+    {"id":"c5","text":"Correct course:\nchange proposal,\nimpact analysis","row":5},
+    {"id":"c6","text":"Epic 4 split\napproved","row":6,"style":"gate"}]},
+  {"label":"Workflow step","nodes":[
+    {"id":"w1","text":"PRD (bmad-prd)","row":1,"style":"start"},
+    {"id":"w2","text":"Architecture","row":2},
+    {"id":"w3","text":"Epics and stories","row":3},
+    {"id":"w4","text":"Sprint planning","row":4},
+    {"id":"w5","text":"Plan approved\nby owner","row":5,"style":"gate"},
+    {"id":"w6","text":"Build story\n(bmad-build)","row":6},
+    {"id":"w7","text":"Review layers\n(3 subagents)","row":7,"style":"end"}]},
+  {"label":"Artefact","nodes":[
+    {"id":"a1","text":"prd.md","row":1,"style":"artifact"},
+    {"id":"a2","text":"Architecture\nspine","row":2,"style":"artifact"},
+    {"id":"a3","text":"epics.md","row":3,"style":"artifact"},
+    {"id":"a4","text":"sprint-status.yaml","row":4,"style":"artifact"},
+    {"id":"a6","text":"story spec,\ncode, tests","row":6,"style":"artifact"}]}],
+ "edges":[["w1","w2"],["w2","w3"],["w3","w4"],["w4","w5"],["w5","w6"],["w6","w7"],["w1","a1"],["w2","a2"],["w3","a3"],["w4","a4"],["w6","a6"],["c5","c6"],["c6","w6"]]}

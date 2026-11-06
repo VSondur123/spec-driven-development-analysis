@@ -1,0 +1,19 @@
+{"type":"blocks","caption":"GitHub Spec Kit as used in the Spec Kit track (specify-cli 1.2.3): commands, the artefact each leaves, and the change path.","orientation":"vertical","width_cm":8.8,
+ "lanes":[
+  {"label":"Change path","nodes":[
+    {"id":"c2","text":"Impact analysis,\nthen same chain\nfor CR-01","row":2}]},
+  {"label":"Command","nodes":[
+    {"id":"w1","text":"/speckit-constitution","row":1,"style":"start"},
+    {"id":"w2","text":"/speckit-specify\n(clarifying questions)","row":2},
+    {"id":"w3","text":"/speckit-plan","row":3},
+    {"id":"w4","text":"Plan approved\nby owner","row":4,"style":"gate"},
+    {"id":"w5","text":"/speckit-tasks","row":5},
+    {"id":"w6","text":"/speckit-analyze\n(read-only)","row":6},
+    {"id":"w7","text":"/speckit-implement","row":7,"style":"end"}]},
+  {"label":"Artefact","nodes":[
+    {"id":"a1","text":"constitution.md","row":1,"style":"artifact"},
+    {"id":"a2","text":"spec.md, checklist","row":2,"style":"artifact"},
+    {"id":"a3","text":"plan.md, research,\ndata-model, contracts","row":3,"style":"artifact"},
+    {"id":"a5","text":"tasks.md","row":5,"style":"artifact"},
+    {"id":"a7","text":"code, tests,\nresults file","row":7,"style":"artifact"}]}],
+ "edges":[["w1","w2"],["w2","w3"],["w3","w4"],["w4","w5"],["w5","w6"],["w6","w7"],["w1","a1"],["w2","a2"],["w3","a3"],["w5","a5"],["w7","a7"],["c2","w2"]]}

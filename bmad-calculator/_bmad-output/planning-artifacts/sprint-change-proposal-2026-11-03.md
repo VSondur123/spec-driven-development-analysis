@@ -1,6 +1,6 @@
 ---
 title: Sprint Change Proposal — CR-01 Scientific Operations
-status: epic-4-split-approved-2026-11-03; code approval pending
+status: implemented-2026-11-03; CR-01 released and complete (Varun, 2026-11-07)
 created: 2026-11-03
 workflow: bmad-correct-course (BMAD 6.12.4), batch mode
 trigger: shared/change-request-CR-01.md v0.2, released by Varun on 2026-11-03
