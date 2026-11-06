@@ -2,7 +2,7 @@
 
 Source: `final-report-report.md`
 
-Words: 6017 · Headings: 29 · Figures: 4 · Tables: 8 · Citations: 9
+Words: 5994 · Headings: 29 · Figures: 4 · Tables: 8 · Citations: 10
 
 ## Errors (block approval) (0)
 - none

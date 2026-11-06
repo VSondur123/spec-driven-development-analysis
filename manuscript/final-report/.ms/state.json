@@ -38,13 +38,13 @@
     },
     "draft": {
       "path": "final-report-report.md",
-      "sha256": "e8c070b5a9f7f75217695c9808835bb0a857ad8fca29a5fe085b2011f70c5aa9",
-      "version": 7
+      "sha256": "95ee4f56c5f18d7607e9403775d3ed985e6dc6992f4cdd0166f1ea24432c8dd0",
+      "version": 10
     },
     "bibliography": {
       "path": ".ms/references.bib",
-      "sha256": "0cd8d7f03b357e868a20df87888e82b9cac0fe5ef51b3d26f4af31dc5c5c2b8a",
-      "version": 1
+      "sha256": "5e7aedabac53b3f26ee9e4063038bdecdd89d1e648add13d647285f6dd868a20",
+      "version": 2
     }
   },
   "plan_approval": {
@@ -53,10 +53,10 @@
     "version": 3
   },
   "markdown_approval": {
-    "approved_at": "2026-11-06T22:28:13Z",
-    "sha256": "e8c070b5a9f7f75217695c9808835bb0a857ad8fca29a5fe085b2011f70c5aa9",
-    "version": 7,
-    "snapshot": ".ms/approved/draft-approved-v7.md",
+    "approved_at": "2026-11-06T22:44:37Z",
+    "sha256": "95ee4f56c5f18d7607e9403775d3ed985e6dc6992f4cdd0166f1ea24432c8dd0",
+    "version": 10,
+    "snapshot": ".ms/approved/draft-approved-v10.md",
     "figures": {
       ".ms/figures/study-workflow.png": "de89e924bef42f53e6b87920056521c0fc6540441678870f7362d68ed94e066c",
       ".ms/figures/bmad-workflow.png": "fdf7ea2dabb2785b44ec7c4ee12f0a08a328157cba7947f5f749cc919420ed74",
@@ -71,9 +71,9 @@
   },
   "latex": {
     "path": ".ms/latex/final-report.tex",
-    "sha256": "7cbef4253c294a65c5198f355171594212ebc9dd1b21ef74f98882b79fb9bdb4",
-    "version": 1,
-    "from_approved_sha256": "e8c070b5a9f7f75217695c9808835bb0a857ad8fca29a5fe085b2011f70c5aa9"
+    "sha256": "fd138b245ea6c5f3a4f3b1083d121e209ce7092eb829567f15a7267e204f7923",
+    "version": 3,
+    "from_approved_sha256": "95ee4f56c5f18d7607e9403775d3ed985e6dc6992f4cdd0166f1ea24432c8dd0"
   },
   "pdf": {
     "path": null,
@@ -81,8 +81,8 @@
     "version": 0
   },
   "last_validation": {
-    "at": "2026-11-06T22:25:53Z",
-    "sha256": "e8c070b5a9f7f75217695c9808835bb0a857ad8fca29a5fe085b2011f70c5aa9",
+    "at": "2026-11-06T22:43:51Z",
+    "sha256": "95ee4f56c5f18d7607e9403775d3ed985e6dc6992f4cdd0166f1ea24432c8dd0",
     "errors": 0,
     "warnings": 0,
     "report": ".ms/validation/markdown-validation.md"
@@ -214,8 +214,92 @@
       "from": "PDF_QA",
       "to": "COMPLETED",
       "note": "layout-only table fix in .tex; all 10 pages viewed"
+    },
+    {
+      "at": "2026-11-06T22:39:43Z",
+      "from": "COMPLETED",
+      "to": "MARKDOWN_PENDING_APPROVAL",
+      "note": "draft changed after approval"
+    },
+    {
+      "at": "2026-11-06T22:40:11Z",
+      "from": "MARKDOWN_PENDING_APPROVAL",
+      "to": "MARKDOWN_APPROVED",
+      "note": "markdown approved"
+    },
+    {
+      "at": "2026-11-06T22:40:11Z",
+      "from": "MARKDOWN_APPROVED",
+      "to": "LATEX_GENERATION",
+      "note": "regenerate after wording fixes"
+    },
+    {
+      "at": "2026-11-06T22:40:12Z",
+      "from": "LATEX_GENERATION",
+      "to": "LATEX_VALIDATION",
+      "note": ""
+    },
+    {
+      "at": "2026-11-06T22:40:13Z",
+      "from": "LATEX_VALIDATION",
+      "to": "PDF_GENERATION",
+      "note": ""
+    },
+    {
+      "at": "2026-11-06T22:40:20Z",
+      "from": "PDF_GENERATION",
+      "to": "PDF_QA",
+      "note": "tables fine; pages 8-9 viewed"
+    },
+    {
+      "at": "2026-11-06T22:40:20Z",
+      "from": "PDF_QA",
+      "to": "COMPLETED",
+      "note": "regenerated after 13 wording fixes; layout-only table fix reapplied"
+    },
+    {
+      "at": "2026-11-06T22:43:48Z",
+      "from": "COMPLETED",
+      "to": "MARKDOWN_PENDING_APPROVAL",
+      "note": "draft changed after approval"
+    },
+    {
+      "at": "2026-11-06T22:44:37Z",
+      "from": "MARKDOWN_PENDING_APPROVAL",
+      "to": "MARKDOWN_APPROVED",
+      "note": "markdown approved"
+    },
+    {
+      "at": "2026-11-06T22:44:37Z",
+      "from": "MARKDOWN_APPROVED",
+      "to": "LATEX_GENERATION",
+      "note": "regenerate after course-assignment wording and repo reference"
+    },
+    {
+      "at": "2026-11-06T22:44:38Z",
+      "from": "LATEX_GENERATION",
+      "to": "LATEX_VALIDATION",
+      "note": ""
+    },
+    {
+      "at": "2026-11-06T22:44:39Z",
+      "from": "LATEX_VALIDATION",
+      "to": "PDF_GENERATION",
+      "note": ""
+    },
+    {
+      "at": "2026-11-06T22:44:48Z",
+      "from": "PDF_GENERATION",
+      "to": "PDF_QA",
+      "note": "pages 2,3,10 viewed"
+    },
+    {
+      "at": "2026-11-06T22:44:48Z",
+      "from": "PDF_QA",
+      "to": "COMPLETED",
+      "note": "course-assignment wording, repo reference [10]; table layout fix reapplied"
     }
   ],
   "created_at": "2026-11-06T14:06:52Z",
-  "updated_at": "2026-11-06T22:29:29Z"
+  "updated_at": "2026-11-06T22:44:48Z"
 }
