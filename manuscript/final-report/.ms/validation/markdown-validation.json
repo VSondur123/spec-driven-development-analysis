@@ -10,14 +10,14 @@
     }
   ],
   "stats": {
-    "words": 6017,
+    "words": 5994,
     "headings": 29,
     "figures": 4,
     "tables": 8,
-    "citations": 9,
-    "bib_entries": 9
+    "citations": 10,
+    "bib_entries": 10
   },
   "source": "final-report-report.md",
-  "sha256": "e8c070b5a9f7f75217695c9808835bb0a857ad8fca29a5fe085b2011f70c5aa9",
-  "validated_at": "2026-11-06T22:25:53Z"
+  "sha256": "95ee4f56c5f18d7607e9403775d3ed985e6dc6992f4cdd0166f1ea24432c8dd0",
+  "validated_at": "2026-11-06T22:43:51Z"
 }
