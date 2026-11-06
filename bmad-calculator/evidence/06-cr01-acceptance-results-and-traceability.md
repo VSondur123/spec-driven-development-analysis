@@ -84,6 +84,8 @@ How to read the Evidence column: counts of passing tests per layer (core, presen
 - **Deferred or not verified:** NFR-2 responsiveness not measured; headless runs skip 80 window tests; one OS and one Look and Feel; BASE-AC-15 and CR-AC-22 not from a real git clone; screenshots do not show the network indicator; operand length is uncapped (square and square root of a very long input are not bounded, same theme as baseline F-08).
 - **Open items for the team:** LOG-16 (the CR-01 header still says Proposed; the CR-AC checks are copied into `acceptance-criteria.md` §3); LOG-17 to LOG-21 agreed by Varun for the BMAD track, George's response pending.
 
+**Status update 2026-11-07:** Varun confirmed that CR-01 is released and done, and that George agreed (LOG-16 to LOG-21 approved, as reported by Varun). The "Open items for the team" line above is the 2026-11-03 position and is closed. The shared `experiment-log.md` was not edited by this track; its wording is for the owner to update. The evaluator sheets are completed: `08-cr01-evaluator-execution-sheet.md` (CR-AC-01 to 22) and `09-baseline-regression-cr01.md` (BASE-AC-01 to 19 against the changed app). The results above are the 2026-11-03 record and are not rewritten. Sprint-status is `done` for Epic 4.
+
 ## 5. Effort and interventions (approximate, not timed)
 
 The CR-01 phase ran on 2026-11-03 in one session. Human interventions: released CR-01 and asked for branch `cr-01`; agreed LOG-12..15 and LOG-16..21; approved the Epic 4 split, the square-root algorithm and each story spec at Checkpoint 1 (4.1 to 4.4); authorised the review subagents; ran the manual checks with screenshots; asked for no commits. Elapsed and active time per step was not recorded precisely.

@@ -1,6 +1,6 @@
 # Change Request CR-01 — Scientific Operations
 
-**Status:** Proposed — pending team approval
+**Status:** Approved — v0.2 released 2026-11-03; approved 2026-11-07 (Varun; George's agreement recorded on his behalf by Varun's instruction, see LOG-16)
 **Version:** 0.2
 **Applies to:** BMAD and GitHub Spec Kit tracks
 **Baseline:** `shared/baseline-requirements.md`
@@ -177,4 +177,4 @@ These criteria are proposed additions to `shared/acceptance-criteria.md`. The te
 | Version | Status   | Description                                                                                                  |
 | ------- | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 0.1     | Proposed | Initial CR-01 scope and acceptance criteria.                                                                 |
-| 0.2     | Proposed | Clarified unary interaction, numeric behaviour, boundary cases, error recovery, and regression verification. |
+| 0.2     | Approved | Clarified unary interaction, numeric behaviour, boundary cases, error recovery, and regression verification. |

@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "project_id": "final-report",
+  "doctype": "ieee-report",
+  "title": "Requirements Engineering Final Report",
+  "stage": "COMPLETED",
+  "completed_stages": [
+    "INITIALISED",
+    "DISCOVERY_IN_PROGRESS",
+    "DISCOVERY_COMPLETE",
+    "PLAN_PENDING_APPROVAL",
+    "PLAN_APPROVED",
+    "EVIDENCE_ANALYSIS",
+    "MARKDOWN_DRAFTING",
+    "MARKDOWN_VALIDATION",
+    "MARKDOWN_PENDING_APPROVAL",
+    "MARKDOWN_APPROVED",
+    "LATEX_GENERATION",
+    "LATEX_VALIDATION",
+    "PDF_GENERATION",
+    "PDF_QA"
+  ],
+  "artifacts": {
+    "config": {
+      "path": ".ms/project-config.yaml",
+      "sha256": "350197d82dfe1a301ef9887abe3dc43674c295c25a44966ccae75bd86a57405c",
+      "version": 1
+    },
+    "plan": {
+      "path": "plan.md",
+      "sha256": "40159d768be774d67c49cde56b6eb741ea846c9013478c78e797acf57e40402b",
+      "version": 3
+    },
+    "evidence": {
+      "path": ".ms/evidence-inventory.md",
+      "sha256": "25ccdbb07e1af6de5f363535f5b1af8cdc882f68e7b09fe212b8c2f2654d4b84",
+      "version": 1
+    },
+    "draft": {
+      "path": "final-report-report.md",
+      "sha256": "e8c070b5a9f7f75217695c9808835bb0a857ad8fca29a5fe085b2011f70c5aa9",
+      "version": 7
+    },
+    "bibliography": {
+      "path": ".ms/references.bib",
+      "sha256": "0cd8d7f03b357e868a20df87888e82b9cac0fe5ef51b3d26f4af31dc5c5c2b8a",
+      "version": 1
+    }
+  },
+  "plan_approval": {
+    "approved_at": "2026-11-06T22:25:53Z",
+    "sha256": "40159d768be774d67c49cde56b6eb741ea846c9013478c78e797acf57e40402b",
+    "version": 3
+  },
+  "markdown_approval": {
+    "approved_at": "2026-11-06T22:28:13Z",
+    "sha256": "e8c070b5a9f7f75217695c9808835bb0a857ad8fca29a5fe085b2011f70c5aa9",
+    "version": 7,
+    "snapshot": ".ms/approved/draft-approved-v7.md",
+    "figures": {
+      ".ms/figures/study-workflow.png": "de89e924bef42f53e6b87920056521c0fc6540441678870f7362d68ed94e066c",
+      ".ms/figures/bmad-workflow.png": "fdf7ea2dabb2785b44ec7c4ee12f0a08a328157cba7947f5f749cc919420ed74",
+      ".ms/figures/speckit-workflow.png": "0e1ecace74f94afe8c294605023b9a72600b2502648db4838fd6af9e1204d661",
+      ".ms/figures/acceptance-outcomes.png": "c6784d80dbc7bc99005a03175f5848bc127c14a67c7c7869aa55d839fc9a5b36",
+      ".ms/figures-src/acceptance-outcomes.json": "b9b5a45413b42b6e0fb2e403e228773de41cf78a4c24d8cc919b97000578b414",
+      ".ms/data/acceptance-outcomes.csv": "5b3cb6d5d5d17e23525b22711baf06f92ebb7f7599a35e284f02570d235dc619",
+      ".ms/figures-src/bmad-workflow.json": "0a5623c5af1df984253738317cbd1d515c3205ccffd7e388ff478b52b9d040ce",
+      ".ms/figures-src/speckit-workflow.json": "5266ca6a82849838b7e4e803f05f57bdd05dfb5f246d3f3162c24dedf1ba2492",
+      ".ms/figures-src/study-workflow.json": "db42c6edf4b058c1445f1b9ece4a5242d3835e6642c01db4ccb5870e59d759e8"
+    }
+  },
+  "latex": {
+    "path": ".ms/latex/final-report.tex",
+    "sha256": "7cbef4253c294a65c5198f355171594212ebc9dd1b21ef74f98882b79fb9bdb4",
+    "version": 1,
+    "from_approved_sha256": "e8c070b5a9f7f75217695c9808835bb0a857ad8fca29a5fe085b2011f70c5aa9"
+  },
+  "pdf": {
+    "path": null,
+    "sha256": null,
+    "version": 0
+  },
+  "last_validation": {
+    "at": "2026-11-06T22:25:53Z",
+    "sha256": "e8c070b5a9f7f75217695c9808835bb0a857ad8fca29a5fe085b2011f70c5aa9",
+    "errors": 0,
+    "warnings": 0,
+    "report": ".ms/validation/markdown-validation.md"
+  },
+  "outstanding_issues": [],
+  "history": [
+    {
+      "at": "2026-11-06T14:06:52Z",
+      "from": null,
+      "to": "INITIALISED",
+      "note": "project created"
+    },
+    {
+      "at": "2026-11-06T14:06:52Z",
+      "from": "INITIALISED",
+      "to": "DISCOVERY_IN_PROGRESS",
+      "note": "start discovery"
+    },
+    {
+      "at": "2026-11-06T14:07:37Z",
+      "from": "DISCOVERY_IN_PROGRESS",
+      "to": "DISCOVERY_COMPLETE",
+      "note": "discovery summarised to owner within the same turn as the plan request"
+    },
+    {
+      "at": "2026-11-06T14:08:27Z",
+      "from": "DISCOVERY_COMPLETE",
+      "to": "PLAN_PENDING_APPROVAL",
+      "note": "plan written, awaiting APPROVE PLAN"
+    },
+    {
+      "at": "2026-11-06T14:11:31Z",
+      "from": "PLAN_PENDING_APPROVAL",
+      "to": "PLAN_APPROVED",
+      "note": "plan approved"
+    },
+    {
+      "at": "2026-11-06T14:13:04Z",
+      "from": "PLAN_APPROVED",
+      "to": "EVIDENCE_ANALYSIS",
+      "note": "owner accepted Q2,Q3,Q4,Q6 recommended defaults"
+    },
+    {
+      "at": "2026-11-06T14:15:06Z",
+      "from": "EVIDENCE_ANALYSIS",
+      "to": "MARKDOWN_DRAFTING",
+      "note": "evidence inventory built; CSVs, figures, draft next"
+    },
+    {
+      "at": "2026-11-06T14:19:04Z",
+      "from": "MARKDOWN_DRAFTING",
+      "to": "MARKDOWN_VALIDATION",
+      "note": "draft written; validating"
+    },
+    {
+      "at": "2026-11-06T14:29:22Z",
+      "from": "MARKDOWN_VALIDATION",
+      "to": "MARKDOWN_VALIDATION",
+      "note": "migrated to .ms/ layout; backup .premigration-final-report-20261106T142922Z.tar.gz"
+    },
+    {
+      "at": "2026-11-06T22:25:53Z",
+      "from": "MARKDOWN_VALIDATION",
+      "to": "PLAN_PENDING_APPROVAL",
+      "note": "plan.md structure updated (new sections, RQ resolution)"
+    },
+    {
+      "at": "2026-11-06T22:25:53Z",
+      "from": "PLAN_PENDING_APPROVAL",
+      "to": "PLAN_APPROVED",
+      "note": "plan approved"
+    },
+    {
+      "at": "2026-11-06T22:25:53Z",
+      "from": "PLAN_APPROVED",
+      "to": "EVIDENCE_ANALYSIS",
+      "note": "resume after plan re-approval"
+    },
+    {
+      "at": "2026-11-06T22:25:53Z",
+      "from": "EVIDENCE_ANALYSIS",
+      "to": "MARKDOWN_DRAFTING",
+      "note": "resume after plan re-approval"
+    },
+    {
+      "at": "2026-11-06T22:25:53Z",
+      "from": "MARKDOWN_DRAFTING",
+      "to": "MARKDOWN_VALIDATION",
+      "note": "resume after plan re-approval"
+    },
+    {
+      "at": "2026-11-06T22:28:13Z",
+      "from": "MARKDOWN_VALIDATION",
+      "to": "MARKDOWN_PENDING_APPROVAL",
+      "note": "validated, 0 errors"
+    },
+    {
+      "at": "2026-11-06T22:28:13Z",
+      "from": "MARKDOWN_PENDING_APPROVAL",
+      "to": "MARKDOWN_APPROVED",
+      "note": "markdown approved"
+    },
+    {
+      "at": "2026-11-06T22:28:18Z",
+      "from": "MARKDOWN_APPROVED",
+      "to": "LATEX_GENERATION",
+      "note": "start"
+    },
+    {
+      "at": "2026-11-06T22:28:19Z",
+      "from": "LATEX_GENERATION",
+      "to": "LATEX_VALIDATION",
+      "note": ""
+    },
+    {
+      "at": "2026-11-06T22:28:44Z",
+      "from": "LATEX_VALIDATION",
+      "to": "PDF_GENERATION",
+      "note": "tectonic build ok, 10 pages"
+    },
+    {
+      "at": "2026-11-06T22:28:44Z",
+      "from": "PDF_GENERATION",
+      "to": "PDF_QA",
+      "note": "table VII/VIII overflow into gutter on p8 (layout only)"
+    },
+    {
+      "at": "2026-11-06T22:29:29Z",
+      "from": "PDF_QA",
+      "to": "COMPLETED",
+      "note": "layout-only table fix in .tex; all 10 pages viewed"
+    }
+  ],
+  "created_at": "2026-11-06T14:06:52Z",
+  "updated_at": "2026-11-06T22:29:29Z"
+}

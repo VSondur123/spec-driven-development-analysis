@@ -7,7 +7,7 @@
 - **Authors (four), confirmed by the owner:** Varun Ganesh Sondur, Mohammadamin Lotfiourimi, Pham Thanh, Georgios Malezoglou. Affiliation: Tampere University. Names as in `ReadMe.md`; no other details are added.
 - **Objective:** a descriptive comparative case study of how two complete tool–agent–operator workflows support the transition from requirements to implementation and the handling of one change request, and how well the result matches the requirements.
 - **Scope:** baseline four-operation calculator; CR-01 (square, square root, reciprocal). Out of scope: other scientific functions, graphing, history, memory, persistence, networking; any "overall winner" claim.
-- **Research questions:** OPEN (Q2). Recommended default: the `ReadMe.md` set RQ1–RQ4 (specification structure; requirement→design/task/code/test traceability; change handling and alignment; match to original requirements), with the results from `research/final-analysis/` mapped onto them. Not assumed until the owner decides.
+- **Research questions:** RESOLVED 2026-11-07 by the owner: RQ1–RQ4 from `ReadMe.md` plus explicit discussion of the five GQM goals G1–G5 (mapping table; G4 and G5 reported as supporting goals). Earlier note: OPEN (Q2). Recommended default: the `ReadMe.md` set RQ1–RQ4 (specification structure; requirement→design/task/code/test traceability; change handling and alignment; match to original requirements), with the results from `research/final-analysis/` mapped onto them. Not assumed until the owner decides.
 - **Constraints:** at most 10 pages main text plus at most 2 pages references (config `limits.max_pages = 12`, checked after the PDF build); formal academic English; critical analysis; evidence-backed conclusions only; required AI-use declaration (drafted from recorded tools, to be checked by the owner against the course wording); no per-member hours, contribution statements or timeline section (owner decision); no appendix (owner decision); no invented references or results; `project-context.md` tags ([verified]/[reported]/[draft]/[planned]/[TODO]) respected, and any statement that depends on a [reported] item says so in the text.
 - **Citation style:** numeric IEEE. `final-submission/references.bib` has no entries. Each source is verified before it is entered. Whether web search/fetch may be used for that is OPEN (Q6). Tool documentation and other grey literature are marked separately from academic sources (`ReadMe.md`).
 - **Write scope:** only inside `manuscript/final-report/`. No commits. Nothing outside this folder is edited, moved or created.
@@ -31,9 +31,12 @@
   - Specification Structure and Traceability
   - Baseline Implementation
   - Change Request CR-01
-  - Process Observations
+  - Human Work and Process Observations
+  - Evidence and Reproducibility
 - Discussion
   - Answers to the Research Questions
+  - Observed Differences Between the Workflows
+  - Answers by Measurement Goal
   - Implications
   - Threats to Validity
 - Conclusion

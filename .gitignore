@@ -71,5 +71,4 @@ yarn-debug.log*
 
 # ManuScript tooling (not part of the study): internals, build output and backups.
 # manuscript/<id>/plan.md and manuscript/<id>/<id>-report.md stay tracked; the final .tex/.pdf can be added by the owner.
-manuscript/*/.ms/
 manuscript/.premigration-*.tar.gz

@@ -1,0 +1,51 @@
+{
+  "acceptance-outcomes": {
+    "spec": ".ms/figures-src/acceptance-outcomes.json",
+    "spec_sha": "b9b5a45413b42b6e0fb2e403e228773de41cf78a4c24d8cc919b97000578b414",
+    "inputs": [
+      {
+        "path": ".ms/data/acceptance-outcomes.csv",
+        "sha": "5b3cb6d5d5d17e23525b22711baf06f92ebb7f7599a35e284f02570d235dc619"
+      }
+    ],
+    "outputs": [
+      ".ms/figures/acceptance-outcomes.pdf",
+      ".ms/figures/acceptance-outcomes.png"
+    ],
+    "built_at": "2026-11-06T14:29:22Z",
+    "caption": "Parent acceptance criteria passed. Base (op.): baseline, operator report, of 19. Base (ind.): baseline, independent evaluator, of 19 (Spec Kit also had one Blocked). CR-01: of 22. Regress.: baseline re-check after CR-01, of 19."
+  },
+  "bmad-workflow": {
+    "spec": ".ms/figures-src/bmad-workflow.json",
+    "spec_sha": "0a5623c5af1df984253738317cbd1d515c3205ccffd7e388ff478b52b9d040ce",
+    "inputs": [],
+    "outputs": [
+      ".ms/figures/bmad-workflow.pdf",
+      ".ms/figures/bmad-workflow.png"
+    ],
+    "built_at": "2026-11-06T14:29:23Z",
+    "caption": "BMAD as used in the BMAD track (version 6.12.4): workflow steps, the artefact each step leaves, and the change path."
+  },
+  "speckit-workflow": {
+    "spec": ".ms/figures-src/speckit-workflow.json",
+    "spec_sha": "5266ca6a82849838b7e4e803f05f57bdd05dfb5f246d3f3162c24dedf1ba2492",
+    "inputs": [],
+    "outputs": [
+      ".ms/figures/speckit-workflow.pdf",
+      ".ms/figures/speckit-workflow.png"
+    ],
+    "built_at": "2026-11-06T14:29:23Z",
+    "caption": "GitHub Spec Kit as used in the Spec Kit track (specify-cli 1.2.3): commands, the artefact each leaves, and the change path."
+  },
+  "study-workflow": {
+    "spec": ".ms/figures-src/study-workflow.json",
+    "spec_sha": "db42c6edf4b058c1445f1b9ece4a5242d3835e6642c01db4ccb5870e59d759e8",
+    "inputs": [],
+    "outputs": [
+      ".ms/figures/study-workflow.pdf",
+      ".ms/figures/study-workflow.png"
+    ],
+    "built_at": "2026-11-06T14:29:24Z",
+    "caption": "Study design: one frozen baseline and one change request (CR-01) given to both tracks, followed by independent evaluation."
+  }
+}

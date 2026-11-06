@@ -1,0 +1,2 @@
+{"type":"chart","kind":"bar","ylabel":"Parent criteria passed","caption":"Parent acceptance criteria passed. Base (op.): baseline, operator report, of 19. Base (ind.): baseline, independent evaluator, of 19 (Spec Kit also had one Blocked). CR-01: of 22. Regress.: baseline re-check after CR-01, of 19.",
+ "source":{"csv":".ms/data/acceptance-outcomes.csv","x":"check","series":["BMAD","Spec Kit"]}}

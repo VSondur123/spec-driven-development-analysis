@@ -1,0 +1,23 @@
+{
+  "errors": [],
+  "warnings": [],
+  "suggestions": [],
+  "confirmations": [
+    {
+      "line": 1,
+      "code": "page-limit-unmeasured",
+      "message": "Page limit 12 cannot be measured from Markdown; verify after PDF build."
+    }
+  ],
+  "stats": {
+    "words": 6017,
+    "headings": 29,
+    "figures": 4,
+    "tables": 8,
+    "citations": 9,
+    "bib_entries": 9
+  },
+  "source": "final-report-report.md",
+  "sha256": "e8c070b5a9f7f75217695c9808835bb0a857ad8fca29a5fe085b2011f70c5aa9",
+  "validated_at": "2026-11-06T22:25:53Z"
+}

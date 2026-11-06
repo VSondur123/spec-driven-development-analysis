@@ -18,7 +18,7 @@ keywords:
   - BMAD
   - GitHub Spec Kit
 abstract: |
-  Spec-driven development (SDD) tools let coding agents work from written specifications instead of chat instructions. We ask how two such tools, BMAD and GitHub Spec Kit, support the step from requirements to implementation and the handling of a requirement change. Using a comparative case study, two team members built the same Java Swing calculator, one with each tool, from one frozen set of requirements (8 functional and 5 non-functional requirements, 19 acceptance criteria). The same change request, which adds square, square root and reciprocal operations (11 requirements, 22 criteria), was then given to both. Independent evaluators later ran common execution sheets. Both workflows reported all 22 change criteria and all 19 baseline re-checks as passed. The independent baseline evaluation gave BMAD 19 passes and Spec Kit 18 passes and one blocked check (an offline-launch prerequisite), which is a difference in evidence, not in demonstrated correctness. Spec Kit's independent change evaluation left more inspectable raw evidence. Effort, change-impact recall, native traceability and rubric ratings were not measured, so we make no claim about an overall winner. The study has one case, one run per workflow and confounded operator, agent and environment.
+  Spec-driven development (SDD) tools let coding agents work from written specifications instead of chat instructions. We ask, through four research questions measured against five Goal Question Metric goals, how two such tools, BMAD and GitHub Spec Kit, support the step from requirements to implementation and the handling of a requirement change. Using a comparative case study, two team members built the same Java Swing calculator, one with each tool, from one frozen set of requirements (8 functional and 5 non-functional requirements, 19 acceptance criteria). The same change request, which adds square, square root and reciprocal operations (11 requirements, 22 criteria), was then given to both. Independent evaluators later ran common execution sheets. Both workflows reported all 22 change criteria and all 19 baseline re-checks as passed. The independent baseline evaluation gave BMAD 19 passes and Spec Kit 18 passes and one blocked check (an offline-launch prerequisite), which is a difference in evidence, not in demonstrated correctness. Spec Kit's independent change evaluation left more inspectable raw evidence. Effort, change-impact recall, native traceability and rubric ratings were not measured, so we make no claim about an overall winner. The study has one case, one run per workflow and confounded operator, agent and environment.
 ---
 
 # Introduction
@@ -53,18 +53,28 @@ We did not conduct a systematic literature search; the sources above were found 
 
 ## Research Questions
 
-Our main question is: *How do SDD tools support the transition from requirements to implementation, and how well does the result match the original requirements?* It is split into four questions.
+Our main question is: *How do SDD tools support the transition from requirements to implementation, and how well does the result match the original requirements?* It is split into four research questions, taken from the course brief (`ReadMe.md`). These four are the final set for this report.
 
 - **RQ1.** How does each tool create and structure specifications, including formats, levels of detail, templates and the role of the human?
 - **RQ2.** How are requirements turned into design, tasks, code and tests, and is the link between these artefacts traceable?
 - **RQ3.** How does each tool handle changes to the specification, and does the specification remain aligned with the code?
 - **RQ4.** How closely does the generated implementation satisfy the original requirements?
 
-The team's later analysis used a different set of five questions that ask which workflow performed better, handled the change better and produced better documentation. We map its findings onto RQ1 to RQ4 and do not adopt those questions as headings.
+The team's comparison framework organises measurement differently, into five Goal Question Metric goals (G1 to G5) with a catalogue of measures [@basili1994]. The team's final analysis also phrased its five questions as comparisons ("which workflow performed better…"). We keep RQ1 to RQ4 as the questions and use the goals as the measurement structure. [Table](#tbl-rqmap) shows how they map. G4 (human work) and G5 (evidence and reproducibility) have no matching course question, so the report answers them as supporting goals in dedicated sections of the Results, and all findings are tagged with the goal and question they serve. The comparative phrasing of the final analysis is not adopted: [Section](#answers) states what the evidence supports for each dimension and makes no overall ranking.
+
+| Goal | Focus | Research question served | Reported in |
+|---|---|---|---|
+| G1 | Specification and traceability | RQ1, RQ2 | Specification Structure and Traceability |
+| G2 | Change-impact handling | RQ3 | Change Request CR-01 |
+| G3 | Implementation and verification outcomes | RQ4 (and regressions for RQ3) | Baseline Implementation; Change Request CR-01 |
+| G4 | Human work and effort | Supporting (no course RQ) | Human Work and Process Observations |
+| G5 | Evidence and reproducibility | Supporting (no course RQ) | Evidence and Reproducibility |
+
+Table: Mapping of the GQM goals to the research questions and to the sections that report them. {#tbl-rqmap}
 
 ## Case and Change Request
 
-The case is a desktop calculator in Java Swing with two operand fields, four operation buttons, a Calculate and a Clear button, and inline error messages. Arithmetic is exact in decimals; division rounds half-up to ten places; results are shown as plain decimal text. The error messages are fixed, and the error priority is empty input, then no operation, then an invalid number, then an arithmetic error such as division by zero. The baseline requirements were frozen on 2026-10-23.
+The case is a desktop calculator in Java Swing with two operand fields, four operation buttons, a Calculate and a Clear button, and inline error messages. Arithmetic is exact in decimals; division rounds half-up to ten places; results are shown as plain decimal text. The error messages are fixed, and the error priority is empty input, then no operation, then an invalid number, then an arithmetic error such as division by zero. The baseline requirements were frozen on 2026-10-23. CR-01 (version 0.2) was released to both tracks on 2026-11-03 and its status was set to Approved on 2026-11-07; the Spec Kit operator's agreement to one of its clarification entries (LOG-16, the CR-01 status line) was recorded on their behalf by the study owner, as the log states.
 
 The change request, CR-01, adds three unary operations: square, square root and reciprocal. The First number field is used and the Second number is ignored. The square is exact; square root and reciprocal are rounded half-up to ten places; a negative square root and a reciprocal of zero are errors; and the criteria require all baseline checks to be re-run. [Table](#tbl-case) gives the size of the case.
 
@@ -83,7 +93,7 @@ The case has known limits. Four baseline NFRs have no directly linked acceptance
 
 [Figure](#fig-study) shows the design. Each track started from the same frozen requirements and acceptance criteria and kept its tool's native workflow. The fairness rules were: the same inputs for both, no sharing of generated artefacts between tracks, native workflows left intact, human interventions recorded and every deviation documented. Shared ambiguities and decisions were recorded in a common experiment log, which both tracks had to follow. Each track froze its baseline with a git tag before CR-01 was released. For CR-01, each track produced a pre-coding impact analysis, implemented the change and froze the result with a second tag. The shared baseline snapshot was `baseline-frozen`; the BMAD change snapshot is the commit tagged `bmad-cr01-frozen`.
 
-![Study design: one frozen baseline and one change request (CR-01) given to both tracks, followed by independent evaluation.](.ms/figures/study-workflow.pdf){#fig-study}
+![Study design: one frozen baseline and one change request (CR-01) given to both tracks, followed by independent evaluation.](.ms/figures/study-workflow.png){#fig-study}
 
 Two members who had built neither calculator evaluated the results with identical execution sheets for the baseline criteria and the change criteria. One evaluated the BMAD track and one evaluated the Spec Kit track; the Spec Kit baseline evaluation was run with assistance from an AI coding assistant. For Spec Kit, the evaluation used the baseline snapshot designated by the study owner, because the track's own operator results had been recorded at an earlier commit and the track had not declared a freeze; the log records that differences between the two commits may exist. All sources for this report, including both tracks' evidence and the experiment log, are in the team repository.
 
@@ -119,7 +129,7 @@ BMAD, expanded by its maintainers as the Breakthrough Method for Agile AI-Driven
 
 [Figure](#fig-bmad) shows the path actually followed. The operator used a fast path for the PRD and architecture, skipped the UX step, and had the agent judge the readiness gate. The PRD holds ten functional and five non-functional requirements. The architecture spine records ten architecture decisions. Work was split into three epics and nine stories, each built with `bmad-build` and checked by three review layers, except two stories where the operator chose a minimal path. For the change request, `bmad-correct-course` produced a sprint change proposal and an impact analysis before any code; after the owner approved a new Epic 4 with four stories, the PRD, architecture and epics were amended and the stories were built.
 
-![BMAD as used in the BMAD track (version 6.12.4): workflow steps, the artefact each step leaves, and the change path.](.ms/figures/bmad-workflow.pdf){#fig-bmad}
+![BMAD as used in the BMAD track (version 6.12.4): workflow steps, the artefact each step leaves, and the change path.](.ms/figures/bmad-workflow.png){#fig-bmad}
 
 ## GitHub Spec Kit
 
@@ -127,7 +137,7 @@ GitHub Spec Kit is an open-source toolkit that gives AI coding agents structured
 
 [Figure](#fig-speckit) shows the path actually followed. The constitution was drafted from the shared documents and amended once for the change request (version 1.0.0 to 1.1.0) with the owner's approval. `/speckit-specify` raised three clarification questions, which the owner answered. The plan produced a research file, a data model, contracts and a quickstart; the owner approved the plan before `/speckit-tasks` generated 34 baseline tasks. `/speckit-analyze` reported 11 findings (none critical, two high, two medium, seven low) before any code, and fixes were applied after the owner's approval. For CR-01 the track wrote an impact analysis first and then ran the same chain in a new feature folder, with 49 tasks and a second analysis of 10 findings.
 
-![GitHub Spec Kit as used in the Spec Kit track (specify-cli 1.2.3): commands, the artefact each leaves, and the change path.](.ms/figures/speckit-workflow.pdf){#fig-speckit}
+![GitHub Spec Kit as used in the Spec Kit track (specify-cli 1.2.3): commands, the artefact each leaves, and the change path.](.ms/figures/speckit-workflow.png){#fig-speckit}
 
 ## Capability Comparison
 
@@ -150,9 +160,11 @@ Table: Capabilities of the two workflows as observed in the tracks. {#tbl-cap}
 
 All counts in this section are as recorded in the tracks' evidence files and in the team's consolidated results; we did not re-run any test or launch either application. [Figure](#fig-acc) summarises the acceptance outcomes.
 
-![Parent acceptance criteria passed. Base (op.): baseline, operator report, of 19. Base (ind.): baseline, independent evaluator, of 19 (Spec Kit also had one Blocked). CR-01: of 22. Regress.: baseline re-check after CR-01, of 19.](.ms/figures/acceptance-outcomes.pdf){#fig-acc}
+![Parent acceptance criteria passed. Base (op.): baseline, operator report, of 19. Base (ind.): baseline, independent evaluator, of 19 (Spec Kit also had one Blocked). CR-01: of 22. Regress.: baseline re-check after CR-01, of 19.](.ms/figures/acceptance-outcomes.png){#fig-acc}
 
 ## Specification Structure and Traceability
+
+*Goal G1; RQ1, RQ2.*
 
 Both workflows produced structured, linked artefacts before coding (RQ1, RQ2). BMAD's chain runs from the PRD and the architecture decisions to epics, stories, tests and a requirement-to-test table. Spec Kit's runs from the constitution and the specification to the plan, tasks, tests and a results file with a traceability table. Both contain candidate links from requirement to code and tests. A verified count of native links, which would give a traceability measure (M03), has not been established for either track, and links rebuilt afterwards by an evaluator (M13) have to be kept apart from it. We therefore do not report a traceability percentage.
 
@@ -160,11 +172,15 @@ The shared requirements were not complete enough to be implemented as written. B
 
 ## Baseline Implementation
 
+*Goal G3; RQ4.*
+
 Both operators reported all 19 baseline criteria as passed. The independent evaluation differs (RQ4). The BMAD evaluator, who recorded results on a reported clean checkout, reported 19 passes, but the offline-launch criterion has no evidence that networking was disabled and criterion-level screenshots and logs were not attached. The Spec Kit evaluator recorded 18 passes, no failures and one Blocked criterion: the offline launch was not executed because the network prerequisite could not be established. That Blocked criterion is not a product failure, and the difference between 19 and 18 reflects recorded coverage and evidence provenance, not demonstrated correctness. The Spec Kit evaluation retained real-window automation output, screenshots and observation logs.
 
 The reported examples cover the four operations, decimal precision and rounding, negative inputs, division by zero, invalid and missing operands, Clear, recovery after an error, sequential calculations and the Enter key. They do not show exhaustive correctness or that every NFR is satisfied.
 
 ## Change Request CR-01
+
+*Goals G2 and G3; RQ3, RQ4.*
 
 Both tracks reported all 22 change criteria as passed and all 19 baseline criteria as passed again after the change, with no regression in the checked set (RQ3, RQ4). The two tracks' evidence is not equally strong. The Spec Kit evaluation retained a frozen-snapshot build output, GUI observations and screenshots, and its offline check was first Blocked and later marked Pass through a human-reported follow-up; both records stay visible. The BMAD evaluator's change results are recorded in the evaluator sheets, but the exact frozen checkout and criterion-level raw observations were not established to the same standard. The final 22 of 22 and 19 of 19 are combined reported statuses, not 22 independently reproduced evidence bundles.
 
@@ -183,11 +199,19 @@ The 22 change criteria test new behaviour and the 19 re-checks test preserved be
 
 Table: Change handling in CR-01 by dimension. {#tbl-change}
 
-## Process Observations
+## Human Work and Process Observations
+
+*Goal G4 (supporting).*
 
 Several observations come from the process records of single runs and carry no statistical weight. In the BMAD track, the review layers returned many items per story, and about half of them were verified as false or rejected as low priority, so every item had to be triaged. The story split by architecture layer made Epic 2 mostly a verification exercise instead of new work. In the Spec Kit track, `/speckit-analyze` found coverage and consistency gaps before any code, and they were fixed after approval; the one product defect of the change phase was found by looking at the real window, not by an automated test.
 
 Both tracks recorded deviations from their tool's native process, listed in the evidence files. The BMAD track used a fast path, skipped the UX step, did not run the PRD and architecture reviewer subagents, had the agent judge the readiness gate, and replaced per-story approval by a standing approval. The Spec Kit track did not run a template-resolve step for two skills, added a "Requirement Coverage" table to the plan that the tool does not produce, and left one gap, the square root of negative zero, unspecified by the owner's decision. Both tracks also had documentation drift: a BMAD status file still described the change as uncommitted after it had been committed, and a Spec Kit plan referred to a log entry before it existed.
+
+## Evidence and Reproducibility
+
+*Goal G5 (supporting).*
+
+The two tracks left evidence of different depth. Both froze their baseline and their change with git tags (`baseline-frozen`, `bmad-cr01-frozen`, `speckit-baseline-frozen`, `speckit-cr01-frozen`) and both kept evaluator sheets and an environment record. The Spec Kit independent evaluation additionally retained a build run on the frozen snapshot, real-window automation output, screenshots and a dated follow-up for the offline check, so a reader can inspect more of what the evaluator saw. The BMAD independent evaluation recorded results in the execution sheets and screenshots, but the exact frozen checkout and criterion-level raw observations are less fully established. Evidence completeness (M15) was not calculated as a percentage, and an evaluator's screenshot archive must not be credited as the operator's own documentation. We therefore report a bounded finding about the submitted evidence, not a general claim about either tool.
 
 [Table](#tbl-metrics) states which measures could be calculated. Most of them could not.
 
@@ -211,7 +235,7 @@ Table: Disposition of the catalogue measures in this study. {#tbl-metrics}
 
 # Discussion
 
-## Answers to the Research Questions
+## Answers to the Research Questions {#answers}
 
 **RQ1 (specification structure).** The tools structure specifications differently. BMAD builds a layered set of planning documents (PRD, architecture decisions, epics, stories) around what the system should do and why it is designed as it is. Spec Kit builds a chain of principles, specification, plan and tasks around what is specified and which tasks follow. In both, the human approved plans and answered questions, and in both the operators had to settle ambiguities in the shared requirements through the log. We cannot say which structure is better; no rubric ratings of specification clarity exist.
 
@@ -221,6 +245,16 @@ Table: Disposition of the catalogue measures in this study. {#tbl-metrics}
 
 **RQ4 (match to requirements).** Both implementations reported full success on the shared criteria, and no independent run observed a product failure. The independent baseline difference of one Blocked criterion is a difference in evidence. Four NFRs have no linked acceptance criterion, so the evaluation says little about them. Passing 19 of 19 or 22 of 22 parent criteria does not establish exhaustive correctness.
 
+## Observed Differences Between the Workflows
+
+We refrain from ranking the tools, but the records show three concrete differences.
+
+*Documentation structure.* BMAD's artefacts are organised around product and design decisions: a PRD, an architecture with numbered decisions, epics, stories and a sprint status that tracks each story. They explain why the design was chosen and how work was split. Spec Kit's artefacts are organised around the specified feature: a constitution of project principles, a specification, a plan with research, data model and contracts, and a task list. They explain what was specified and which tasks follow. The two document sets are not the same kind of thing, so counting files or pages would not measure quality, and no rubric ratings of their usefulness exist.
+
+*Change handling.* BMAD handled CR-01 as a change to an existing plan: a sprint change proposal and impact analysis, a new Epic 4, and amendments to the PRD, architecture and epics, with review layers on each story. Spec Kit handled it as a new feature: an impact analysis, an amended constitution (1.0.0 to 1.1.0), and a new feature folder with its own specification, plan and tasks. In both, effects appeared that the impact analysis had not listed (GUI tests and a helper for BMAD; a constitution update, a test and a helper for Spec Kit), and neither forecast can be scored because no reference set exists.
+
+*Independently inspectable evidence.* This is the clearest difference in what a reader can check. The Spec Kit change evaluation retained a frozen-snapshot build, GUI observations and screenshots, and kept both the Blocked and the later Pass for the offline check. The BMAD change evaluation is recorded in the evaluator sheets with less raw evidence. The 22 of 22 and 19 of 19 results are therefore reported statuses of unequal inspectability, not equally reproduced evidence. This difference concerns the evidence package, not the quality of the calculators.
+
 Taken together, the answers are dimension-specific. [Table](#tbl-strength) lists what the evidence supports and where it stops. We make no claim about which workflow performed better overall, handled the change better or produced better documentation, because effort, impact recall, rework, native traceability and rubric ratings were not measured, and observation layers differ between the tracks.
 
 | Workflow | Supported strengths | Constraints and evidence limits |
@@ -229,6 +263,32 @@ Taken together, the answers are dimension-specific. [Table](#tbl-strength) lists
 | Spec Kit | Constitution, spec, plan and task chain; impact forecast with changed and unchanged files; retained independent build and GUI evidence; defect found and fixed | Unplanned constitution, test and helper changes; a GUI defect before correction; offline check first Blocked |
 
 Table: Strengths and constraints per workflow, with evidence limits. {#tbl-strength}
+
+[Table](#tbl-goals) restates the conclusions by measurement goal, so that every result maps to the framework used for the evaluation.
+
+| Goal | What the evidence supports | What is unresolved | Implication |
+|---|---|---|---|
+| G1 Specification and traceability | Both produced structured native artefacts and candidate links | Native link coverage (M03, M13) and clarity ratings | Compare mechanisms, not percentages |
+| G2 Change-impact handling | Both wrote a pre-coding analysis and met unlisted effects | Impact recall (M07) needs a reference set | No ranking of impact analysis |
+| G3 Implementation and verification | 22 of 22 and 19 of 19 reported by both; no reported regression | Subcase-level provenance; defect census | Similar reported outcomes, different evidence depth |
+| G4 Human work and effort | Corrections and review episodes are visible | Effort, duration, rework (M08 to M10, M12) | No claim on speed or rework |
+| G5 Evidence and reproducibility | Spec Kit's change evaluation retained more raw records | M15 and independent ratings (M14) | A bounded evidence advantage, not a quality score |
+
+Table: Conclusions by measurement goal. {#tbl-goals}
+
+## Answers by Measurement Goal
+
+The five goals of the comparison framework each pose a question about the two workflows. We answer them here, in the same order as [Table](#tbl-goals).
+
+*G1, specification and traceability.* How clearly does each workflow represent the shared requirements, and can they be traced through it? Both represented them in structured native artefacts (PRD, architecture, epics and stories for BMAD; constitution, specification, plan and tasks for Spec Kit), and both left candidate links from requirement to tests. How clear those artefacts are was not rated, and native link coverage was not verified, so we describe the mechanisms and do not score them.
+
+*G2, change-impact handling.* How does each workflow identify what a change will affect? Both wrote an impact analysis before coding, BMAD as a change proposal feeding a new epic and Spec Kit as a forecast of changed and unchanged files. Both then met effects that were not listed. Impact recall could not be computed because no reference set of affected elements was fixed before coding.
+
+*G3, implementation and verification.* What did the implementations achieve on the shared criteria? Both reported 22 of 22 change criteria and 19 of 19 baseline re-checks, with no regression found. The independent baseline results (19 for BMAD; 18 plus one Blocked for Spec Kit) differ in evidence, not in demonstrated correctness.
+
+*G4, human work and effort.* What human decisions, effort and rework did each workflow need? Interventions, approvals and corrections are recorded in both tracks, but effort, duration and rework were not measured on a common basis, so we state no difference.
+
+*G5, evidence and reproducibility.* Is the evidence enough to check the comparison? For the change phase the Spec Kit package is easier to inspect (frozen build, GUI observations, screenshots, a dated offline follow-up). The BMAD package is less complete at criterion level. This bounded difference is the main reason the reported equal outcomes cannot be treated as equally verified.
 
 ## Implications
 
@@ -248,10 +308,22 @@ Four practical points follow from the study, for this case and not for all proje
 
 # Conclusion
 
-Within the limits of one case, both workflows carried the same requirements through specification, planning, tasks, code and tests, handled the same change request with a pre-coding impact analysis, and reported all 22 change criteria and all 19 baseline re-checks as passed. The independent baseline results, 19 passes for BMAD and 18 passes with one Blocked for Spec Kit, differ in evidence provenance and not in demonstrated correctness. Spec Kit's independent change evaluation was more inspectable, and BMAD's planning documents gave a continuous account of architecture and story decisions. Both required human decisions to settle ambiguities in the shared requirements, and both met effects of the change that their impact analyses did not list. We found no basis for an overall ranking. Future work should fix an impact reference set before coding, measure effort and rework prospectively, collect independent ratings, repeat the runs, and verify native traceability link by link.
+Within the limits of one case, both workflows carried the same requirements through specification, planning, tasks, code and tests, handled the same change request with a pre-coding impact analysis, and reported all 22 change criteria and all 19 baseline re-checks as passed. The independent baseline results, 19 passes for BMAD and 18 passes with one Blocked for Spec Kit, differ in evidence provenance and not in demonstrated correctness. Spec Kit's independent change evaluation was more inspectable, and BMAD's planning documents gave a continuous account of architecture and story decisions. Both required human decisions to settle ambiguities in the shared requirements, and both met effects of the change that their impact analyses did not list. In terms of the measurement goals, the workflows differ in how their documentation is organised (G1), in how the change was handled (G2) and in how much independently inspectable evidence was retained (G5), while the reported outcomes (G3) are alike and effort and rework (G4) were not measured. We found no basis for an overall ranking. Future work should fix an impact reference set before coding, measure effort and rework prospectively, collect independent ratings, repeat the runs, and verify native traceability link by link.
 
 # AI-Use Declaration
 
 AI tools were both the subject of this study and a support tool for producing it. (1) *Building the calculators.* Both calculators were built by Claude Code using the model `claude-sonnet-5-5`, acting as each operator's coding agent; the Spec Kit track started on `claude-opus-5-5` and switched to `claude-sonnet-5-5`. The agent followed the BMAD 6.12.4 skills (including review subagents) and the Spec Kit 1.2.3 skills to produce planning artefacts, code, tests and evidence drafts. The operators set the requirements and fairness rules, approved each plan before code was written, made and recorded the decisions, and reviewed the outputs. (2) *Requirements.* The baseline requirements, the change request CR-01 and the acceptance criteria were first drafted manually by the authors. ChatGPT was then consulted to refine them. (3) *Evaluation.* The Spec Kit baseline and Spec Kit CR-01 evaluations were run by one of the authors with Codex assistance; this is disclosed in the experiment log (LOG-23 and Section H) and means that not every scenario was executed manually. (4) *Literature.* Source discovery and drafting of the literature registers were AI-assisted, and an evaluation skill (`evaluate-sdd-workflows`) was used to prepare the evaluations. We checked every reference against its bibliographic record. For the three preprints and the Hill et al. paper we read only the abstract and metadata pages, so our claims about those works are limited to what those pages state. (5) *Report.* This report was drafted and reviewed by the authors together with Claude Code, working from the team's repository files and from records fetched on 2026-11-06. The authors take full responsibility for its content.
 
 # References
+
+<!-- references:start -->
+- Agarwal, Shyam, Singhal, Anmol, Macvean, Andrew, Vasilescu, Bogdan & Breaux, Travis. (2026). Spec-Driven Development as Prescribed and as Practiced. *(key: agarwal2026)*
+- Basili, Victor R., Caldiera, Gianluigi & Rombach, H. Dieter. (1994). Goal Question Metric Approach. Encyclopedia of Software Engineering, 528--532. *(key: basili1994)*
+- bmad-code-org. (2026). BMAD-METHOD. *(key: bmad)*
+- Claudino, Bruno, Xing, Ruizhe, Zuo, Yuanhao, Menezes, Tyler, Sarma, Anita, Damevski, Kostadin & Feng, Zixuan. (2026). The EPIC Framework for Spec-Driven Development. *(key: claudino2026)*
+- GitHub. (2026). Spec Kit. *(key: speckit)*
+- Hill, Brenn. (2026). Specification Artifacts in Open-Source Pull Request Workflows Do Not Reduce Defects: An Empirical Test of Spec-Driven Development Claims. Proc. 20th Int. Symp. Empirical Software Engineering and Measurement (ESEM 2026), 394, 84:1--84:20. https://doi.org/10.4230/LIPIcs.ESEM.2026.84 *(key: hill2026)*
+- Kitchenham, Barbara A., Pfleeger, Shari Lawrence, Pickard, Lesley M., Jones, Peter W., Hoaglin, David C., El Emam, Khaled & Rosenberg, Jarrett. (2002). Preliminary guidelines for empirical research in software engineering. IEEE Transactions on Software Engineering, 28(8), 721--734. https://doi.org/10.1109/TSE.2002.1027796 *(key: kitchenham2002)*
+- Piskala, Deepak Babu. (2026). Spec-Driven Development: From Code to Contract in the Age of AI Coding Assistants. https://doi.org/10.48550/arXiv.2602.00180 *(key: piskala2026)*
+- Runeson, Per & H\"ost, Martin. (2009). Guidelines for conducting and reporting case study research in software engineering. Empirical Software Engineering, 14(2), 131--164. https://doi.org/10.1007/s10664-008-9102-8 *(key: runeson2009)*
+<!-- references:end -->
